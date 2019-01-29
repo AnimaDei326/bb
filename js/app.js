@@ -1,5 +1,20 @@
 $(document).ready(function() {
 
+	function serviceWidgetOpening () {
+		$('.services__text-wrap').on('click', function (e) {
+			document.getElementById('js-widget__company-info').style.display = "flex";
+			document.body.className = "lock-position";
+
+			var el = document.getElementsByClassName('widget__company-info')[0];
+
+			if (parseInt(window.getComputedStyle(el, null).height) >= window.innerHeight) {
+				document.getElementById('js-widget__company-info').style.alignItems = "flex-start";
+				document.getElementById('js-widget__company-info').style.paddingTop = "30px";
+				document.getElementById('js-widget__company-info').style.paddingBottom = "30px";
+			}
+		})
+	}
+
 	// making square shape of services images
 	function heightWindow () {
 		var servicesImages = $('.js-services__img');
@@ -46,6 +61,8 @@ $(document).ready(function() {
 		} else if ((window.innerWidth <= 480) && _reversed) {
 			reverseServices();
 		}
+
+		serviceWidgetOpening(); // that's is need because of changing the dom-position of 'service block' element
 	});
 	// making square shape of services blocks
 
@@ -67,7 +84,7 @@ $(document).ready(function() {
 	})
 	// closing mobile menu when clicking outside
 
-	// scrolling to the neccessary position 
+	// scrolling page to the neccessary position 
 	function changingWindowOffset () {
 		$(".list-menu__link").on("click", function (event) {
 			event.preventDefault();
@@ -81,14 +98,12 @@ $(document).ready(function() {
 					mg  = $('.fixed__header').outerHeight(),
 					top = $(id).offset().top - mg;
 
-				console.log(top)
-
 				$('body,html').animate({scrollTop: top}, 1500);
 			}
 		});
 	}
 	changingWindowOffset();
-	// scrolling to the neccessary position 
+	// scrolling page to the neccessary position 
 
 
 
@@ -112,26 +127,39 @@ $(document).ready(function() {
 	});
 
 
-	$('.services__text-wrap').on('click', function (e) {
+	serviceWidgetOpening(); // open services widget 
 
-		document.getElementById('js-widget__company-info').style.display = "flex";
-		document.body.className = "lock-position";
+	// $('.services__text-wrap').on('click', function (e) {
+	// 	console.log('bum')
+	// 	document.getElementById('js-widget__company-info').style.display = "flex";
+	// 	document.body.className = "lock-position";
 
-		var el = document.getElementsByClassName('widget__company-info')[0];
+	// 	var el = document.getElementsByClassName('widget__company-info')[0];
 
-		if (parseInt(window.getComputedStyle(el, null).height) >= window.innerHeight) {
-			document.getElementById('js-widget__company-info').style.alignItems = "flex-start";
-			document.getElementById('js-widget__company-info').style.paddingTop = "30px";
-			document.getElementById('js-widget__company-info').style.paddingBottom = "30px";
-		}
-	})
+	// 	if (parseInt(window.getComputedStyle(el, null).height) >= window.innerHeight) {
+	// 		document.getElementById('js-widget__company-info').style.alignItems = "flex-start";
+	// 		document.getElementById('js-widget__company-info').style.paddingTop = "30px";
+	// 		document.getElementById('js-widget__company-info').style.paddingBottom = "30px";
+	// 	}
+	// })
 
-	// closing widgetuwhen clicking outside
+	// closing widget when clicking outside
 	$(document).mouseup(function (e){
 
 		// widget of the company info
 		var widget__company = document.getElementsByClassName('widget__company-info')[0];
+
+		// widget of the contact info
+		var widget__contact = document.getElementsByClassName('widget__contact-info')[0];
+
+
+		//fixing bugs..
+		if ((widget__company != undefined) && widget__company.contains(e.target))
+			return;
 		
+		if ((widget__contact != undefined) && widget__contact.contains(e.target))
+			return;
+
 		if ((widget__company != undefined) && !(widget__company == e.target) && !widget__company.contains(e.target) && !$('.js-widget__close').is(e.target)) {
 			document.getElementById('js-widget__company-info').style.display = "none";
 			document.body.className = "";
@@ -140,7 +168,6 @@ $(document).ready(function() {
 
 
 		// widget of the contact info
-		var widget__contact = document.getElementsByClassName('widget__contact-info')[0];
 		
 		if ((widget__contact != undefined) && !(widget__contact == e.target) && !widget__contact.contains(e.target) && !$('.js-widget__close').is(e.target)) {
 			document.getElementById('js-widget__contact-info').style.display = "none";
