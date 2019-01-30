@@ -29,6 +29,9 @@ class About
         $this->type = $type;
         self::$pdo = App::$app->db->getConnect();
     }
+    public function arrFilter($var){
+        return ($var['type'] == $this->type);
+    }
 
     public static function getList($type, $active)
     {
