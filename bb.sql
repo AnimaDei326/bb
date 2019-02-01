@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Янв 30 2019 г., 21:04
+-- Время создания: Фев 01 2019 г., 20:28
 -- Версия сервера: 5.7.23-log
 -- Версия PHP: 7.0.32
 
@@ -105,13 +105,20 @@ INSERT INTO `clients` (`id`, `name`, `picture`) VALUES
 CREATE TABLE `contacts` (
   `id` int(11) NOT NULL,
   `sort` int(3) DEFAULT NULL,
-  `first_name` varchar(255) DEFAULT NULL,
-  `last_name` varchar(255) DEFAULT NULL,
-  `photo` varchar(255) DEFAULT NULL,
   `telephone` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL
+  `description` varchar(255) DEFAULT NULL,
+  `id_Team` int(11) DEFAULT NULL,
+  `active` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `sort`, `telephone`, `email`, `description`, `id_Team`, `active`) VALUES
+(1, 10, '+7 (916) 804 27 97', 'info@bbconsulting.ru', 'Обсудить новый проект', 1, 'Y'),
+(2, 20, '+7 (916) 804 27 97', 'info@bbconsulting.ru', 'Получить методологическую консультацию', 2, 'Y');
 
 -- --------------------------------------------------------
 
@@ -121,8 +128,18 @@ CREATE TABLE `contacts` (
 
 CREATE TABLE `positions` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) DEFAULT NULL
+  `name` varchar(255) DEFAULT NULL,
+  `code` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `positions`
+--
+
+INSERT INTO `positions` (`id`, `name`, `code`) VALUES
+(1, 'Управляющие партнеры', 'boss'),
+(2, 'Эксперты', 'expert'),
+(3, 'Консультанты', 'consult');
 
 -- --------------------------------------------------------
 
@@ -202,16 +219,17 @@ INSERT INTO `project_items` (`id`, `sort`, `name`, `id_Projects`, `id_Project_it
 
 CREATE TABLE `project_items_type` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) DEFAULT NULL
+  `name` varchar(255) DEFAULT NULL,
+  `code` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `project_items_type`
 --
 
-INSERT INTO `project_items_type` (`id`, `name`) VALUES
-(1, 'Выполненные работы'),
-(2, 'Результаты работ');
+INSERT INTO `project_items_type` (`id`, `name`, `code`) VALUES
+(1, 'Выполненные работы', 'done'),
+(2, 'Результаты работ', 'result');
 
 -- --------------------------------------------------------
 
@@ -296,8 +314,23 @@ CREATE TABLE `team` (
   `second_name` varchar(255) DEFAULT NULL,
   `speciality` varchar(255) DEFAULT NULL,
   `institution` varchar(255) DEFAULT NULL,
-  `id_Positions` int(11) DEFAULT NULL
+  `id_Positions` int(11) DEFAULT NULL,
+  `picture` varchar(50) NOT NULL,
+  `active` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `team`
+--
+
+INSERT INTO `team` (`id`, `sort`, `first_name`, `second_name`, `speciality`, `institution`, `id_Positions`, `picture`, `active`) VALUES
+(1, 10, 'Александр!', 'Билый', 'Специалист по построению ФЭМ', 'Выпускник вШЭ, финансист', 1, 'Biliy.jpg', 'Y'),
+(2, 20, 'Никита', 'Борисов', 'Специалист по построению ФЭМ', 'Выпускник вШЭ, финансист', 1, 'Borisov.jpg', 'Y'),
+(3, 70, 'Андрей', 'Яблонский', 'Мега-человек', 'Горные работы', 2, '', 'Y'),
+(4, 80, 'Аленка', 'Цыбырина', 'Понабрали', 'По объявлению', 2, '', 'Y'),
+(5, 90, 'Ленка', 'Бартко', 'Понабрали', 'По объявлению', 3, '', 'Y'),
+(6, 100, 'Серега', 'Корогод', 'Понабрали', 'По объявлению', 3, '', 'Y'),
+(7, 110, 'Дениска', 'Феоктистов', 'Понабрали', 'По объявлению', 3, '', 'Y');
 
 --
 -- Индексы сохранённых таблиц
@@ -326,7 +359,8 @@ ALTER TABLE `clients`
 -- Индексы таблицы `contacts`
 --
 ALTER TABLE `contacts`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_Team` (`id_Team`);
 
 --
 -- Индексы таблицы `positions`
@@ -402,13 +436,13 @@ ALTER TABLE `clients`
 -- AUTO_INCREMENT для таблицы `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `positions`
 --
 ALTER TABLE `positions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `projects`
@@ -444,7 +478,7 @@ ALTER TABLE `service_items`
 -- AUTO_INCREMENT для таблицы `team`
 --
 ALTER TABLE `team`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
@@ -455,6 +489,12 @@ ALTER TABLE `team`
 --
 ALTER TABLE `about`
   ADD CONSTRAINT `about_ibfk_1` FOREIGN KEY (`id_type`) REFERENCES `about_type` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `contacts`
+--
+ALTER TABLE `contacts`
+  ADD CONSTRAINT `contacts_ibfk_1` FOREIGN KEY (`id_Team`) REFERENCES `team` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `projects`

@@ -6,10 +6,10 @@
             <address>
                 <h3 class="footer__title">Контакты</h3>
                 Email:
-                <span class="email"> info@bbconsulting.ru</span>
+                <span class="email"><?=$this->params['contact_left']['email']?></span>
                 <br>
                 Тел.:
-                <span class="tell-number"> +7 (916) 804-27-97</span>
+                <span class="tell-number"><?=$this->params['contact_left']['telephone']?></span>
             </address>
             <nav>
                 <h3 class="footer__title">Навигация</h3>
@@ -37,21 +37,21 @@
         <!-- левая часть виджета -->
         <div class="widget__left">
             <div class="widget__header">
-                <div class="widget__staff-img" style="background-image: url('/images/Biliy.jpg')"></div>
-                <h4 class="widget__staff-name">Александр Билый</h4>
-                <p class="widget__staff-text">Обсудить новый проект</p>
+                <div class="widget__staff-img" style="background-image: url('/images/<?=$this->params['contact_left']['picture']?>')"></div>
+                <h4 class="widget__staff-name"><?=$this->params['contact_left']['first_name']?> <?=$this->params['contact_left']['second_name']?> </h4>
+                <p class="widget__staff-text"><?=$this->params['contact_left']['description']?></p>
             </div>
 
             <div class="widget__footer">
                 <ul class="widget__footer-list">
                     <li class="footer-list__element widget__staff-tell">
                         <i class="widget-ico ico-number">&nbsp;</i>
-                        +7 (916) 804 - 27 - 97
+                        <?=$this->params['contact_left']['telephone']?>
                     </li>
 
                     <li class="footer-list__element widget__staff-email">
                         <i class="widget-ico ico-email">&nbsp;</i>
-                        info@bbcounsulting.ru
+                        <?=$this->params['contact_left']['email']?>
                     </li>
                 </ul>
             </div>
@@ -60,21 +60,21 @@
         <!-- права часть виджета -->
         <div class="widget__right">
             <div class="widget__header">
-                <div class="widget__staff-img" style="background-image: url('/images/Borisov.jpg')"></div>
-                <h4 class="widget__staff-name">Никита Борисов</h4>
-                <p class="widget__staff-text">Получить методологическую консультацию</p>
+                <div class="widget__staff-img" style="background-image: url('/images/<?=$this->params['contact_right']['picture']?>')"></div>
+                <h4 class="widget__staff-name"><?=$this->params['contact_right']['first_name']?> <?=$this->params['contact_right']['second_name']?> </h4>
+                <p class="widget__staff-text"><?=$this->params['contact_right']['description']?></p>
             </div>
 
             <div class="widget__footer">
                 <ul class="widget__footer-list">
                     <li class="footer-list__element widget__staff-tell">
                         <i class="widget-ico ico-number">&nbsp;</i>
-                        +7 (916) 804-27-97
+                        <?=$this->params['contact_right']['telephone']?>
                     </li>
 
                     <li class="footer-list__element widget__staff-email">
                         <i class="widget-ico ico-email">&nbsp;</i>
-                        info@bbcounsulting.ru
+                        <?=$this->params['contact_right']['email']?>
                     </li>
                 </ul>
             </div>

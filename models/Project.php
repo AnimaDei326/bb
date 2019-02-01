@@ -18,13 +18,20 @@ class Project
     public static $itemsTableName = 'project_items';
     public static $pdo = null;
 
-    public function __construct()
+    public $projectId;
+
+    public function __construct($projectId)
     {
         self::$pdo = App::$app->db->getConnect();
+        $this->projectId = $projectId;
+    }
+
+    public function arrFilter($var){
+        return ($var['id_Projects'] == $this->projectId);
     }
 
 
-    public static function getList($active = '%')
+    public static function getProjectList($active = '%')
     {
         self::$pdo = App::$app->db->getConnect();
 
@@ -41,6 +48,34 @@ class Project
               " . Client::$tableName. ".id WHERE active LIKE ? ORDER BY sort");
 
             $stmt->bindParam(1, $active);
+            $stmt->execute();
+            $data = $stmt->fetchAll();
+
+            return $data;
+
+        } catch (Exception $e) {
+            die ('ERROR: ' . $e->getMessage());
+        }
+    }
+
+    public static function getElementsList($code = '')
+    {
+        self::$pdo = App::$app->db->getConnect();
+
+        try {
+
+            $stmt = self::$pdo->prepare("SELECT 
+              " . self::$itemsTableName . ".id, sort, id_Projects, id_Project_items_type,
+              " . self::$itemsTableName . ".name,
+              " . self::$serviceTableName . ".name as project_items_type_name FROM 
+              " . self::$itemsTableName . " JOIN 
+              " . self::$serviceTableName ." ON 
+              " . self::$itemsTableName .".id_Project_items_type = 
+              " . self::$serviceTableName. ".id WHERE 
+               " . self::$serviceTableName. ".code LIKE ?
+              ORDER BY sort");
+
+            $stmt->bindParam(1,$code);
             $stmt->execute();
             $data = $stmt->fetchAll();
 

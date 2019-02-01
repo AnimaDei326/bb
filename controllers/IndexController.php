@@ -11,6 +11,7 @@ use components\Controller;
 use models\About;
 use models\Project;
 use models\Service;
+use models\Worker;
 
 class IndexController extends Controller
 {
@@ -55,17 +56,44 @@ class IndexController extends Controller
             'services' => $arrServiceAndItems,
         ]);
 
-        $arrProjects = Project::getList('Y');
+        $arrProjects = Project::getProjectList('Y');
+
+        $arrProjectsAndItems = [];
+
+        $arrProjectsItemsDone = Project::getElementsList('done');
+        $arrProjectsItemsResult = Project::getElementsList('result');
+
+
+        foreach ($arrProjects as $project){
+            $arrProjectsAndItems[$project['id_Project']] = $project;
+            $arrProjectsAndItems[$project['id_Project']]['itemsDone'] = array_filter($arrProjectsItemsDone, [new Project($project['id_Project']), 'models\Project::arrFilter'], ARRAY_FILTER_USE_BOTH) ;
+            $arrProjectsAndItems[$project['id_Project']]['itemsResult'] = array_filter($arrProjectsItemsResult, [new Project($project['id_Project']), 'models\Project::arrFilter'], ARRAY_FILTER_USE_BOTH) ;
+        }
+
+        $doneTitle = $arrProjectsItemsDone[0]['project_items_type_name'];
+        $resultTitle = $arrProjectsItemsResult[0]['project_items_type_name'];
+
+
 
         echo $this->render('project', [
-            'projects' => $arrProjects,
+            'projects' => $arrProjectsAndItems,
+            'doneTitle' => $doneTitle,
+            'resultTitle' => $resultTitle,
         ]);
 
-        $w = 1;
+        $arrTeam = Worker::getTeamList();
+
+        echo $this->render('team', [
+            'team' => $arrTeam,
+        ]);
+
+        $arrContact = Worker::getContactList();
 
 
         echo $this->render('footer', [
             'title' => self::$title,
+            'contact_left' => $arrContact[0],
+            'contact_right' => $arrContact[1],
         ]);
 
 
