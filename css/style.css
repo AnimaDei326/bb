@@ -210,7 +210,7 @@ header {
 	left: 0;
 	right: 0;
 	padding: 20px;
-	background: #125e78;
+	background: #fff;
 	border-bottom: 1px solid #ffffff80;
 	z-index: 999999;
 }
@@ -225,8 +225,15 @@ header {
 	padding: 0;
 }
 
-
-
+.fixed__header .list-menu__link {
+	color: #373737;
+}
+.fixed__header .light-btn {
+	border-color: #373737;
+}
+.fixed__header .light-btn:hover {
+	color: #fff;
+}
 /* ************************************************************** */
 /* ********************* БЛОИКИ С ИКОНКАМИ ********************** */
 /* ************************************************************** */

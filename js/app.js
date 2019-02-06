@@ -109,13 +109,25 @@ $(document).ready(function() {
 
 	// showing fixed top menu
 	const headerHeight = $('.header__top-wrap').outerHeight();
+	var isHeaderFixed = false;
 
 	$(window).scroll(function(){
 	  var element = $('.header__top-wrap'),
-	      scroll = $(window).scrollTop();
+	      scroll = $(window).scrollTop(),
+	      img = $('.header__logo');
 
-	  if (scroll >= headerHeight) element.addClass('fixed__header');
-	  else element.removeClass('fixed__header');
+	  if ((scroll >= headerHeight) && !isHeaderFixed){
+	  	img.attr('src', img.attr('src').replace('logo.png', 'logo_blue.png'));
+
+	  	element.addClass('fixed__header');
+
+	  	isHeaderFixed = !isHeaderFixed;
+	  } else if ((scroll < headerHeight) && isHeaderFixed) {
+		  	img.attr('src', img.attr('src').replace('logo_blue.png', 'logo.png'));
+
+		  	element.removeClass('fixed__header');
+		  	isHeaderFixed = !isHeaderFixed;
+	  }
 	});
 	// showing fixed top menu
 	
