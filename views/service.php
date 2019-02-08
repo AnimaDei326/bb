@@ -11,8 +11,10 @@
             <!-- вот тут нужно будет менять фотку сверху или снизу -->
             <!-- получается во 2, 5, 8 (ф-ла 3n+2) блоках фотография находятся сверху, у остальных снизу -->
 
+            <!-- в data-service-id нужно также будет поместить счетчик --> 
+
             <div class="services__block">
-                <div class="services__text-wrap" id="1">
+                <div class="services__text-wrap" data-service-id="1">
                     <h4 class="services-block__title">Финансовое моделирование и аудит моделей: </h4>
                     <ul class="services__list">
                         <li class="services-list__element">Разработка финансовых моделей инвесторов и развитие бизнеса</li>
@@ -32,7 +34,7 @@
                     <img src="/images/service1.jpg" alt="/images/service1.jpg" class="js-services__img" width="100%">
                 </div>
 
-                <div class="services__text-wrap" id="0">
+                <div class="services__text-wrap" data-service-id="0">
                     <h4 class="services-block__title">Финансовое моделирование и аудит моделей: </h4>
                     <ul class="services__list">
                         <li class="services-list__element">Разработка финансовых моделей инвесторов и развитие бизнеса</li>
@@ -44,7 +46,7 @@
             </div>
 
             <div class="services__block">
-                <div class="services__text-wrap" id="1">
+                <div class="services__text-wrap" data-service-id="1">
                     <h4 class="services-block__title">Финансовое моделирование и аудит моделей: </h4>
                     <ul class="services__list">
                         <li class="services-list__element">Разработка финансовых моделей инвесторов и развитие бизнеса</li>
@@ -60,7 +62,7 @@
             </div>
             
             <div class="services__block">
-                <div class="services__text-wrap" id="1">
+                <div class="services__text-wrap" data-service-id="1">
                     <h4 class="services-block__title">Финансовое моделирование и аудит моделей: </h4>
                     <ul class="services__list">
                         <li class="services-list__element">Разработка финансовых моделей инвесторов и развитие бизнеса</li>
@@ -80,7 +82,7 @@
                     <img src="/images/service1.jpg" alt="/images/service1.jpg" class="js-services__img" width="100%">
                 </div>
 
-                <div class="services__text-wrap" id="0">
+                <div class="services__text-wrap" data-service-id="0">
                     <h4 class="services-block__title">Финансовое моделирование и аудит моделей: </h4>
                     <ul class="services__list">
                         <li class="services-list__element">Разработка финансовых моделей инвесторов и развитие бизнеса</li>
@@ -92,7 +94,7 @@
             </div>
 
             <div class="services__block">
-                <div class="services__text-wrap" id="1">
+                <div class="services__text-wrap" data-service-id="1">
                     <h4 class="services-block__title">Финансовое моделирование и аудит моделей: </h4>
                     <ul class="services__list">
                         <li class="services-list__element">Разработка финансовых моделей инвесторов и развитие бизнеса</li>
