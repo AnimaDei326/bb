@@ -16,6 +16,13 @@
             <? foreach ($this->params['services'] as $service):?>
 
                 <div class="services__block">
+
+                    <!-- вот этот блок должен перемещаяться. 1 вариант тут. в  2, 5, 8.. блоках -->
+                    <div class="service__img-block">
+                        <img src="/images/<?=$service['picture']?>" alt="<?=$service['picture']?>" class="js-services__img" width="100%">
+                    </div>
+                    <!-- вот этот блок должен перемещаяться 1 вариант тутю в  2, 5, 8.. блоках -->
+
                     <div class="services__text-wrap" data-service-id="<?=$service['id']?>">
                         <h4 class="services-block__title"><?=$service['name']?>: </h4>
                         <ul class="services__list">
@@ -24,11 +31,22 @@
                             <? endforeach;?>
                         </ul>
                     </div>
+                    
+                    <!--
+
+                    -- 2 вариант тут -- во всех остальных блоках
+
+                    <div class="service__img-block">
+                        <img src="/images/<?=$service['picture']?>" alt="<?=$service['picture']?>" class="js-services__img" width="100%">
+                    </div>
+
+                    -- 2 вариант тут -- во всех остальных блоках
+
+                    -->
+
                 </div>
 
-                <div class="service__img-block">
-                    <img src="/images/<?=$service['picture']?>" alt="<?=$service['picture']?>" class="js-services__img" width="100%">
-                </div>
+                
 
             <? endforeach;?>
 

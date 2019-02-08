@@ -1,4 +1,9 @@
-<div class="widget__wrap" id="js-widget__company-info" style="display: none;">
+<!-- 
+    6 строчка, поле id="ervice-id_#"
+    вместо # писать соответствующй id сервиса. Например: service-id_1, service-id_2... 
+-->
+
+<div class="widget__wrap" id="js-widget__company-info service-id_#" style="display: none;">
     <div class="widget__company-info">
         <div class="widget-c__header">
             <h3 class="widget__main-title">Оценка бизнеса финансовое моделирование</h3>
