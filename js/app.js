@@ -42,7 +42,7 @@ $(document).ready(function() {
 	$(window).resize(function() {
 		heightWindow();
 
-		serviceWidgetOpening(); // that's is need because of changing the dom-position of 'service block' element
+		// serviceWidgetOpening(); // that's is need because of changing the dom-position of 'service block' element
 	});
 
 	// making square shape of services blocks
@@ -104,10 +104,10 @@ $(document).ready(function() {
 
 	  	isHeaderFixed = !isHeaderFixed;
 	  } else if ((scroll < headerHeight) && isHeaderFixed) {
-		  	img.attr('src', img.attr('src').replace('logo_blue.png', 'logo.png'));
+	  	img.attr('src', img.attr('src').replace('logo_blue.png', 'logo.png'));
 
-		  	element.removeClass('fixed__header');
-		  	isHeaderFixed = !isHeaderFixed;
+	  	element.removeClass('fixed__header');
+	  	isHeaderFixed = !isHeaderFixed;
 	  }
 	});
 	// showing fixed top menu

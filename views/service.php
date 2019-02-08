@@ -4,11 +4,14 @@
         <h3 class="services__title">Услуги</h3>
         <p class="services__text">Кликните по интересующему текстовому блоку для получения подробнной информации о кейсе услуг</p>
 
+
+        <!-- desctop version of services -->
         <div class="services__grid services-main">
 
-            
+            <!-- вот тут нужно будет менять фотку сверху или снизу -->
+            <!-- получается во 2, 5, 8 (ф-ла 3n+2) блоках фотография находятся сверху, у остальных снизу -->
 
-            <div class="services__block2">
+            <div class="services__block">
                 <div class="services__text-wrap" id="1">
                     <h4 class="services-block__title">Финансовое моделирование и аудит моделей: </h4>
                     <ul class="services__list">
@@ -24,7 +27,7 @@
                 </div>
             </div>
 
-            <div class="services__block2">
+            <div class="services__block">
                 <div class="service__img-block">
                     <img src="/images/service1.jpg" alt="/images/service1.jpg" class="js-services__img" width="100%">
                 </div>
@@ -40,7 +43,7 @@
                 </div>
             </div>
 
-            <div class="services__block2">
+            <div class="services__block">
                 <div class="services__text-wrap" id="1">
                     <h4 class="services-block__title">Финансовое моделирование и аудит моделей: </h4>
                     <ul class="services__list">
@@ -56,7 +59,7 @@
                 </div>
             </div>
             
-            <div class="services__block2">
+            <div class="services__block">
                 <div class="services__text-wrap" id="1">
                     <h4 class="services-block__title">Финансовое моделирование и аудит моделей: </h4>
                     <ul class="services__list">
@@ -72,7 +75,7 @@
                 </div>
             </div>
 
-            <div class="services__block2">
+            <div class="services__block">
                 <div class="service__img-block">
                     <img src="/images/service1.jpg" alt="/images/service1.jpg" class="js-services__img" width="100%">
                 </div>
@@ -88,7 +91,7 @@
                 </div>
             </div>
 
-            <div class="services__block2">
+            <div class="services__block">
                 <div class="services__text-wrap" id="1">
                     <h4 class="services-block__title">Финансовое моделирование и аудит моделей: </h4>
                     <ul class="services__list">
@@ -103,15 +106,23 @@
                     <img src="/images/service1.jpg" alt="/images/service1.jpg" class="js-services__img" width="100%">
                 </div>
             </div>
-
         </div>
+        <!-- desctop version of services -->
 
+
+        <!-- mobile version of services -->
         <div class="services-mobile">
+
+            <!-- тут фотографии менять местами не нужно, я сделал это с помощью css классов -->
+
+            <!-- счетчик counter должен быть как в этом блоке и в том, что выше, я привязал его к -->
+            <!-- полю data-service-id (у services_test-wrap) на 130 строчке -->
+
             <? $counter = 0; ?>
 
             <? foreach ($this->params['services'] as $service):?>
 
-                <div class="services__block2">
+                <div class="services__block">
                     <div class="services__block service__img-block">
                         <img src="/images/<?=$service['picture']?>" alt="<?=$service['picture']?>" class="js-services__img">
                     </div>
@@ -130,6 +141,7 @@
 
             <? endforeach;?>
         </div>
+        <!-- //mobile version of services -->
     </div>
 </article>
 <!-- //БЛОКИ С УСЛУГАМИ -->

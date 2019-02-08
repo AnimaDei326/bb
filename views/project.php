@@ -6,7 +6,7 @@
             <p class="widget__desc">Аудит финансовых моделей</p>
         </div>
         <? foreach ($this->params['projects'] as $project):?>
-            <div class="widget__c-left">
+            <div class="widget__c-block_wrap">
                 <div class="widget-c__block c__image-block">
                     <div class="widget-c__logo">
                         <img src="/images/<?=$project['picture']?>" alt="/images<?=$project['picture']?>">
