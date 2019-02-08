@@ -2,6 +2,9 @@ $(document).ready(function() {
 
 	function serviceWidgetOpening () {
 		$('.services__text-wrap').on('click', function (e) {
+			console.log(this)
+			console.log("Номер выбранного виджета: ", this.dataset.serviceId)
+
 			document.getElementById('js-widget__company-info').style.display = "flex";
 			document.body.className = "lock-position";
 
@@ -22,7 +25,10 @@ $(document).ready(function() {
 		$.each(servicesImages, function(key, element) {
 			$(this).css("height", $(this).parent().width());
 
-			$('.services__text-wrap').css("height", $(this).parent().width());
+			var servicesTextWrap = this.parentNode.parentNode.querySelector('.services__text-wrap');
+				servicesTextWrap.style.height = $(this).parent().width() + 'px';
+
+			// $('.services__text-wrap').css("height", $(this).parent().width());
 		});
 
 	}
@@ -32,38 +38,13 @@ $(document).ready(function() {
 
 
 	// making square shape of services blocks
-	var _reversed = false;
-
-	function reverseServices () {
-		var elements = $('.services__block');
-
-		for (let i = 2; i < elements.length; i+=4) {
-			let k = elements[i].innerHTML;
-			elements[i].innerHTML = elements[i+1].innerHTML;
-			elements[i+1].innerHTML = k;
-		}
-
-		_reversed = !_reversed;
-	}
-
-	if ((window.innerWidth <= 730) && (window.innerWidth > 480)) {
-		reverseServices();
-	}
 
 	$(window).resize(function() {
 		heightWindow();
 
-		// changing blocks positions depending on the screen width
-		if ((window.innerWidth > 730) && _reversed) {
-			reverseServices();
-		} else if ((window.innerWidth <= 730) && (window.innerWidth > 480) && !_reversed) {
-			reverseServices();
-		} else if ((window.innerWidth <= 480) && _reversed) {
-			reverseServices();
-		}
-
-		serviceWidgetOpening(); // that's is need because of changing the dom-position of 'service block' element
+		// serviceWidgetOpening(); // that's is need because of changing the dom-position of 'service block' element
 	});
+
 	// making square shape of services blocks
 
 
@@ -109,13 +90,25 @@ $(document).ready(function() {
 
 	// showing fixed top menu
 	const headerHeight = $('.header__top-wrap').outerHeight();
+	var isHeaderFixed = false;
 
 	$(window).scroll(function(){
 	  var element = $('.header__top-wrap'),
-	      scroll = $(window).scrollTop();
+	      scroll = $(window).scrollTop(),
+	      img = $('.header__logo');
 
-	  if (scroll >= headerHeight) element.addClass('fixed__header');
-	  else element.removeClass('fixed__header');
+	  if ((scroll >= headerHeight) && !isHeaderFixed){
+	  	img.attr('src', img.attr('src').replace('logo.png', 'logo_blue.png'));
+
+	  	element.addClass('fixed__header');
+
+	  	isHeaderFixed = !isHeaderFixed;
+	  } else if ((scroll < headerHeight) && isHeaderFixed) {
+	  	img.attr('src', img.attr('src').replace('logo_blue.png', 'logo.png'));
+
+	  	element.removeClass('fixed__header');
+	  	isHeaderFixed = !isHeaderFixed;
+	  }
 	});
 	// showing fixed top menu
 	

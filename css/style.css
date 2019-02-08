@@ -210,7 +210,7 @@ header {
 	left: 0;
 	right: 0;
 	padding: 20px;
-	background: #125e78;
+	background: #fff;
 	border-bottom: 1px solid #ffffff80;
 	z-index: 999999;
 }
@@ -225,8 +225,15 @@ header {
 	padding: 0;
 }
 
-
-
+.fixed__header .list-menu__link {
+	color: #373737;
+}
+.fixed__header .light-btn {
+	border-color: #373737;
+}
+.fixed__header .light-btn:hover {
+	color: #fff;
+}
 /* ************************************************************** */
 /* ********************* БЛОИКИ С ИКОНКАМИ ********************** */
 /* ************************************************************** */
@@ -427,15 +434,6 @@ header {
 	text-decoration: underline;
 }
 
-.services__block:first-child .services__text-wrap,
-.services__block:nth-child(3) .services__text-wrap {
-	padding-top: 0;
-}
-
-.services__block:nth-child(6n+1) .services__text-wrap {
-	padding-left: 0;
-}
-
 .services-block__title,
 .expierence-block__title {
 	font: 1.3em 'Montserrat medium';
@@ -480,6 +478,52 @@ header {
 
 
 
+
+/* mobile version of services */
+
+.services-mobile {
+	display: none;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
+    text-align: left;
+}
+
+.services-mobile .services__block {
+	display: block;
+	width: 100%;
+	overflow: hidden;
+}
+
+.services-mobile .service__img-block {
+	float: left;
+	width: 50%;
+}
+.services-mobile .services__block:nth-child(2n+1) .service__img-block {
+	float: right;
+}
+.services-mobile .services__text-wrap {
+	margin-right: 0;
+	float: left;
+	width: 50%;
+}
+
+.services-main .services__block:nth-child(3)  .services__text-wrap, 
+.services-main .services__block:first-child   .services__text-wrap {
+	padding-top: 0;
+}
+
+.services-main .services__block:nth-child(3n+1)  .services__text-wrap {
+	padding-left: 0;
+}
+
+
+.services-mobile .services__block:first-child  .services__text-wrap {
+	padding-top: 0;
+}
+
+.services-mobile .services__block:nth-child(2n+1)  .services__text-wrap {
+	padding-left: 0;
+}
 
 
 
@@ -873,7 +917,7 @@ footer .list-menu__element {
 
 .widget__company-info .widget__close-btn {
 	border: 1px solid #fff;
-	opacity: .7
+	opacity: .7;
 }
 
 .widget__company-info .widget__close-btn:before,
@@ -881,7 +925,7 @@ footer .list-menu__element {
 	background-color: #fff;
 }
 
-.widget__c-left, .widget__c-right {
+.widget__c-block_wrap {
 	color: #767676;
 	background: #fff;
 	padding: 2em;
@@ -1020,3 +1064,9 @@ footer .list-menu__element {
 	position: absolute;
 	cursor: pointer;
 }
+
+
+
+/* TMP */
+
+
