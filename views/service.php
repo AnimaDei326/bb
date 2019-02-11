@@ -12,17 +12,20 @@
             <!-- получается во 2, 5, 8 (ф-ла 3n+2) блоках фотография находятся сверху, у остальных снизу -->
 
             <!-- в data-service-id нужно также будет поместить счетчик -->
-
+            <? $counter = 1; ?>
             <? foreach ($this->params['services'] as $service):?>
 
                 <div class="services__block">
 
-                    <!-- вот этот блок должен перемещаяться. 1 вариант тут. в  2, 5, 8.. блоках -->
-                    <div class="service__img-block">
-                        <img src="/images/<?=$service['picture']?>" alt="<?=$service['picture']?>" class="js-services__img" width="100%">
-                    </div>
-                    <!-- вот этот блок должен перемещаяться 1 вариант тутю в  2, 5, 8.. блоках -->
 
+                    <? if($counter == 2 ):?>
+                        <!-- вот этот блок должен перемещаяться. 1 вариант тут. в  2, 5, 8.. блоках -->
+                        <div class="service__img-block">
+                            <img src="/images/<?=$service['picture']?>" alt="<?=$service['picture']?>" class="js-services__img" width="100%">
+                        </div>
+                        <!-- вот этот блок должен перемещаяться 1 вариант тутю в  2, 5, 8.. блоках -->
+                        <? $counter = 0; ?>
+                    <? endif;?>
                     <div class="services__text-wrap" data-service-id="<?=$service['id']?>">
                         <h4 class="services-block__title"><?=$service['name']?>: </h4>
                         <ul class="services__list">
@@ -32,22 +35,18 @@
                         </ul>
                     </div>
                     
-                    <!--
-
-                    -- 2 вариант тут -- во всех остальных блоках
-
-                    <div class="service__img-block">
-                        <img src="/images/<?=$service['picture']?>" alt="<?=$service['picture']?>" class="js-services__img" width="100%">
-                    </div>
-
-                    -- 2 вариант тут -- во всех остальных блоках
-
-                    -->
+                    <!-- 2 вариант тут -- во всех остальных блоках -->
+                    <? if($counter != 2 ):?>
+                         <div class="service__img-block">
+                            <img src="/images/<?=$service['picture']?>" alt="<?=$service['picture']?>" class="js-services__img" width="100%">
+                         </div>
+                     <? endif;?>
+                    <!-- 2 вариант тут -- во всех остальных блоках -->
 
                 </div>
 
-                
 
+                <? $counter++; ?>
             <? endforeach;?>
 
         <!-- desctop version of services -->

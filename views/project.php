@@ -2,7 +2,9 @@
     6 строчка, поле id="ervice-id_#"
     вместо # писать соответствующй id сервиса. Например: service-id_1, service-id_2... 
 -->
-
+<?
+var_dump($this->params['projects']);
+?>
 <div class="widget__wrap" id="js-widget__company-info service-id_#" style="display: none;">
     <div class="widget__company-info">
         <div class="widget-c__header">
