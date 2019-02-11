@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 08 2019 г., 20:19
+-- Время создания: Фев 11 2019 г., 22:39
 -- Версия сервера: 5.7.23-log
 -- Версия PHP: 7.0.32
 
@@ -244,20 +244,22 @@ CREATE TABLE `service` (
   `sort` int(3) DEFAULT NULL,
   `active` varchar(1) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `picture` varchar(255) NOT NULL
+  `picture` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `subtitle` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `service`
 --
 
-INSERT INTO `service` (`id`, `sort`, `active`, `name`, `picture`) VALUES
-(1, 10, 'Y', 'Финансовое моделирование и аудит моделей', 'service1.jpg'),
-(2, 20, 'Y', 'Сопровождение инвестпроектом и сделов M&A', 'service2.jpg'),
-(3, 30, 'Y', 'Получение субсидий и государственных льгот', 'service3.jpg'),
-(4, 40, 'Y', 'Оценка запасов и экспертиза проектов недропользователей', 'service4.jpg'),
-(5, 50, 'Y', 'Обучение и тренинги', 'service5.jpg'),
-(6, 60, 'Y', 'Управленческий учет, бюджетирование', 'service6.jpg');
+INSERT INTO `service` (`id`, `sort`, `active`, `name`, `picture`, `title`, `subtitle`) VALUES
+(1, 10, 'Y', 'Финансовое моделирование и аудит моделей', 'service1.jpg', 'titl12e', 'subti123tle'),
+(2, 20, 'Y', 'Сопровождение инвестпроектом и сделов M&A', 'service2.jpg', 'ti12tle', 'subewrwertitle'),
+(3, 30, 'Y', 'Получение субсидий и государственных льгот', 'service3.jpg', 'titqwele', 'sub45t34r23title'),
+(4, 40, 'Y', 'Оценка запасов и экспертиза проектов недропользователей', 'service4.jpg', 'title', 'subtitle'),
+(5, 50, 'Y', 'Обучение и тренинги', 'service5.jpg', 'title', 'subtitle'),
+(6, 60, 'Y', 'Управленческий учет, бюджетирование', 'service6.jpg', 'title', 'subtitle');
 
 -- --------------------------------------------------------
 

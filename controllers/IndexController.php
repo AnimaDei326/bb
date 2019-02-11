@@ -65,9 +65,11 @@ class IndexController extends Controller
 
 
         foreach ($arrProjects as $project){
-            $arrProjectsAndItems[$project['id_Project']] = $project;
-            $arrProjectsAndItems[$project['id_Project']]['itemsDone'] = array_filter($arrProjectsItemsDone, [new Project($project['id_Project']), 'models\Project::arrFilter'], ARRAY_FILTER_USE_BOTH) ;
-            $arrProjectsAndItems[$project['id_Project']]['itemsResult'] = array_filter($arrProjectsItemsResult, [new Project($project['id_Project']), 'models\Project::arrFilter'], ARRAY_FILTER_USE_BOTH) ;
+            $arrProjectsAndItems[$project['id_Service']][$project['id_Project']] = $project;
+            $arrProjectsAndItems[$project['id_Service']][$project['id_Project']]['title'] = $arrServiceAndItems[$project['id_Service']]['title'];
+            $arrProjectsAndItems[$project['id_Service']][$project['id_Project']]['subtitle'] = $arrServiceAndItems[$project['id_Service']]['subtitle'];
+            $arrProjectsAndItems[$project['id_Service']][$project['id_Project']]['itemsDone'] = array_filter($arrProjectsItemsDone, [new Project($project['id_Project']), 'models\Project::arrFilter'], ARRAY_FILTER_USE_BOTH) ;
+            $arrProjectsAndItems[$project['id_Service']][$project['id_Project']]['itemsResult'] = array_filter($arrProjectsItemsResult, [new Project($project['id_Project']), 'models\Project::arrFilter'], ARRAY_FILTER_USE_BOTH) ;
         }
 
         $doneTitle = $arrProjectsItemsDone[0]['project_items_type_name'];
