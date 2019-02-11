@@ -35,7 +35,7 @@ class Service
 
         try {
 
-            $stmt = self::$pdo->prepare("SELECT id, sort, active, name, picture FROM "
+            $stmt = self::$pdo->prepare("SELECT id, sort, active, name, title, subtitle, picture FROM "
                 . self::$tableName . " WHERE active LIKE ? ORDER BY sort");
 
             $stmt->bindParam(1, $active);

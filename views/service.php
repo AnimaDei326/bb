@@ -18,25 +18,34 @@
                 <div class="services__block">
 
 
-                    <? if($counter == 2 ):?>
+                    <? if(($counter - 2) % 3 == 0 ):?>
                         <!-- вот этот блок должен перемещаяться. 1 вариант тут. в  2, 5, 8.. блоках -->
                         <div class="service__img-block">
                             <img src="/images/<?=$service['picture']?>" alt="<?=$service['picture']?>" class="js-services__img" width="100%">
                         </div>
                         <!-- вот этот блок должен перемещаяться 1 вариант тутю в  2, 5, 8.. блоках -->
-                        <? $counter = 0; ?>
-                    <? endif;?>
-                    <div class="services__text-wrap" data-service-id="<?=$service['id']?>">
-                        <h4 class="services-block__title"><?=$service['name']?>: </h4>
-                        <ul class="services__list">
-                            <? foreach ($service['items'] as $item):?>
-                                <li class="services-list__element"><?=$item['name']?></li>
-                            <? endforeach;?>
-                        </ul>
-                    </div>
-                    
+
+                        <div class="services__text-wrap" data-service-id="<?=$service['id']?>">
+                            <h4 class="services-block__title"><?=$service['name']?>: </h4>
+                            <ul class="services__list">
+                                <? foreach ($service['items'] as $item):?>
+                                    <li class="services-list__element"><?=$item['name']?></li>
+                                <? endforeach;?>
+                            </ul>
+                        </div>
+
+
+
                     <!-- 2 вариант тут -- во всех остальных блоках -->
-                    <? if($counter != 2 ):?>
+                    <?else:?>
+                        <div class="services__text-wrap" data-service-id="<?=$service['id']?>">
+                            <h4 class="services-block__title"><?=$service['name']?>: </h4>
+                            <ul class="services__list">
+                                <? foreach ($service['items'] as $item):?>
+                                    <li class="services-list__element"><?=$item['name']?></li>
+                                <? endforeach;?>
+                            </ul>
+                        </div>
                          <div class="service__img-block">
                             <img src="/images/<?=$service['picture']?>" alt="<?=$service['picture']?>" class="js-services__img" width="100%">
                          </div>
