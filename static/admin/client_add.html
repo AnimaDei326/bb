@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Новый заказчик</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- FooTable -->
+    <link href="css/plugins/footable/footable.core.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Image cropper -->
+    <script src="js/plugins/cropper/cropper.min.js"></script>
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li>
+                    <a href="#"><i class="fa fa-desktop"></i> <span class="nav-label">Публичная часть</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="/">Главная страница</a></li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="#"><i class="fa fa-table"></i> <span class="nav-label">Контент</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="/static/admin/service.html">Услуги</a></li>
+                        <li><a href="/static/admin/projects.html">Проекты</a></li>
+                        <li><a href="/static/admin/clients.html">Заказчики</a></li>
+                        <li><a href="/static/admin/team.html">Команда</a></li>
+                        <li><a href="table_foo_table.html">О компании</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg">
+
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-10">
+                <h2>Новый заказчик</h2>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="/static/admin/index.html">Главная</a>
+                    </li>
+                    <li>
+                        <a>Контент</a>
+                    </li>
+                    <li>
+                        <a href="/static/admin/service.html">Заказчики</a>
+                    </li>
+                    <li class="active">
+                        <strong>Добавление</strong>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-lg-2">
+
+            </div>
+        </div>
+
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form method="get" class="form-horizontal">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>Основное <small></small></h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group"><label class="col-sm-2 control-label">Название</label>
+
+                                        <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                    </div>
+
+
+                                    <div class="form-group">
+
+                                        <div class="col-lg-12">
+                                            <div class="ibox float-e-margins">
+
+                                                <div class="ibox-content">
+
+                                                    <div class="row">
+
+                                                        <div class="col-md-6">
+                                                            <h4>Логотип</h4>
+                                                            <div class="img-preview img-preview-sm">
+                                                                <img src="">
+                                                            </div>
+                                                            <div class="btn-group">
+                                                                <label title="Upload image file" for="inputImage" class="btn btn-primary">
+                                                                    <input type="file" accept="image/*" name="file" id="inputImage" class="hide">
+                                                                    Выбрать логотип
+                                                                </label>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+
+                            </div>
+                        </div>
+
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <div class="col-sm-12 col-sm-offset-5">
+                                <button class="btn btn-white" type="submit">Отменить</button>
+                                <button class="btn btn-primary" type="submit">Добавить</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="footer">
+            <div class="pull-right">
+            </div>
+            <div>
+                <strong>Copyright</strong> Biliy&Borisov consulting 2017-2019
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- Mainly scripts -->
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- FooTable -->
+<script src="js/plugins/footable/footable.all.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+
+<!-- Page-Level Scripts -->
+<script>
+    $(document).ready(function() {
+
+        $('.footable').footable();
+        $('.footable2').footable();
+
+        var $inputImage = $("#inputImage");
+        if (window.FileReader) {
+            $inputImage.change(function() {
+                var fileReader = new FileReader(),
+                    files = this.files,
+                    file;
+
+                if (!files.length) {
+                    return;
+                }
+
+                file = files[0];
+
+                if (/^image\/\w+$/.test(file.type)) {
+                    fileReader.readAsDataURL(file);
+                    fileReader.onload = function () {
+                        $inputImage.val("");
+                        $image.cropper("reset", true).cropper("replace", this.result);
+                    };
+                } else {
+                    showMessage("Please choose an image file.");
+                }
+            });
+        } else {
+            $inputImage.addClass("hide");
+        }
+
+        $("#download").click(function() {
+            window.open($image.cropper("getDataURL"));
+        });
+
+    });
+
+</script>
+
+</body>
+
+</html>

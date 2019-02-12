@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Услуги</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- FooTable -->
+    <link href="css/plugins/footable/footable.core.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <<div class="sidebar-collapse">
+        <ul class="nav metismenu" id="side-menu">
+            <li>
+                <a href="#"><i class="fa fa-desktop"></i> <span class="nav-label">Публичная часть</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="/">Главная страница</a></li>
+                </ul>
+            </li>
+            <li class="active">
+                <a href="#"><i class="fa fa-table"></i> <span class="nav-label">Контент</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="/static/admin/service.html">Услуги</a></li>
+                    <li><a href="/static/admin/projects.html">Проекты</a></li>
+                    <li><a href="/static/admin/clients.html">Заказчики</a></li>
+                    <li><a href="/static/admin/team.html">Команда</a></li>
+                    <li><a href="table_foo_table.html">О компании</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg">
+
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-10">
+                <h2>Список услуг</h2>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="/static/admin/index.html">Главная</a>
+                    </li>
+                    <li>
+                        <a>Контент</a>
+                    </li>
+                    <li class="active">
+                        <strong>Услуги</strong>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-lg-2">
+
+            </div>
+        </div>
+        <div class="wrapper wrapper-content animated fadeInRight">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Список услуг</h5>
+
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <input type="text" class="form-control input-sm m-b-xs" id="filter"
+                                   placeholder="Поиск">
+
+                            <table class="footable table table-stripped" data-page-size="8" data-filter=#filter>
+                                <thead>
+                                <tr>
+                                    <th>Название</th>
+                                    <th data-hide="phone,tablet">ID</th>
+                                    <th data-hide="phone,tablet">Сортировка</th>
+                                    <th data-hide="phone,tablet">Активность</th>
+                                    <th colspan="2">Действия</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="gradeX">
+                                    <td>Финансовое моделирование и аудит моделей</td>
+                                    <td>1</td>
+                                    <td class="center">10</td>
+                                    <td class="center">http://prntscr.com/mk1sbo</td>
+                                    <td ><a href="/static/admin/service_edit.html"><i style="font-size:24px; color: cadetblue; cursor: pointer;" class="fa">&#xf040;</i></a></td>
+                                    <td  ><i style="font-size:24px; color: orangered; cursor: pointer;" class="fa">&#x2717;</i></td>
+                                </tr>
+                                <tr class="gradeX">
+                                    <td>Сопровождение инвестпроектом и сделов M&A</td>
+                                    <td>2</td>
+                                    <td class="center">20</td>
+                                    <td class="center">http://prntscr.com/mk1sbo</td>
+                                    <td ><a href="/static/admin/service_edit.html"><i style="font-size:24px; color: cadetblue; cursor: pointer;" class="fa">&#xf040;</i></a></td>
+                                    <td  ><i style="font-size:24px; color: orangered; cursor: pointer;" class="fa">&#x2717;</i></td>
+                                </tr>
+                                <tr class="gradeX">
+                                    <td>Получение субсидий и государственных льгот</td>
+                                    <td>3</td>
+                                    <td class="center">30</td>
+                                    <td class="center">http://prntscr.com/mk1sbo</td>
+                                    <td ><a href="/static/admin/service_edit.html"><i style="font-size:24px; color: cadetblue; cursor: pointer;" class="fa">&#xf040;</i></a></td>
+                                    <td  ><i style="font-size:24px; color: orangered; cursor: pointer;" class="fa">&#x2717;</i></td>
+                                </tr>
+                                <tr class="gradeX">
+                                    <td>Оценка запасов и экспертиза проектов недропользования</td>
+                                    <td>4</td>
+                                    <td class="center">40</td>
+                                    <td class="center">http://prntscr.com/mk1sbo</td>
+                                    <td ><a href="/static/admin/service_edit.html"><i style="font-size:24px; color: cadetblue; cursor: pointer;" class="fa">&#xf040;</i></a></td>
+                                    <td  ><i style="font-size:24px; color: orangered; cursor: pointer;" class="fa">&#x2717;</i></td>
+                                </tr>
+                                <tr class="gradeX">
+                                    <td>Обучение и тренинги</td>
+                                    <td>5</td>
+                                    <td class="center">50</td>
+                                    <td class="center">http://prntscr.com/mk1sbo</td>
+                                    <td ><a href="/static/admin/service_edit.html"><i style="font-size:24px; color: cadetblue; cursor: pointer;" class="fa">&#xf040;</i></a></td>
+                                    <td  ><i style="font-size:24px; color: orangered; cursor: pointer;" class="fa">&#x2717;</i></td>
+                                </tr>
+                                <tr class="gradeX">
+                                    <td>Управленческий учет, бюджетирование</td>
+                                    <td>6</td>
+                                    <td class="center">60</td>
+                                    <td class="center">http://prntscr.com/mk1sbo</td>
+                                    <td ><a href="/static/admin/service_edit.html"><i style="font-size:24px; color: cadetblue; cursor: pointer;" class="fa">&#xf040;</i></a></td>
+                                    <td  ><i style="font-size:24px; color: orangered; cursor: pointer;" class="fa">&#x2717;</i></td>
+                                </tr>
+
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td colspan="5">
+                                        <ul class="pagination pull-right"></ul>
+                                    </td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <div class="col-sm-12 col-sm-offset-0">
+                                <a href="/static/admin/service_add.html"><button class="btn btn-primary" type="submit">Добавить</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="footer">
+            <div class="pull-right">
+            </div>
+            <div>
+                <strong>Copyright</strong> Biliy&Borisov consulting 2017-2019
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- Mainly scripts -->
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- FooTable -->
+<script src="js/plugins/footable/footable.all.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+
+<!-- Page-Level Scripts -->
+<script>
+    $(document).ready(function() {
+
+        $('.footable').footable();
+        $('.footable2').footable();
+
+    });
+
+</script>
+
+</body>
+
+</html>

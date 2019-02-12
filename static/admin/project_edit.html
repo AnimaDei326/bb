@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Редактирование проекта</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- FooTable -->
+    <link href="css/plugins/footable/footable.core.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Image cropper -->
+    <script src="js/plugins/cropper/cropper.min.js"></script>
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li>
+                    <a href="#"><i class="fa fa-desktop"></i> <span class="nav-label">Публичная часть</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="/">Главная страница</a></li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="#"><i class="fa fa-table"></i> <span class="nav-label">Контент</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="/static/admin/service.html">Услуги</a></li>
+                        <li><a href="/static/admin/projects.html">Проекты</a></li>
+                        <li><a href="/static/admin/clients.html">Заказчики</a></li>
+                        <li><a href="/static/admin/team.html">Команда</a></li>
+                        <li><a href="table_foo_table.html">О компании</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg">
+
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-10">
+                <h2>Оценка стоимости золотодобывающего актива и разработка сценарных финансово-экономических моделей развития объекта</h2>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="/static/admin/index.html">Главная</a>
+                    </li>
+                    <li>
+                        <a>Контент</a>
+                    </li>
+                    <li>
+                        <a href="/static/admin/service.html">Проекты</a>
+                    </li>
+                    <li class="active">
+                        <strong>Редактирование</strong>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-lg-2">
+
+            </div>
+        </div>
+
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form method="get" class="form-horizontal">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>Основное <small></small></h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+
+                                <div class="form-group"><label class="col-sm-2 control-label">Активность<br/></label>
+                                    <div class="col-sm-10">
+                                        <div class="i-checks"><input type="checkbox" value=""><i></i></div>
+                                    </div>
+                                </div>
+                                <div class="form-group"><label class="col-sm-2 control-label">ID</label>
+
+                                    <div class="col-sm-10">
+                                        <div class="row">
+                                            <div class="col-md-2"><input type="text" value="1" disabled class="form-control"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group"><label class="col-sm-2 control-label">Сортировка</label>
+
+                                    <div class="col-sm-10">
+                                        <div class="row">
+                                            <div class="col-md-2"><input type="text" value="10" class="form-control"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group"><label class="col-sm-2 control-label">Название</label>
+
+                                    <div class="col-sm-10"><input value="Оценка стоимости золотодобывающего актива и разработка сценарных финансово-экономических моделей развития объекта" type="text" class="form-control"></div>
+                                </div>
+
+                                <div class="form-group"><label class="col-sm-2 control-label">Цель</label>
+
+                                    <div class="col-sm-10"><input value="Получение оценки стоимости и перспектив развития Актива" type="text" class="form-control"></div>
+                                </div>
+
+                                <div class="form-group"><label class="col-sm-2 control-label">Срок</label>
+
+                                    <div class="col-sm-10"><input value="5 мес" type="text" class="form-control"></div>
+                                </div>
+
+                                <div class="form-group"><label class="col-sm-2 control-label">Заказчик</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control m-b" name="account">
+                                            <option>&laquo;VIY Investment Fund&raquo;</option>
+                                            <option>&laquo;ЕВРАЗ&raquo; и консорциум банков из ТОП-5 в РФ</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group"><label class="col-sm-2 control-label">Услуга</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control m-b" name="account">
+                                            <option>Финансовое моделирование и аудит моделей</option>
+                                            <option>Сопровождение инвестпроектом и сделов M&A</option>
+                                            <option>Получение субсидий и государственных льгот</option>
+                                            <option>Обучение и тренинги</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>Выполненные работы<small></small></h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                    <div class="form-group">
+                                        <div class="ibox-content">
+                                            <input type="text" class="form-control input-sm m-b-xs" id="filter"
+                                                   placeholder="Поиск">
+
+                                            <table class="footable table table-stripped" data-page-size="8" data-filter=#filter>
+                                                <thead>
+                                                <tr>
+                                                    <th>Название</th>
+                                                    <th data-hide="phone,tablet">ID</th>
+                                                    <th data-hide="phone,tablet">Сортировка</th>
+                                                    <th data-hide="phone,tablet">Активность</th>
+                                                    <th>Удалить</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr class="gradeX">
+                                                    <td><div class="col-sm-10"><input value="Комплексный анализ технико-экономических параметров объекта" type="text" class="form-control"></div></td>
+                                                    <td>1</td>
+                                                    <td class="center">
+                                                        <div class="col-sm-10">
+                                                            <div class="row">
+                                                                <div class="col-md-8"><input type="text" value="1" class="form-control"></div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="center">http://prntscr.com/mk1sbo</td>
+                                                    <td  ><i style="font-size:24px; color: orangered; cursor: pointer;" class="fa">&#x2717;</i></td>
+                                                </tr>
+                                                <tr class="gradeX">
+                                                    <td><div class="col-sm-10"><input value="Аудит и корректировка расчетных алгоритмов и структуры имеющейся финансово-экономической модели (ФЭМ)" type="text" class="form-control"></div></td>
+                                                    <td>2</td>
+                                                    <td class="center">
+                                                        <div class="col-sm-10">
+                                                            <div class="row">
+                                                                <div class="col-md-8"><input type="text" value="1" class="form-control"></div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="center">http://prntscr.com/mk1sbo</td>
+                                                    <td  ><i style="font-size:24px; color: orangered; cursor: pointer;" class="fa">&#x2717;</i></td>
+                                                </tr>
+                                                <tr class="gradeX">
+                                                    <td><div class="col-sm-10"><input value="Сформирован отчет об аудите и выданы рекомендации по оптимизации финансово-экономических моделей" type="text" class="form-control"></div></td>
+                                                    <td>3</td>
+                                                    <td class="center">
+                                                        <div class="col-sm-10">
+                                                            <div class="row">
+                                                                <div class="col-md-8"><input type="text" value="20" class="form-control"></div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="center">http://prntscr.com/mk1sbo</td>
+                                                    <td  ><i style="font-size:24px; color: orangered; cursor: pointer;" class="fa">&#x2717;</i></td>
+                                                </tr>
+                                                <tr class="gradeX">
+                                                    <td><div class="col-sm-10"><input value="Заказчику предоставлен отчет с рекомендациями по оптимизации ключевых финансово-экономических параметров объекта для повышения инвестиционной привлекательности актива" type="text" class="form-control"></div></td>
+                                                    <td>4</td>
+                                                    <td class="center">
+                                                        <div class="col-sm-10">
+                                                            <div class="row">
+                                                                <div class="col-md-8"><input type="text" value="30" class="form-control"></div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="center">http://prntscr.com/mk1sbo</td>
+                                                    <td  ><i style="font-size:24px; color: orangered; cursor: pointer;" class="fa">&#x2717;</i></td>
+                                                </tr>
+
+                                                </tbody>
+                                                <tfoot>
+                                                <tr>
+                                                    <td colspan="5">
+                                                        <ul class="pagination pull-right"></ul>
+                                                    </td>
+                                                </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+
+
+                            </div>
+                        </div>
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>Результаты<small></small></h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <div class="form-group">
+                                    <div class="ibox-content">
+                                        <input type="text" class="form-control input-sm m-b-xs" id="filter" placeholder="Поиск">
+
+                                        <table class="footable table table-stripped" data-page-size="8" data-filter=#filter>
+                                            <thead>
+                                            <tr>
+                                                <th>Название</th>
+                                                <th data-hide="phone,tablet">ID</th>
+                                                <th data-hide="phone,tablet">Сортировка</th>
+                                                <th data-hide="phone,tablet">Активность</th>
+                                                <th>Удалить</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="gradeX">
+                                                    <td><div class="col-sm-10"><input value="Сформирован отчет об аудите и выданы рекомендации по оптимизации финансово-экономических моделей" type="text" class="form-control"></div></td>
+                                                    <td>1</td>
+                                                    <td class="center">
+                                                        <div class="col-sm-10">
+                                                            <div class="row">
+                                                                <div class="col-md-8"><input type="text" value="1" class="form-control"></div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="center">http://prntscr.com/mk1sbo</td>
+                                                    <td  ><i style="font-size:24px; color: orangered; cursor: pointer;" class="fa">&#x2717;</i></td>
+                                                </tr>
+                                                <tr class="gradeX">
+                                                    <td><div class="col-sm-10"><input value="Сформированы консолидированные отчетные формы по сводным показателям для Банков" type="text" class="form-control"></div></td>
+                                                    <td>2</td>
+                                                    <td class="center">
+                                                        <div class="col-sm-10">
+                                                            <div class="row">
+                                                                <div class="col-md-8"><input type="text" value="1" class="form-control"></div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="center">http://prntscr.com/mk1sbo</td>
+                                                    <td  ><i style="font-size:24px; color: orangered; cursor: pointer;" class="fa">&#x2717;</i></td>
+                                                </tr>
+                                                <tr class="gradeX">
+                                                    <td><div class="col-sm-10"><input value="Проведен аудит финансово-экономических моделей" type="text" class="form-control"></div></td>
+                                                    <td>3</td>
+                                                    <td class="center">
+                                                        <div class="col-sm-10">
+                                                            <div class="row">
+                                                                <div class="col-md-8"><input type="text" value="20" class="form-control"></div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="center">http://prntscr.com/mk1sbo</td>
+                                                    <td  ><i style="font-size:24px; color: orangered; cursor: pointer;" class="fa">&#x2717;</i></td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                            <tr>
+                                                <td colspan="5">
+                                                    <ul class="pagination pull-right"></ul>
+                                                </td>
+                                            </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <div class="col-sm-12 col-sm-offset-5">
+                                <button class="btn btn-white" type="submit">Отменить</button>
+                                <button class="btn btn-primary" type="submit">Сохранить</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="footer">
+            <div class="pull-right">
+            </div>
+            <div>
+                <strong>Copyright</strong> Biliy&Borisov consulting 2017-2019
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- Mainly scripts -->
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- FooTable -->
+<script src="js/plugins/footable/footable.all.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+
+<!-- Page-Level Scripts -->
+<script>
+    $(document).ready(function() {
+
+        $('.footable').footable();
+        $('.footable2').footable();
+
+        var $inputImage = $("#inputImage");
+        if (window.FileReader) {
+            $inputImage.change(function() {
+                var fileReader = new FileReader(),
+                    files = this.files,
+                    file;
+
+                if (!files.length) {
+                    return;
+                }
+
+                file = files[0];
+
+                if (/^image\/\w+$/.test(file.type)) {
+                    fileReader.readAsDataURL(file);
+                    fileReader.onload = function () {
+                        $inputImage.val("");
+                        $image.cropper("reset", true).cropper("replace", this.result);
+                    };
+                } else {
+                    showMessage("Please choose an image file.");
+                }
+            });
+        } else {
+            $inputImage.addClass("hide");
+        }
+
+        $("#download").click(function() {
+            window.open($image.cropper("getDataURL"));
+        });
+
+    });
+
+</script>
+
+</body>
+
+</html>
