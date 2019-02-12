@@ -8,7 +8,7 @@
     $keys = array_keys($projects);
     $firstKey = $keys[0];
     ?>
-    <div class="widget__wrap" id="js-widget__company-info service-id_<?=$firstKey?>" style="display: none;">
+    <div class="widget__wrap js-widget__company-info" id="service-id_<?=$firstKey?>" style="display: none;">
         <div class="widget__company-info">
             <div class="widget-c__header">
                 <h3 class="widget__main-title"><?=$projects[$firstKey]['title']?></h3>
