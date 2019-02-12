@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Новая услуга</title>
+    <title>Редактирование команды</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -53,7 +53,7 @@
 
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-lg-10">
-                <h2>Новая услуга</h2>
+                <h2>Билый Александр</h2>
                 <ol class="breadcrumb">
                     <li>
                         <a href="/static/admin/index.html">Главная</a>
@@ -62,10 +62,10 @@
                         <a>Контент</a>
                     </li>
                     <li>
-                        <a href="/static/admin/service.html">Услуги</a>
+                        <a href="/static/admin/team.html">Команда</a>
                     </li>
                     <li class="active">
-                        <strong>Добавление</strong>
+                        <strong>Редактирование</strong>
                     </li>
                 </ol>
             </div>
@@ -91,10 +91,17 @@
 
                                     <div class="form-group"><label class="col-sm-2 control-label">Активность<br/></label>
                                         <div class="col-sm-10">
-                                            <div class="i-checks"><input checked type="checkbox" value=""><i></i></div>
+                                            <div class="i-checks"><input type="checkbox" value=""><i></i></div>
                                         </div>
                                     </div>
+                                    <div class="form-group"><label class="col-sm-2 control-label">ID</label>
 
+                                        <div class="col-sm-10">
+                                            <div class="row">
+                                                <div class="col-md-2"><input type="text" value="1" disabled class="form-control"></div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="form-group"><label class="col-sm-2 control-label">Сортировка</label>
 
                                         <div class="col-sm-10">
@@ -104,20 +111,37 @@
                                         </div>
                                     </div>
                                     <div class="hr-line-dashed"></div>
-                                    <div class="form-group"><label class="col-sm-2 control-label">Название</label>
+                                    <div class="form-group"><label class="col-sm-2 control-label">Фамилия</label>
 
-                                        <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                        <div class="col-sm-10"><input value="Билый" type="text" class="form-control"></div>
                                     </div>
 
-                                    <div class="form-group"><label class="col-sm-2 control-label">Заголовок для всплывающего окна</label>
+                                    <div class="form-group"><label class="col-sm-2 control-label">Имя</label>
 
-                                        <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                        <div class="col-sm-10"><input value="Александр" type="text" class="form-control"></div>
                                     </div>
 
-                                    <div class="form-group"><label class="col-sm-2 control-label">Подзаголовок для всплывающего окна</label>
+                                    <div class="form-group"><label class="col-sm-2 control-label">Институт</label>
 
-                                        <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                        <div class="col-sm-10"><input value="Выпускник вШЭ, финансист" type="text" class="form-control"></div>
                                     </div>
+
+                                    <div class="form-group"><label class="col-sm-2 control-label">Специальность</label>
+
+                                        <div class="col-sm-10"><input value="Специалист по построению ФЭМ" type="text" class="form-control"></div>
+                                    </div>
+
+                                    <div class="form-group"><label class="col-sm-2 control-label">Позиция</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-control m-b" name="account">
+                                                <option selected="selected">Управляющие партнеры</option>
+                                                <option>Эксперты</option>
+                                                <option>Консультанты</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+
                                     <div class="form-group">
 
                                         <div class="col-lg-12">
@@ -130,13 +154,14 @@
                                                         <div class="col-md-6">
                                                             <h4>Картинка</h4>
                                                             <div class="img-preview img-preview-sm">
-                                                                <img src="">
+                                                                <img src="/images/Biliy.jpg">
                                                             </div>
                                                             <div class="btn-group">
                                                                 <label title="Upload image file" for="inputImage" class="btn btn-primary">
                                                                     <input type="file" accept="image/*" name="file" id="inputImage" class="hide">
-                                                                    Выбрать картинку
+                                                                    Изменить
                                                                 </label>
+                                                                <label title="Donload image" id="download" class="btn btn-primary">Скачать</label>
                                                             </div>
 
                                                         </div>
@@ -151,9 +176,10 @@
 
                             </div>
                         </div>
+
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <h5>Пункты <small></small></h5>
+                                <h5>Контактная информация <small></small></h5>
                                 <div class="ibox-tools">
                                     <a class="collapse-link">
                                         <i class="fa fa-chevron-up"></i>
@@ -161,54 +187,28 @@
                                 </div>
                             </div>
                             <div class="ibox-content">
-                                    <div class="form-group">
-                                        <div class="ibox-content">
-                                            <table class="footable table table-stripped" data-page-size="8" data-filter=#filter>
-                                                <thead>
-                                                <tr>
-                                                    <th>Название</th>
-                                                    <th data-hide="phone,tablet">Сортировка</th>
-                                                    <th data-hide="phone,tablet">Активность</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr class="gradeX">
-                                                    <td><div class="col-sm-10"><input value="" type="text" class="form-control"></div></td>
 
-                                                    <td class="center">
-                                                        <div class="col-sm-10">
-                                                            <div class="row">
-                                                                <div class="col-md-8"><input type="text" value="1" class="form-control"></div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="center">http://prntscr.com/mk1sbo</td>
-                                                </tr>
-                                                </tbody>
-                                                <tfoot>
-                                                <tr>
-                                                    <td colspan="5">
-                                                        <ul class="pagination pull-right"></ul>
-                                                    </td>
-                                                </tr>
-                                                </tfoot>
-                                            </table>
-                                            <div class="form-group">
-                                                <div class="col-sm-12 col-sm-offset-0">
-                                                    <a href="/static/admin/service_add.html"><button class="btn btn-primary" type="submit">Добавить пункт</button></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="form-group"><label class="col-sm-2 control-label">Телефон</label>
 
+                                    <div class="col-sm-10"><input value="+7 (916) 804 27 97" type="text" class="form-control"></div>
+                                </div>
 
+                                <div class="form-group"><label class="col-sm-2 control-label">Email</label>
+
+                                    <div class="col-sm-10"><input value="info@bbconsulting.ru" type="text" class="form-control"></div>
+                                </div>
+
+                                <div class="form-group"><label class="col-sm-2 control-label">Подпись</label>
+
+                                    <div class="col-sm-10"><input value="Обсудить новый проект" type="text" class="form-control"></div>
+                                </div>
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
                             <div class="col-sm-12 col-sm-offset-5">
                                 <button class="btn btn-white" type="submit">Отменить</button>
-                                <button class="btn btn-primary" type="submit">Добавить</button>
+                                <button class="btn btn-primary" type="submit">Сохранить</button>
                             </div>
                         </div>
                     </form>
