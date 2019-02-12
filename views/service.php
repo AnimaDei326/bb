@@ -58,12 +58,13 @@
                 <? $counter++; ?>
             <? endforeach;?>
 
+        </div>
+
         <!-- desctop version of services -->
 
 
         <!-- mobile version of services -->
         <div class="services-mobile">
-
             <!-- тут фотографии менять местами не нужно, я сделал это с помощью css классов -->
 
             <!-- счетчик counter должен быть как в этом блоке и в том, что выше, я привязал его к -->
@@ -88,6 +89,6 @@
             <? endforeach;?>
         </div>
         <!-- //mobile version of services -->
-    </div>
+
 </article>
 <!-- //БЛОКИ С УСЛУГАМИ -->
