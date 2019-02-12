@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Редактирование заказчиков</title>
+    <title>Добавление в команду</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -53,7 +53,7 @@
 
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-lg-10">
-                <h2>&laquo;VIY Investment Fund&raquo;</h2>
+                <h2>Новый участник команды</h2>
                 <ol class="breadcrumb">
                     <li>
                         <a href="/static/admin/index.html">Главная</a>
@@ -62,10 +62,10 @@
                         <a>Контент</a>
                     </li>
                     <li>
-                        <a href="/static/admin/clients.html">Заказчики</a>
+                        <a href="/static/admin/service.html">Команда</a>
                     </li>
                     <li class="active">
-                        <strong>Редактирование</strong>
+                        <strong>Добавление</strong>
                     </li>
                 </ol>
             </div>
@@ -89,18 +89,49 @@
                             </div>
                             <div class="ibox-content">
 
-                                    <div class="form-group"><label class="col-sm-2 control-label">ID</label>
+                                    <div class="form-group"><label class="col-sm-2 control-label">Активность<br/></label>
+                                        <div class="col-sm-10">
+                                            <div class="i-checks"><input checked="checked" type="checkbox" ><i></i></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group"><label class="col-sm-2 control-label">Сортировка</label>
 
                                         <div class="col-sm-10">
                                             <div class="row">
-                                                <div class="col-md-2"><input type="text" value="1" disabled class="form-control"></div>
+                                                <div class="col-md-2"><input type="text" value="10" class="form-control"></div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="hr-line-dashed"></div>
-                                    <div class="form-group"><label class="col-sm-2 control-label">Название</label>
+                                    <div class="form-group"><label class="col-sm-2 control-label">Фамилия</label>
 
-                                        <div class="col-sm-10"><input value="&laquo;VIY Investment Fund&raquo;" type="text" class="form-control"></div>
+                                        <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                    </div>
+
+                                    <div class="form-group"><label class="col-sm-2 control-label">Имя</label>
+
+                                        <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                    </div>
+
+                                    <div class="form-group"><label class="col-sm-2 control-label">Институт</label>
+
+                                        <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                    </div>
+
+                                    <div class="form-group"><label class="col-sm-2 control-label">Специальность</label>
+
+                                        <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                    </div>
+
+                                    <div class="form-group"><label class="col-sm-2 control-label">Позиция</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-control m-b" name="account">
+                                                <option>Управляющие партнеры</option>
+                                                <option>Эксперты</option>
+                                                <option selected="selected">Консультанты</option>
+                                            </select>
+                                        </div>
                                     </div>
 
 
@@ -116,16 +147,14 @@
                                                         <div class="col-md-6">
                                                             <h4>Картинка</h4>
                                                             <div class="img-preview img-preview-sm">
-                                                                <img src="/images/widget__1.jpg">
+                                                                <img src="">
                                                             </div>
                                                             <div class="btn-group">
                                                                 <label title="Upload image file" for="inputImage" class="btn btn-primary">
                                                                     <input type="file" accept="image/*" name="file" id="inputImage" class="hide">
-                                                                    Изменить
+                                                                    Загрузить
                                                                 </label>
-                                                                <label title="Donload image" id="download" class="btn btn-primary">Скачать</label>
                                                             </div>
-
                                                         </div>
                                                     </div>
                                                 </div>
@@ -136,6 +165,34 @@
                                     </div>
 
 
+                            </div>
+                        </div>
+
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>Контактная информация <small></small></h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+
+                                <div class="form-group"><label class="col-sm-2 control-label">Телефон</label>
+
+                                    <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                </div>
+
+                                <div class="form-group"><label class="col-sm-2 control-label">Email</label>
+
+                                    <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                </div>
+
+                                <div class="form-group"><label class="col-sm-2 control-label">Подпись</label>
+
+                                    <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                </div>
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
