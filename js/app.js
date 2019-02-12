@@ -2,18 +2,25 @@ $(document).ready(function() {
 
 	function serviceWidgetOpening () {
 		$('.services__text-wrap').on('click', function (e) {
-			console.log(this)
-			console.log("Номер выбранного виджета: ", this.dataset.serviceId)
 
-			document.getElementById('js-widget__company-info').style.display = "flex";
-			document.body.className = "lock-position";
+			var id = this.dataset.serviceId,
+				service_widget = document.getElementById('service-id_' + id);
 
-			var el = document.getElementsByClassName('widget__company-info')[0];
+			if (service_widget) {
+				console.log("Номер выбранного виджета: ", id)
 
-			if (parseInt(window.getComputedStyle(el, null).height) >= window.innerHeight) {
-				document.getElementById('js-widget__company-info').style.alignItems = "flex-start";
-				document.getElementById('js-widget__company-info').style.paddingTop = "30px";
-				document.getElementById('js-widget__company-info').style.paddingBottom = "30px";
+				service_widget.style.display = "flex";
+				document.body.className = "lock-position";
+
+				var el = document.getElementsByClassName('widget__company-info')[0];
+
+				if (parseInt(window.getComputedStyle(el, null).height) >= window.innerHeight) {
+					service_widget.style.alignItems = "flex-start";
+					service_widget.style.paddingTop = "30px";
+					service_widget.style.paddingBottom = "30px";
+				}
+			} else {
+				console.log("widget doesn't exist!")
 			}
 		})
 	}
@@ -153,8 +160,10 @@ $(document).ready(function() {
 		if ((widget__contact != undefined) && widget__contact.contains(e.target))
 			return;
 
-		if ((widget__company != undefined) && !(widget__company == e.target) && !widget__company.contains(e.target) && !$('.js-widget__close').is(e.target)) {
-			document.getElementById('js-widget__company-info').style.display = "none";
+		if ((widget__company != undefined) && !(widget__company == e.target) && !widget__company.contains(e.target) && !$('.js-widget__close').is(e.target)) {			
+			$('.js-widget__company-info').css("display", "none");
+
+			// document.getElementById('js-widget__company-info').style.display = "none";
 			document.body.className = "";
 		}
 		// widget of the company info
