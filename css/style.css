@@ -1068,5 +1068,11 @@ footer .list-menu__element {
 
 
 /* TMP */
+.widget__company-single {
+	width: 50%;
+}
 
-
+.widget__company-single .widget__c-block_wrap {
+	grid-column-start: 1;
+    grid-column-end: 3;
+}

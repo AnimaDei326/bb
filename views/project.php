@@ -9,6 +9,11 @@
     $firstKey = $keys[0];
     ?>
     <div class="widget__wrap js-widget__company-info" id="service-id_<?=$firstKey?>" style="display: none;">
+        
+        <!-- вот тут, рядом с widget__company-info нужно будет поместить  -->
+        <!-- widget__company-single -->
+
+        <!-- пример для виджета с одним блоком:   <div class="widget__company-info widget__company-single"> -->
         <div class="widget__company-info">
             <div class="widget-c__header">
                 <h3 class="widget__main-title"><?=$projects[$firstKey]['title']?></h3>

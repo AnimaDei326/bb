@@ -13,9 +13,9 @@ use PDO;
 class Db
 {
     public $host = 'localhost';
-    public $db = 'animadqu_bb';
-    public $user = 'animadqu_bb';
-    public $password = 'oz6mN1oz';
+    public $db = 'bb';
+    public $user = 'root';
+    public $password = '';
     public $port = '3306';
     public $charset = 'utf8';
 
