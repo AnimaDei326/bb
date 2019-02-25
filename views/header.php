@@ -14,7 +14,7 @@
         <div class="container">
             <div class="header__top-wrap">
                 <div class="header__top container">
-                    <img src="/images/logo.png" alt="test" class="header__logo">
+                    <img src="/images/logo.png" alt="test" class="header__logo js-to__top">
                     <div class="header__menu">
                         <ul class="list__menu">
                             <li class="list-menu__element"><a href="about_company" class="list-menu__link">О Компании</a></li>
@@ -27,7 +27,7 @@
             </div>
 
             <div class="header__top-mobile" id="mobile-menu">
-                <img src="/images/logo.png" alt="test" class="header__logo-mobile">
+                <img src="/images/logo.png" alt="test" class="header__logo-mobile js-to__top">
                 <div class="header__menu-mobile">
                     <ul class="list__menu-mobile">
                         <li class="list-menu__element-mobile">
