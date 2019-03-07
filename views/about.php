@@ -24,7 +24,7 @@
                 <div class="expierence-images__wrap">
                     <? foreach ($this->params['photo'] as $item):?>
                         <div class="ex-image__wrap">
-                        	<a href="/images/original-<?=$item['name']?>" class="swipebox" rel="gallery-1" >
+                        	<a href="/images/<?=$item['name']?>" class="swipebox" rel="gallery-1" >
                         		<img src="/images/<?=$item['name']?>" alt="<?=$item['name']?>" class="expierence__img">
                         	</a>
                         </div>
