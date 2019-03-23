@@ -477,9 +477,6 @@
 		border-top: 1px solid #cccccc85;
 	}
 
-	.services__block:nth-child(2n) {
-		display: none;
-	}
 	.services__text-wrap {
 		padding: 25px  15px 15px !important;
 		height: auto !important;

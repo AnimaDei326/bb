@@ -178,4 +178,19 @@ $(document).ready(function() {
 		// widget of the contact info
 	})
 	// closing widget when clicking outside
+
+
+
+
+	// scroll to top function
+
+	function scrollToTopFunction () {
+		$('body,html').animate({scrollTop: 0}, 1500)
+	}
+
+	var toTopElements = document.getElementsByClassName('js-to__top');
+	for (let i = 0; i < toTopElements.length; i++) {
+		toTopElements[i].addEventListener('click', scrollToTopFunction)
+	}
+
 })
