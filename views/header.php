@@ -49,7 +49,7 @@
             <span class="switch-mobile__btn"></span>
 
             <div class="header__info">
-                <h1 class="header__title">Консультруем <br /> <span> области финансового моделирования и оперативного управления финансами</span></h1>
+                <h1 class="header__title">Консультруем в<br /> <span> области финансового моделирования и оперативного управления финансами</span></h1>
 
                 <p>В секторах:</p>
 

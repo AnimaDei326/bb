@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+
+
+<!-- Mirrored from admindesigns.com/demos/absolute/1.1/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 08 Oct 2015 13:21:50 GMT -->
+<head>
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <title>Admin Panel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Font CSS (Via CDN) -->
+  <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700'>
+
+  <!-- Theme CSS -->
+  <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">
+
+  <!-- Admin Forms CSS -->
+  <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-forms/css/admin-forms.min.css">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="assets/img/favicon.ico">
+
+
+  <!-- Datatables CSS -->
+  <link rel="stylesheet" type="text/css" href="vendor/plugins/datatables/media/css/dataTables.bootstrap.css">
+
+  <!-- Datatables Editor Addon CSS -->
+  <link rel="stylesheet" type="text/css" href="vendor/plugins/datatables/extensions/Editor/css/dataTables.editor.css">
+
+  <!-- Datatables ColReorder Addon CSS -->
+  <link rel="stylesheet" type="text/css" href="vendor/plugins/datatables/extensions/ColReorder/css/dataTables.colReorder.min.css">
+
+  <!-- Theme CSS -->
+  <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">
+
+
+    <!-- Admin Forms CSS -->
+  <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-forms/css/admin-forms.css">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="assets/img/favicon.ico">
+
+</head>
+
+<body class="skin-blue dashboard-page">
+
+  <!-- Start: Main -->
+  <div id="main">
+
+    <!-----------------------------------------------------------------+ 
+       ".navbar" Helper Classes: 
+    -------------------------------------------------------------------+ 
+       * Positioning Classes: 
+        '.navbar-static-top' - Static top positioned navbar
+        '.navbar-static-top' - Fixed top positioned navbar
+
+       * Available Skin Classes:
+         .bg-dark    .bg-primary   .bg-success   
+         .bg-info    .bg-warning   .bg-danger
+         .bg-alert   .bg-system 
+    -------------------------------------------------------------------+
+      Example: <header class="navbar navbar-fixed-top bg-primary">
+      Results: Fixed top navbar with blue background 
+    ------------------------------------------------------------------->
+
+     <!-- Start: Header -->
+    <header class="navbar navbar-fixed-top navbar-shadow bg-primary">
+      <div class="navbar-branding dark bg-primary">
+        <a class="navbar-brand" href="dashboard.html">
+          <b>Absolute</b>Admin
+        </a>
+        <span id="toggle_sidemenu_l" class="ad ad-lines"></span>
+      </div>
+    </header>
+    <!-- End: Header -->
+
+    <!-- Start: Sidebar -->
+    <aside id="sidebar_left" class="nano nano-light affix">
+
+      <!-- Start: Sidebar Left Content -->
+      <div class="sidebar-left-content nano-content">
+
+        <!-- Start: Sidebar Header -->
+        <header class="sidebar-header">
+          <!-- Sidebar Widget - Author -->
+          <div class="sidebar-widget author-widget">
+            <div class="media">
+              <a class="media-left" href="#">
+                <img src="assets/img/avatars/3.jpg" class="img-responsive">
+              </a>
+              <div class="media-body">
+                <div class="media-links">
+                   <a href="#" class="sidebar-menu-toggle">Администратор -</a> <a href="pages_login.html">Выйти</a>
+                </div>
+                <div class="media-author">Александр Билый</div>
+              </div>
+            </div>
+          </div>
+        </header>
+        <!-- End: Sidebar Header -->
+
+        <!-- Start: Sidebar Menu -->
+        <ul class="nav sidebar-menu">
+          <li class="sidebar-label pt20">Публичная часть</li>
+          <li>
+            <a href="pages_calendar.html">
+              <span class="fa fa-calendar"></span>
+              <span class="sidebar-title">Главная страница</span>
+            </a>
+          </li>
+
+          <!-- <li class="sidebar-label pt15">Контент</li> -->
+          <li>
+            <a class="accordion-toggle" href="#">
+              <span class="glyphicon glyphicon-fire"></span>
+              <span class="sidebar-title">Контент</span>
+              <span class="caret"></span>
+            </a>
+            <ul class="nav sub-nav">
+              <li>
+                <a href="admin_plugins-panels.html">
+                  <span class="glyphicon glyphicon-book"></span> Услуги </a>
+              </li>
+              <li>
+                <a href="admin_plugins-modals.html">
+                  <span class="glyphicon glyphicon-modal-window"></span> Проекты </a>
+              </li>
+              <li>
+                <a href="admin_plugins-dock.html">
+                  <span class="glyphicon glyphicon-calendar"></span> Заказчики </a>
+              </li>
+              <li>
+                <a href="admin_plugins-dock.html">
+                  <span class="glyphicon glyphicon-equalizer"></span> Команда </a>
+              </li>
+              <li>
+                <a href="admin_plugins-dock.html">
+                  <span class="fa fa-clipboard"></span> О компании </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <!-- End: Sidebar Left Menu -->
+
+        <!-- Start: Sidebar Collapse Button -->
+        <div class="sidebar-toggle-mini">
+          <a href="#">
+            <span class="fa fa-sign-out"></span>
+          </a>
+        </div>
+        <!-- End: Sidebar Collapse Button -->
+
+      </div>
+      <!-- End: Sidebar Left Content -->
+
+    </aside>
+    <!-- End: Sidebar Left -->
+
+    <!-- Start: Content-Wrapper -->
+    <section id="content_wrapper">
+
+
+
+
+      <!-- Start: Topbar -->
+      <header id="topbar" class="alt">
+        <div class="topbar-left">
+          <ol class="breadcrumb">
+            <li class="crumb-active">
+              <a href="dashboard.html">Новый заказчик</a>
+            </li>
+            <li class="crumb-icon">
+              <a href="dashboard.html">
+                <span class="glyphicon glyphicon-home"></span>
+              </a>
+            </li>
+            <li class="crumb-link">
+              <a href="index.html">Контент</a>
+            </li>
+            <li class="crumb-trail">
+              <a href="index.html">заказчики</a>
+            </li>
+            <li class="crumb-trail">
+              Добавление
+            </li>
+          </ol>
+        </div>
+      </header>
+      <!-- End: Topbar -->
+
+
+
+
+
+
+
+      <!-- Begin: Content -->
+      <section id="content" class="table-layout animated fadeIn">
+
+        <!-- begin: .tray-center -->
+        <div class="tray tray-center"> 
+
+
+          <div class="col-md-12">
+            <!-- Input Fields -->
+            <div class="panel">
+              <div class="panel-heading">
+                <span class="panel-title">Основное</span>
+              </div>
+              <div class="panel-body">
+                <form class="form-horizontal" role="form">
+
+                
+
+
+                  <div class="form-group">
+                    <label for="inputStandard" class="col-lg-3 control-label">Название</label>
+                    <div class="col-lg-8">
+                      <div class="bs-component">
+                        <input type="text" id="inputStandard" class="form-control" value="">
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr class="short alt">
+
+
+                  <div class="mw800 center-block">
+                    <div class="panel mt50" id="spy2">
+                      <div class="panel-heading">
+                        <span class="panel-icon">
+                          <i class="fa fa-upload"></i>
+                        </span>
+                        <span class="panel-title"> Загрузка фотографий</span>
+                      </div>
+                      <div class="panel-body">
+                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                          <div class="fileupload-preview thumbnail mb20">
+                            <img data-src="holder.js/100%x195" alt="holder">
+                          </div>
+                          <div class="row">
+                            <div class="col-xs-7 pr5">
+                              <input type="text" name="name2" id="name2" class="form-control text-center event-name br-light bg-light" placeholder="Название фотографии">
+                              <label for="name2" class="field-icon"></label>
+                            </div>
+                            <div class="col-xs-5">
+                              <span class="btn btn-system btn-file btn-block">
+                                <span class="fileupload-new">Выбрать фотографию</span>
+                                <span class="fileupload-exists">Заменить</span>
+                                <input type="file">
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  
+                </form>
+              </div>
+            </div>
+          </div> 
+
+
+          <div class="col-sm-12 col-sm-offset-5">
+            <button class="btn btn-white" type="submit">Сбросить</button>
+            <button class="btn btn-primary" type="submit">Сохранить</button>
+          </div>
+
+        </div>
+        <!-- end: .tray-center -->
+
+     
+
+      </section>
+      <!-- End: Content -->
+
+
+
+
+
+
+      <!-- Begin: Page Footer -->
+      <footer id="content-footer" class="affix">
+        <div class="row">
+          <div class="col-md-6">
+            <span class="footer-legal">© 2015 AdminDesigns</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End: Page Footer -->
+
+
+
+
+    </section>
+    <!-- End: Content-Wrapper -->
+
+  </div>
+  <!-- End: Main -->
+
+
+   <style>
+    /* demo page styles */
+    body { min-height: 2300px; }
+    
+    .content-header b,
+    .admin-form .panel.heading-border:before,
+    .admin-form .panel .heading-border:before {
+      transition: all 0.7s ease;
+    }
+    /* responsive demo styles */
+    @media (max-width: 800px) {
+      .admin-form .panel-body { padding: 18px 12px; }
+      .option-group .option { display: block; }
+      .option-group .option + .option { margin-top: 8px; }
+    }
+  </style>
+
+  <!-- BEGIN: PAGE SCRIPTS -->
+
+  <!-- jQuery -->
+  <script src="vendor/jquery/jquery-1.11.1.min.js"></script>
+  <script src="vendor/jquery/jquery_ui/jquery-ui.min.js"></script>
+
+  <!-- HighCharts Plugin -->
+  <script src="vendor/plugins/highcharts/highcharts.js"></script>
+
+
+  <!-- Theme Javascript -->
+  <script src="assets/js/utility/utility.js"></script>
+  <script src="assets/js/main.js"></script>
+
+
+
+
+  <!-- Datatables -->
+  <script src="vendor/plugins/datatables/media/js/jquery.dataTables.js"></script>
+
+  <!-- Datatables Tabletools addon -->
+  <script src="vendor/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+
+  <!-- Datatables ColReorder addon -->
+  <script src="vendor/plugins/datatables/extensions/ColReorder/js/dataTables.colReorder.min.js"></script>
+
+  <!-- Datatables Bootstrap Modifications  -->
+  <script src="vendor/plugins/datatables/media/js/dataTables.bootstrap.js"></script>
+
+
+
+
+
+
+  <!-- Cropper Image Plugin -->
+  <script src="vendor/plugins/cropper/cropper.min.js"></script>
+
+  <!-- jQuery Zoom Plugin -->
+  <script src="vendor/plugins/imagezoom/jquery.elevatezoom.min.js"></script>
+
+  <!-- FileUpload Plugin -->
+  <script src="vendor/plugins/fileupload/fileupload.js"></script>
+  <script src="vendor/plugins/holder/holder.min.js"></script>
+
+
+  <script src="assets/js/demo/demo.js"></script>
+
+
+
+  <!-- Widget Javascript -->
+  <script type="text/javascript">
+
+
+  jQuery(document).ready(function() {
+
+    "use strict";
+
+    // Init Theme Core    
+    Core.init();
+
+
+
+
+
+
+    $('#datatable2').dataTable({
+      "aoColumnDefs": [{
+        'bSortable': false,
+        'aTargets': [-1]
+      }],
+      "oLanguage": {
+        "oPaginate": {
+          "sPrevious": "",
+          "sNext": ""
+        }
+      },
+      "iDisplayLength": 10,
+      "aLengthMenu": [
+        [5, 10, 25, 50, -1],
+        [5, 10, 25, 50, "All"]
+      ],
+      "sDom": '<"dt-panelmenu clearfix"lfr>t<"dt-panelfooter clearfix"ip>',
+      "oTableTools": {
+        "sSwfPath": "vendor/plugins/datatables/extensions/TableTools/swf/copy_csv_xls_pdf.swf"
+      }
+    });
+
+   
+
+
+    // // Form Switcher
+    // $('#form-switcher > button').on('click', function() {
+    //   var btnData = $(this).data('form-layout');
+    //   var btnActive = $('#form-elements-pane .admin-form.active');
+
+    //   // Remove any existing animations and then fade current form out
+    //   btnActive.removeClass('slideInUp').addClass('animated fadeOutRight animated-shorter');
+    //   // When above exit animation ends remove leftover classes and animate the new form in
+    //   btnActive.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+    //     btnActive.removeClass('active fadeOutRight animated-shorter');
+    //     $('#' + btnData).addClass('active animated slideInUp animated-shorter')
+    //   });
+    // });
+
+    // // Cache several DOM elements
+    // var pageHeader = $('.content-header').find('b');
+    // var adminForm = $('.admin-form');
+    // var options = adminForm.find('.option');
+    // var switches = adminForm.find('.switch');
+    // var buttons = adminForm.find('.button');
+    // var Panel = adminForm.find('.panel');
+
+    // // Form Skin Switcher
+    // $('#skin-switcher a').on('click', function() {
+    //   var btnData = $(this).data('form-skin');
+
+    //   $('#skin-switcher a').removeClass('item-active');
+    //   $(this).addClass('item-active')
+
+    //   adminForm.each(function(i, e) {
+    //     var skins = 'theme-primary theme-info theme-success theme-warning theme-danger theme-alert theme-system theme-dark';
+    //     var panelSkins = 'panel-primary panel-info panel-success panel-warning panel-danger panel-alert panel-system panel-dark';
+    //     $(e).removeClass(skins).addClass('theme-' + btnData);
+    //     Panel.removeClass(panelSkins).addClass('panel-' + btnData);
+    //     pageHeader.removeClass().addClass('text-' + btnData);
+    //   });
+
+    //   $(options).each(function(i, e) {
+    //     if ($(e).hasClass('block')) {
+    //       $(e).removeClass().addClass('block mt15 option option-' + btnData);
+    //     } else {
+    //       $(e).removeClass().addClass('option option-' + btnData);
+    //     }
+    //   });
+    //   $(switches).each(function(i, ele) {
+    //     if ($(ele).hasClass('switch-round')) {
+    //       if ($(ele).hasClass('block')) {
+    //         $(ele).removeClass().addClass('block mt15 switch switch-round switch-' + btnData);
+    //       } else {
+    //         $(ele).removeClass().addClass('switch switch-round switch-' + btnData);
+    //       }
+    //     } else {
+    //       if ($(ele).hasClass('block')) {
+    //         $(ele).removeClass().addClass('block mt15 switch switch-' + btnData);
+    //       } else {
+    //         $(ele).removeClass().addClass('switch switch-' + btnData);
+    //       }
+    //     }
+
+    //   });
+    //   buttons.removeClass().addClass('button btn-' + btnData);
+    // });
+
+    // setTimeout(function() {
+    //   adminForm.addClass('theme-primary');
+    //   Panel.addClass('panel-primary');
+    //   pageHeader.addClass('text-primary');
+
+    //   $(options).each(function(i, e) {
+    //     if ($(e).hasClass('block')) {
+    //       $(e).removeClass().addClass('block mt15 option option-primary');
+    //     } else {
+    //       $(e).removeClass().addClass('option option-primary');
+    //     }
+    //   });
+    //   $(switches).each(function(i, ele) {
+
+    //     if ($(ele).hasClass('switch-round')) {
+    //       if ($(ele).hasClass('block')) {
+    //         $(ele).removeClass().addClass('block mt15 switch switch-round switch-primary');
+    //       } else {
+    //         $(ele).removeClass().addClass('switch switch-round switch-primary');
+    //       }
+    //     } else {
+    //       if ($(ele).hasClass('block')) {
+    //         $(ele).removeClass().addClass('block mt15 switch switch-primary');
+    //       } else {
+    //         $(ele).removeClass().addClass('switch switch-primary');
+    //       }
+    //     }
+    //   });
+    //   buttons.removeClass().addClass('button btn-primary');
+    // }, 800);
+
+
+
+
+    
+
+  });
+  </script>
+  <!-- END: PAGE SCRIPTS -->
+
+</body>
+
+
+<!-- Mirrored from admindesigns.com/demos/absolute/1.1/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 08 Oct 2015 13:21:51 GMT -->
+</html>
