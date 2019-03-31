@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 11 2019 г., 22:39
+-- Время создания: Мар 23 2019 г., 23:30
 -- Версия сервера: 5.7.23-log
 -- Версия PHP: 7.0.32
 
@@ -41,7 +41,7 @@ CREATE TABLE `about` (
 --
 
 INSERT INTO `about` (`id`, `sort`, `name`, `active`, `id_type`) VALUES
-(1, 10, 'Финансовое моделирование и аудит моделей!!', 'Y', 1),
+(1, 10, 'Финансовое моделирование и аудит моделей', 'Y', 1),
 (2, 20, 'Сопровождение инвесторов и сделок M&A', 'Y', 1),
 (3, 30, 'Получение субсидий и государственных льгот', 'Y', 1),
 (4, 40, 'Защита запасов и экспертиза проектов', 'Y', 1),
@@ -117,7 +117,7 @@ CREATE TABLE `contacts` (
 --
 
 INSERT INTO `contacts` (`id`, `sort`, `telephone`, `email`, `description`, `id_Team`, `active`) VALUES
-(1, 10, '+7 (916) 804 27 97', 'info@bbconsulting.ru', 'Обсудить новый проект', 1, 'Y'),
+(1, 30, '+7 (916) 804 27 97', 'info@bbconsulting.ru', 'Обсудить новый проект', 1, 'Y'),
 (2, 20, '+7 (916) 804 27 97', 'info@bbconsulting.ru', 'Получить методологическую консультацию', 2, 'Y');
 
 -- --------------------------------------------------------
@@ -236,6 +236,26 @@ INSERT INTO `project_items_type` (`id`, `name`, `code`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `role`
+--
+
+CREATE TABLE `role` (
+  `id` int(11) NOT NULL,
+  `user_role_name` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `role`
+--
+
+INSERT INTO `role` (`id`, `user_role_name`) VALUES
+(1, 'admin'),
+(2, 'manager'),
+(3, 'user');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `service`
 --
 
@@ -328,13 +348,56 @@ CREATE TABLE `team` (
 --
 
 INSERT INTO `team` (`id`, `sort`, `first_name`, `second_name`, `speciality`, `institution`, `id_Positions`, `picture`, `active`) VALUES
-(1, 10, 'Александр!', 'Билый', 'Специалист по построению ФЭМ', 'Выпускник вШЭ, финансист', 1, 'Biliy.jpg', 'Y'),
+(1, 30, 'Александр!', 'Билый', 'Специалист по построению ФЭМ', 'Выпускник вШЭ, финансист', 1, 'Biliy.jpg', 'Y'),
 (2, 20, 'Никита', 'Борисов', 'Специалист по построению ФЭМ', 'Выпускник вШЭ, финансист', 1, 'Borisov.jpg', 'Y'),
 (3, 70, 'Андрей', 'Яблонский', 'Мега-человек', 'Горные работы', 2, '', 'Y'),
 (4, 80, 'Аленка', 'Цыбырина', 'Понабрали', 'По объявлению', 2, '', 'Y'),
 (5, 90, 'Ленка', 'Бартко', 'Понабрали', 'По объявлению', 3, '', 'Y'),
 (6, 100, 'Серега', 'Корогод', 'Понабрали', 'По объявлению', 3, '', 'Y'),
 (7, 110, 'Дениска', 'Феоктистов', 'Понабрали', 'По объявлению', 3, '', 'Y');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) DEFAULT NULL,
+  `password` varchar(20) DEFAULT NULL,
+  `session_id` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `session_id`) VALUES
+(1, 'admin', 'admin', ''),
+(2, 'manager', 'manager', ''),
+(3, 'user', 'user', '');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `user_role`
+--
+
+CREATE TABLE `user_role` (
+  `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_role` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `user_role`
+--
+
+INSERT INTO `user_role` (`id`, `id_user`, `id_role`) VALUES
+(1, 1, 1),
+(2, 2, 2),
+(3, 3, 3);
 
 --
 -- Индексы сохранённых таблиц
@@ -395,6 +458,12 @@ ALTER TABLE `project_items_type`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `role`
+--
+ALTER TABLE `role`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `service`
 --
 ALTER TABLE `service`
@@ -413,6 +482,20 @@ ALTER TABLE `service_items`
 ALTER TABLE `team`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_Positions` (`id_Positions`);
+
+--
+-- Индексы таблицы `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `user_role`
+--
+ALTER TABLE `user_role`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_user` (`id_user`),
+  ADD KEY `id_role` (`id_role`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
@@ -467,6 +550,12 @@ ALTER TABLE `project_items_type`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT для таблицы `role`
+--
+ALTER TABLE `role`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT для таблицы `service`
 --
 ALTER TABLE `service`
@@ -483,6 +572,18 @@ ALTER TABLE `service_items`
 --
 ALTER TABLE `team`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT для таблицы `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT для таблицы `user_role`
+--
+ALTER TABLE `user_role`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц

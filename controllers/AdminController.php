@@ -4,137 +4,102 @@ namespace controllers;
 
 use components\Controller;
 use models\Admin;
-use models\UserRole;
+use models\Service;
 
 class AdminController extends Controller
 {
 
-    public function actionMain(){
-        self::$title = 'Админ-панель';
 
-        echo $this->render('header', [
-            'title' => self::$title,
-        ]);
-    }
-
-    public function actionShowUsers()
+    public function actionIndex()
     {
-        if( Admin::isAdmin() ){
+        if( Admin::helloUser() ){
 
-            UserRole::setRole();
+            self::$title = 'Админ-панель';
 
-            $users = Admin::getUsersByIdRole(UserRole::$user);
-            self::$title = 'Пользователи';
+            $userData = Admin::getUserDataBySessionId(session_id());
 
-            echo $this->render('admin_show_users', [
+            $role = Admin::getRole();
+            $userData['role'] = $role['name'];
+
+            echo $this->render('/admin/header', [
                 'title' => self::$title,
-                'users' => $users,
+                'userData' => $userData,
+            ]);
+
+            echo $this->render('/admin/main', [
+            ]);
+
+            echo $this->render('/admin/footer', [
             ]);
 
         }else{
-            header("Location: user/check");
+            header("Location: /user/check");
         }
     }
-    public function actionShowManagers()
+
+    public function actionServices()
     {
-        if( Admin::isAdmin() ){
+        if( Admin::helloUser() ){
 
-            UserRole::setRole();
+            self::$title = 'Услуги';
 
-            $users = Admin::getUsersByIdRole(UserRole::$manager);
-            self::$title = 'Менеджеры';
+            $userData = Admin::getUserDataBySessionId(session_id());
 
-            echo $this->render('admin_show_managers', [
+            $role = Admin::getRole();
+            $userData['role'] = $role['name'];
+
+            $services = Service::getServicesList();
+
+            echo $this->render('/admin/header', [
                 'title' => self::$title,
-                'users' => $users,
+                'userData' => $userData,
+                'services' => $services,
+            ]);
+
+            echo $this->render('/admin/services_list', [
+            ]);
+
+            echo $this->render('/admin/footer', [
             ]);
 
         }else{
-            header("Location: user/check");
+            header("Location: /user/check");
         }
     }
-    public function actionNewUser()
+
+    public function actionService($id)
     {
-        if( Admin::isAdmin() ){
+        if( Admin::helloUser() ){
 
-            UserRole::setRole();
+            self::$title = 'Редактирование услуги';
 
-            if( isset($_GET['id'] )){
+            $userData = Admin::getUserDataBySessionId(session_id());
 
-                $idUser = strip_tags(trim($_GET['id']));
+            $role = Admin::getRole();
+            $userData['role'] = $role['name'];
 
-                if( Admin::setRole($idUser, UserRole::$user) ){
+            $service = new Service($id);
 
-                self::$title = 'Новый пользователь';
-                $text = 'Роль успешно изменена на пользователя';
+            $serviceData = $service->getService();
 
-                echo $this->render('notification', [
-                    'title' => self::$title,
-                    'text' => $text,
-                ]);
-                }
-            }else{
-                header("Location: admin/showUsers");
-            }
+            $serviceItemsData = $service->getElementsCurrentService();
+
+            echo $this->render('/admin/header', [
+                'title' => self::$title,
+                'userData' => $userData,
+                'service' => $serviceData,
+                'items' => $serviceItemsData,
+            ]);
+
+            echo $this->render('/admin/service_edit', [
+            ]);
+
+            echo $this->render('/admin/footer', [
+            ]);
 
         }else{
-            header("Location: user/check");
+            header("Location: /user/check");
         }
     }
-    public function actionNewManager()
-    {
-        if( Admin::isAdmin() ){
 
-            UserRole::setRole();
-
-            if( isset($_GET['id'] )){
-
-                $idUser = strip_tags(trim($_GET['id']));
-
-                if( Admin::setRole($idUser, UserRole::$manager) ){
-
-                    self::$title = 'Новый менеджер';
-                    $text = 'Роль успешно изменена на менеджера';
-
-                    echo $this->render('notification', [
-                        'title' => self::$title,
-                        'text' => $text,
-                    ]);
-                }
-            }else{
-                header("Location: admin/showUsers");
-            }
-
-        }else{
-            header("Location: user/check");
-        }
-    }
-    public function actionNewAdmin()
-    {
-        if( Admin::isAdmin() ){
-
-            UserRole::setRole();
-
-            if( isset($_GET['id'] )){
-
-                $idUser = strip_tags(trim($_GET['id']));
-
-                if( Admin::setRole($idUser, UserRole::$admin) ){
-
-                    self::$title = 'Новый администратор';
-                    $text = 'Роль успешно изменена на администратора';
-
-                    echo $this->render('notification', [
-                        'title' => self::$title,
-                        'text' => $text,
-                    ]);
-                }
-            }else{
-                header("Location: admin/showUsers");
-            }
-
-        }else{
-            header("Location: user/check");
-        }
-    }
 }

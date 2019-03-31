@@ -14,6 +14,7 @@ class Request
     public $controller = 'index';
     public $action = 'index';
     public $nameSpaceController = '\controllers';
+    public $id = 0;
 
     public function init()
     {
@@ -33,11 +34,35 @@ class Request
             }
         }
 
+        if(count($path) == 5){
+            if(!empty($path[2])){
+                $this->action = $path[2];
+            }
+            if($newPath = strpbrk($path[count($path)-1], '?')){
+                $this->action = str_replace($newPath, '', $path[count($path)-1]);
+            }
+            $this->id = $path[3];
+        }
 
-        $this->callController();
+
+        $this->callController($this->id);
     }
 
-    protected function callController()
+    public function getParam($param){
+
+        return $_REQUEST[$param];
+
+    }
+
+    public function getAllParams(){
+        $arResult = [];
+        foreach ($_REQUEST as $key => $value){
+            $arResult[$key] = $value;
+        }
+        return $arResult;
+    }
+
+    protected function callController($id=null)
     {
         $classController = $this->nameSpaceController . '\\' . ucwords($this->controller) . 'Controller';
         $action = 'action' . ucwords($this->action);
@@ -46,7 +71,7 @@ class Request
             $controllerInstance = new $classController;
 
             if(method_exists($classController, $action)){
-                call_user_func_array([$controllerInstance, $action], []);
+                call_user_func_array([$controllerInstance, $action], [$id]);
 
 
             }else{

@@ -6,23 +6,7 @@ use components\Controller;
 
 class UserController extends Controller
 {
-    public function actionIndex()
-    {
-        if( User::helloUser() ){
 
-            $data = Session::getInstance();
-            $arrCookie = explode('|', $data->cookie);
-            self::$title = 'Кабинет';
-
-            echo $this->render('cabinet', [
-                    'title' => self::$title,
-                    'arrayCookie' => $arrCookie,
-            ]);
-
-        }else{
-            header("Location: user/check");
-        }
-    }
 
     public function actionAdd()
     {
@@ -34,7 +18,7 @@ class UserController extends Controller
             ]);
 
         }else{
-            header("Location: /user");
+            header("Location: /admin");
         }
     }
 
@@ -48,7 +32,7 @@ class UserController extends Controller
             ]);
 
         }else{
-            header("Location: /user");
+            header("Location: /admin");
         }
     }
 
@@ -67,7 +51,7 @@ class UserController extends Controller
     {
         if( User::helloUser()) {
 
-            header("Location: /user");
+            header("Location: /admin");
 
         }
 
@@ -91,7 +75,7 @@ class UserController extends Controller
     {
         if ( User::helloUser() ){
 
-            header("Location: /user");
+            header("Location: /admin");
 
         }
 
@@ -104,7 +88,7 @@ class UserController extends Controller
 
             if( $user->checkUser() ){
 
-                header("Location: /");
+                header("Location: /admin");
 
             }else{
 
@@ -117,6 +101,8 @@ class UserController extends Controller
                 ]);
 
             }
+        }else{
+            header("Location: /user/check");
         }
     }
 }

@@ -29,6 +29,78 @@ class Service
         return ($var['id_Service'] == $this->serviceId);
     }
 
+    public function getService(){
+
+        try {
+
+            $stmt = self::$pdo->prepare("SELECT id, sort, active, name, picture, title, subtitle FROM " .
+                self::$tableName ." WHERE id = ? LIMIT 1");
+
+            $stmt->bindParam(1, $this->serviceId);
+
+            $stmt->execute();
+            $data = $stmt->fetchAll();
+
+            return $data;
+
+        } catch (Exception $e) {
+            die ('ERROR: ' . $e->getMessage());
+        }
+    }
+
+    public function changeActive($status){
+
+
+        try {
+
+            $stmt = self::$pdo->prepare("UPDATE " . self::$tableName . " SET active = ? WHERE id = ? LIMIT 1");
+
+            $stmt->bindParam(1, $status);
+            $stmt->bindParam(2, $this->serviceId);
+            $result = $stmt->execute();
+
+            return $result;
+
+        } catch (Exception $e) {
+            die ('ERROR: ' . $e->getMessage());
+        }
+    }
+
+    public static function deleteItem($id){
+
+        self::$pdo = App::$app->db->getConnect();
+        try {
+
+            $stmt = self::$pdo->prepare("DELETE FROM " . self::$itemsTableName . " WHERE id = ? LIMIT 1");
+
+            $stmt->bindParam(1, $id);
+            $result = $stmt->execute();
+
+            return $result;
+
+        } catch (Exception $e) {
+            die ('ERROR: ' . $e->getMessage());
+        }
+    }
+
+    public static function changeItemActive($id, $status){
+
+        self::$pdo = App::$app->db->getConnect();
+        try {
+
+            $stmt = self::$pdo->prepare("UPDATE " . self::$itemsTableName . " SET active = ? WHERE id = ? LIMIT 1");
+
+            $stmt->bindParam(1, $status);
+            $stmt->bindParam(2, $id);
+            $result = $stmt->execute();
+
+            return $result;
+
+        } catch (Exception $e) {
+            die ('ERROR: ' . $e->getMessage());
+        }
+    }
+
     public static function getServicesList($active = '%'){
 
         self::$pdo = App::$app->db->getConnect();
@@ -73,6 +145,25 @@ class Service
 
             $stmt->bindParam(1, $active);
             $stmt->bindParam(2, $active);
+            $stmt->execute();
+            $data = $stmt->fetchAll();
+
+            return $data;
+
+        } catch (Exception $e) {
+            die ('ERROR: ' . $e->getMessage());
+        }
+    }
+
+    public function getElementsCurrentService()
+    {
+        self::$pdo = App::$app->db->getConnect();
+
+        try {
+
+            $stmt = self::$pdo->prepare("SELECT id, sort, active, name FROM ". self::$itemsTableName . " WHERE id_service = ?  ORDER BY `id`");
+
+            $stmt->bindParam(1, $this->serviceId);
             $stmt->execute();
             $data = $stmt->fetchAll();
 

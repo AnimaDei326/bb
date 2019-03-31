@@ -12,6 +12,10 @@ class User
     public $password;
     public $session_id = null;
     public static $pdo = null;
+    public static $tableName = 'users';
+    public static $roleTableName = 'role';
+    public static $userRoleTableName = 'user_role';
+    public static $defaultUserRole = 'user';
 
     function __construct($username, $password)
     {
@@ -22,17 +26,16 @@ class User
 
     public function addUser()
     {
-        UserRole::setRole();
         try {
-            $stmt = self::$pdo->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
+            $stmt = self::$pdo->prepare("INSERT INTO " . self::$tableName . " (username, password) VALUES (?, ?)");
             $stmt->bindParam(1, $this->username);
             $stmt->bindParam(2, $this->password);
             $stmt->execute();
 
 
-            $stmt = self::$pdo->prepare("INSERT INTO user_role (id_user, id_role) VALUES (?, ?)");
+            $stmt = self::$pdo->prepare("INSERT INTO " . self::$userRoleTableName . " (id_user, id_role) VALUES (?, ?)");
             $stmt->bindParam(1, self::$pdo->lastInsertId());
-            $stmt->bindParam(2, UserRole::$user); //все новые - по умолчанию обычные пользователи
+            $stmt->bindParam(2, self::$defaultUserRole);
             $stmt->execute();
             return true;
 
@@ -44,7 +47,7 @@ class User
     public static function setRole($id_user, $id_role)
     {
         try{
-            $stmt = self::$pdo->prepare("UPDATE user_role SET id_role = ? WHERE id_user = ? LIMIT 1");
+            $stmt = self::$pdo->prepare("UPDATE " . self::$userRoleTableName . " SET id_role = ? WHERE id_user = ? LIMIT 1");
             $stmt->bindParam(1, $id_role);
             $stmt->bindParam(2, $id_user);
             $stmt->execute();
@@ -56,11 +59,28 @@ class User
 
     }
 
+    public static function getUserDataBySessionId($session_id){
+
+
+        try{
+            $stmt = self::$pdo->prepare("SELECT first_name, last_name, photo FROM " . self::$tableName. " WHERE session_id = ? LIMIT 1");
+            $stmt->bindParam(1, $session_id);
+            $stmt->execute();
+            $userData = $stmt->fetchAll();
+            return $userData[0];
+
+        } catch (Exception $e) {
+            die ('ERROR: ' . $e->getMessage());
+        }
+    }
+
+
+
     public function checkUser(){
 
         try {
 
-            $stmt = self::$pdo->prepare("SELECT id FROM users WHERE username = ? AND password = ? LIMIT 1");
+            $stmt = self::$pdo->prepare("SELECT id FROM " . self::$tableName. " WHERE username = ? AND password = ? LIMIT 1");
             $stmt->bindParam(1, $this->username);
             $stmt->bindParam(2, $this->password);
             $stmt->execute();
@@ -75,7 +95,7 @@ class User
 
                 try {
 
-                    $stmt = self::$pdo->prepare("UPDATE users SET session_id = ? WHERE id = ? LIMIT 1");
+                    $stmt = self::$pdo->prepare("UPDATE " . self::$tableName. " SET session_id = ? WHERE id = ? LIMIT 1");
                     $stmt->bindParam(1, $this->session_id);
                     $stmt->bindParam(2, $id);
                     $stmt->execute();
@@ -87,7 +107,7 @@ class User
                 }
 
                 try {
-                    $stmt = self::$pdo->prepare("SELECT id_role FROM user_role WHERE id_user = ? LIMIT 1");
+                    $stmt = self::$pdo->prepare("SELECT id_role FROM " . self::$userRoleTableName. " WHERE id_user = ? LIMIT 1");
                     $stmt->bindParam(1, $id);
                     $stmt->execute();
 
@@ -123,7 +143,7 @@ class User
         }
         try {
 
-            $stmt = self::$pdo->prepare("SELECT id FROM users WHERE id = ? AND session_id = ? LIMIT 1");
+            $stmt = self::$pdo->prepare("SELECT id FROM " . self::$tableName. " WHERE id = ? AND session_id = ? LIMIT 1");
             $stmt->bindParam(1, $id);
             $stmt->bindParam(2, session_id());
             $stmt->execute();
@@ -146,7 +166,7 @@ class User
         }
     }
 
-    public static function isManager()
+    public static function getRole()
     {
         if( self::helloUser() ){
 
@@ -158,54 +178,21 @@ class User
             }
 
             try {
-                $stmt = self::$pdo->prepare("SELECT id_role FROM user_role WHERE id_user = ? LIMIT 1");
+                $stmt = self::$pdo->prepare("SELECT " .
+                    self::$roleTableName. ".user_role_name, " .
+                    self::$roleTableName. ".name FROM  " .
+                    self::$userRoleTableName. " join " .
+                    self::$roleTableName. " on " .
+                    self::$roleTableName. ".id = " .
+                    self::$userRoleTableName. ".id_role where " .
+                    self::$userRoleTableName. ".id_user = ? limit 1"
+                );
+
                 $stmt->bindParam(1, $id);
                 $stmt->execute();
-                $id_role = $stmt->fetchColumn();
+                $roleName = $stmt->fetchAll();
 
-                if( $id_role == 2 ){
-
-                    return true;
-
-                }else{
-
-                    return false;
-
-                }
-
-            } catch (Exception $e) {
-
-                die ('ERROR: ' . $e->getMessage());
-            }
-
-        }
-    }
-    public static function isAdmin()
-    {
-        if( self::helloUser() ){
-
-            $data = Session::getInstance();
-            $id = 0;
-
-            if($data->id){
-                $id = $data->id;
-            }
-
-            try {
-                $stmt = self::$pdo->prepare("SELECT id_role FROM user_role WHERE id_user = ? LIMIT 1");
-                $stmt->bindParam(1, $id);
-                $stmt->execute();
-                $id_role = $stmt->fetchColumn();
-
-                if( $id_role == 1 ){
-
-                    return true;
-
-                }else{
-
-                    return false;
-
-                }
+                return $roleName[0];
 
             } catch (Exception $e) {
 
