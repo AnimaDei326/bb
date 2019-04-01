@@ -182,7 +182,7 @@
                                               <span class="btn btn-system btn-file btn-block">
                                                 <span class="fileupload-new">Выбрать фотографию</span>
                                                 <span class="fileupload-exists">Заменить</span>
-                                                <input name="photo" type="file">
+                                                <input name="picture" type="file">
                                               </span>
                                             </div>
                                         </div>
@@ -217,6 +217,7 @@
                                             <? foreach ($items as $item):?>
                                                 <tr data-id="<?=$item['id']?>">
                                                     <td class="col-md-5 col-sm-4 col-xs-3"><input name="<?=$item['id']?>_item_name" value="<?=$item['name']?>"></td>
+                                                    <td class="col-md-5 col-sm-4 col-xs-3"><input name="<?=$item['id']?>" value="<?=$item['id']?>"></td>
                                                     <td class="col-md-5 col-sm-4 col-xs-3"><input name="<?=$item['id']?>_item_sort" value="<?=$item['sort']?>"></td>
                                                     <td>
                                                         <div class="admin-form">

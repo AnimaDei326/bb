@@ -29,7 +29,21 @@ class ServiceController extends Controller
                 }
             }
 
-            echo 'true';
+            $service = new Service($params['id']);
+            $service->name = $params['name'];
+            $service->sort = $params['sort'];
+            $service->active = $params['active'];
+            if($service->active){
+                $service->active = 'Y';
+            }else{
+                $service->active = 'N';
+            }
+            $service->picture = $app->request->uploadFile('picture');
+            $service->title = $params['title'];
+            $service->subtitle = $params['subtitle'];
+            $res = $service->updateService();
+
+            var_dump($res);
 
         }else{
             header("Location: /user/check");

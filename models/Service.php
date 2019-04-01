@@ -18,6 +18,12 @@ class Service
     public static $pdo = null;
 
     public $serviceId;
+    public $active;
+    public $sort;
+    public $name;
+    public $picture;
+    public $title;
+    public $subtitle;
 
     public function __construct($serviceId)
     {
@@ -27,6 +33,28 @@ class Service
 
     public function arrFilter($var){
         return ($var['id_Service'] == $this->serviceId);
+    }
+
+    public function updateService(){
+
+        try {
+
+            $stmt = self::$pdo->prepare("UPDATE " . self::$tableName ." SET sort = ? , active = ?, name = ?, picture = ?, title = ?, subtitle = ? WHERE id = ? LIMIT 1");
+
+            $stmt->bindParam(1, $this->sort);
+            $stmt->bindParam(2, $this->active);
+            $stmt->bindParam(3, $this->name);
+            $stmt->bindParam(4, $this->picture);
+            $stmt->bindParam(5, $this->title);
+            $stmt->bindParam(6, $this->subtitle);
+            $stmt->bindParam(7, $this->serviceId);
+            $result = $stmt->execute();
+
+            return $result;
+
+        } catch (Exception $e) {
+            die ('ERROR: ' . $e->getMessage());
+        }
     }
 
     public function getService(){

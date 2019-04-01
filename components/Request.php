@@ -54,6 +54,27 @@ class Request
 
     }
 
+    public function generateName($length){
+        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPRQSTUVWXYZ0123456789";
+        $code = "";
+        $clen = strlen($chars) - 1;
+        while (strlen($code) < $length)
+        {
+            $code .= $chars[mt_rand(0,$clen)];
+        }
+        return $code;
+    }
+
+    public function uploadFile($name){
+        $file = $_FILES[$name];
+        $uploadDirectory = './images/';
+        $newName = $this->generateName(20);
+        $extension = strtolower(substr(strrchr($file['name'], '.'), 1));
+        $target = $uploadDirectory . '/' . $newName . '.' . $extension;
+        move_uploaded_file($file['tmp_name'], $target);
+        return $newName . ".". $extension;
+    }
+
     public function getAllParams(){
         $arResult = [];
         foreach ($_REQUEST as $key => $value){
