@@ -7,8 +7,9 @@
     <?
     $keys = array_keys($projects);
     $firstKey = $keys[0];
+    $serviceId = $projects[$firstKey]['id_Service'];
     ?>
-    <div class="widget__wrap js-widget__company-info" id="service-id_<?=$firstKey?>" style="display: none;">
+    <div class="widget__wrap js-widget__company-info" id="service-id_<?=$serviceId?>" style="display: none;">
         
         <!-- вот тут, рядом с widget__company-info нужно будет поместить  -->
         <!-- widget__company-single -->
