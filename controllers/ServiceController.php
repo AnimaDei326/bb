@@ -29,6 +29,10 @@ class ServiceController extends Controller
                 }
             }
 
+            foreach ($items as $id => $itemArr){
+                Service::updateItem($id, $itemArr['sort'], 'Y', $itemArr['name']);
+            }
+
             $service = new Service($params['id']);
             $service->name = $params['name'];
             $service->sort = $params['sort'];
@@ -59,9 +63,31 @@ class ServiceController extends Controller
             $status = $app->request->getParam('status');
             $service = new Service($id);
 
-            $service->changeActive($status);
+            $result = $service->changeActive($status);
+            if($result){
+                echo 'true';
+            }else{
+                echo $result;
+            }
 
-            echo 'true';
+        }else{
+            header("Location: /user/check");
+        }
+    }
+
+    public function actionDeleteService()
+    {
+        if( Admin::helloUser() ){
+
+            $app = App::$app;
+            $id = $app->request->getParam('id');
+            $service = new Service($id);
+            $result = $service->deleteService();
+            if($result){
+                echo 'true';
+            }else{
+                echo $result;
+            }
 
         }else{
             header("Location: /user/check");
@@ -77,7 +103,11 @@ class ServiceController extends Controller
             $status = $app->request->getParam('status');
             $result = Service::changeItemActive($id, $status);
 
-            echo 'true';
+            if($result){
+                echo 'true';
+            }else{
+                echo $result;
+            }
 
         }else{
             header("Location: /user/check");
@@ -90,8 +120,12 @@ class ServiceController extends Controller
 
             $app = App::$app;
             $id = $app->request->getParam('id');
-            Service::deleteItem($id);
-            echo 'true';
+            $result = Service::deleteItem($id);
+            if($result){
+                echo 'true';
+            }else{
+                echo $result;
+            }
 
         }else{
             header("Location: /user/check");

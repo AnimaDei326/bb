@@ -28,6 +28,25 @@
                 }
             },
         });
+    }
+
+    function deleteService(id){
+
+        $.ajax({
+            url: "/service/DeleteService",
+            method: 'POST',
+            data: {
+                id: id,
+            },
+            success: function(response){
+
+                if(response !== 'true'){
+                    alert('Произошла ошибка: ' + response);
+                }else{
+                    $('[data-id='+id+']').remove();
+                }
+            },
+        });
 
 
     }
@@ -76,7 +95,7 @@
                             </thead>
                             <tbody>
                             <? foreach ($services as $service) :?>
-                                <tr>
+                                <tr data-id="<?=$service['id']?>">
                                     <td class="col-md-5 col-sm-4 col-xs-3"><?=$service['name']?></td>
                                     <td><?=$service['id']?></td>
                                     <td><?=$service['sort']?></td>
@@ -98,7 +117,7 @@
                                                     </a>
                                                     <!-- Изменить -->
                                                 </button>
-                                                <button type="button" class="btn btn-danger dark">
+                                                <button onclick="deleteService('<?=$service['id']?>')" type="button" class="btn btn-danger dark">
                                                     <i class="fa fa-delete">✗</i>
                                                     <!-- Удалить -->
                                                 </button>

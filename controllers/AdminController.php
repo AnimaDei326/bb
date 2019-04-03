@@ -102,4 +102,31 @@ class AdminController extends Controller
         }
     }
 
+    public function actionNew_service()
+    {
+        if( Admin::helloUser() ){
+
+            self::$title = 'Новая услуга';
+
+            $userData = Admin::getUserDataBySessionId(session_id());
+
+            $role = Admin::getRole();
+            $userData['role'] = $role['name'];
+
+            echo $this->render('/admin/header', [
+                'title' => self::$title,
+                'userData' => $userData,
+            ]);
+
+            echo $this->render('/admin/services_add', [
+            ]);
+
+            echo $this->render('/admin/footer', [
+            ]);
+
+        }else{
+            header("Location: /user/check");
+        }
+    }
+
 }

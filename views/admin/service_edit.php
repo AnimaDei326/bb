@@ -102,7 +102,7 @@
                                 <label for="inputStandard" class="col-lg-3 control-label">Сортировка</label>
                                 <div class="col-lg-8">
                                     <div class="bs-component">
-                                        <input name="sort" type="text" id="inputStandard" class="form-control" value="<?=$service['sort']?>">
+                                        <input name="sort" type="number" id="inputStandard" class="form-control" value="<?=$service['sort']?>">
                                     </div>
                                 </div>
                             </div>
@@ -217,8 +217,8 @@
                                             <? foreach ($items as $item):?>
                                                 <tr data-id="<?=$item['id']?>">
                                                     <td class="col-md-5 col-sm-4 col-xs-3"><input name="<?=$item['id']?>_item_name" value="<?=$item['name']?>"></td>
-                                                    <td class="col-md-5 col-sm-4 col-xs-3"><input name="<?=$item['id']?>" value="<?=$item['id']?>"></td>
-                                                    <td class="col-md-5 col-sm-4 col-xs-3"><input name="<?=$item['id']?>_item_sort" value="<?=$item['sort']?>"></td>
+                                                    <td class="col-md-5 col-sm-4 col-xs-3"><input name="<?=$item['id']?>" value="<?=$item['id']?>" readonly></td>
+                                                    <td class="col-md-5 col-sm-4 col-xs-3"><input name="<?=$item['id']?>_item_sort" value="<?=$item['sort']?>" type="number"></td>
                                                     <td>
                                                         <div class="admin-form">
                                                             <label class="switch block mt15">
