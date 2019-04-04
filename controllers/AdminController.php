@@ -102,7 +102,7 @@ class AdminController extends Controller
         }
     }
 
-    public function actionNew_service()
+    public function actionService_add()
     {
         if( Admin::helloUser() ){
 
@@ -118,7 +118,7 @@ class AdminController extends Controller
                 'userData' => $userData,
             ]);
 
-            echo $this->render('/admin/services_add', [
+            echo $this->render('/admin/service_add', [
             ]);
 
             echo $this->render('/admin/footer', [
@@ -128,5 +128,7 @@ class AdminController extends Controller
             header("Location: /user/check");
         }
     }
+
+
 
 }

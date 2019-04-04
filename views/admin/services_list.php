@@ -90,13 +90,13 @@
                                 <th>ID</th>
                                 <th>Сортировка</th>
                                 <th>Активность</th>
-                                <th class="text-right">Действия</th>
+                                <th class="text-right">Удалить</th>
                             </tr>
                             </thead>
                             <tbody>
                             <? foreach ($services as $service) :?>
                                 <tr data-id="<?=$service['id']?>">
-                                    <td class="col-md-5 col-sm-4 col-xs-3"><?=$service['name']?></td>
+                                    <td class="col-md-5 col-sm-4 col-xs-3"><a href="/admin/service/<?=$service['id']?>/"><?=$service['name']?></a></td>
                                     <td><?=$service['id']?></td>
                                     <td><?=$service['sort']?></td>
                                     <td>
@@ -111,12 +111,6 @@
                                         <div class="bs-component">
                                             <div class="btn-group">
                                                 <span class="glyphicons glyphicons-pencil"></span>
-                                                <button type="button" class="btn btn-primary dark">
-                                                    <a onclick="window.location.href='/admin/service/<?=$service['id']?>/'">
-                                                        <i class="fa fa-edit"></i>
-                                                    </a>
-                                                    <!-- Изменить -->
-                                                </button>
                                                 <button onclick="deleteService('<?=$service['id']?>')" type="button" class="btn btn-danger dark">
                                                     <i class="fa fa-delete">✗</i>
                                                     <!-- Удалить -->
@@ -136,7 +130,9 @@
 
         <?endif;?>
         <div class="col-md-12">
-            <button type="button" class="btn btn-primary">Добавить</button>
+            <a href="/admin/service_add">
+                <button type="button" class="btn btn-primary">Добавить</button>
+            </a>
         </div>
 
     </div>

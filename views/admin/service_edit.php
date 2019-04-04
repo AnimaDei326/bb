@@ -82,7 +82,25 @@
         });
     }
 </script>
-
+<!-- Start: Topbar -->
+<header id="topbar" class="alt">
+    <div class="topbar-left">
+        <ol class="breadcrumb">
+            <li class="crumb-active">
+                <a href="/admin/services">Список услуг</a>
+            </li>
+            <li class="crumb-icon">
+                <a href="/admin">
+                    <span class="glyphicon glyphicon-home"></span>
+                </a>
+            </li>
+            <li class="crumb-trail">Контент</li>
+            <li class="crumb-trail">Услуги</li>
+            <li class="crumb-trail">Редактирование услуги</li>
+        </ol>
+    </div>
+</header>
+<!-- End: Topbar -->
 <!-- Begin: Content -->
 <section id="content" class="table-layout animated fadeIn">
     <? if ($service):?>
