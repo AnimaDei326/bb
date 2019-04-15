@@ -32,23 +32,23 @@
 
     function deleteService(id){
 
-        $.ajax({
-            url: "/service/DeleteService",
-            method: 'POST',
-            data: {
-                id: id,
-            },
-            success: function(response){
+        if (confirm('Вы уверены, что хотите удалить услугу?')) {
+            $.ajax({
+                url: "/service/DeleteService",
+                method: 'POST',
+                data: {
+                    id: id,
+                },
+                success: function(response){
 
-                if(response !== 'true'){
-                    alert('Произошла ошибка: ' + response);
-                }else{
-                    $('[data-id='+id+']').remove();
-                }
-            },
-        });
-
-
+                    if(response !== 'true'){
+                        alert('Произошла ошибка: ' + response);
+                    }else{
+                        $('[data-id='+id+']').remove();
+                    }
+                },
+            });
+        }
     }
 </script>
 <!-- Start: Topbar -->

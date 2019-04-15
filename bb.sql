@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1:3306
--- Время создания: Мар 23 2019 г., 23:30
--- Версия сервера: 5.7.23-log
--- Версия PHP: 7.0.32
+-- Хост: localhost
+-- Время создания: Апр 15 2019 г., 23:58
+-- Версия сервера: 5.7.21-20-beget-5.7.21-20-1-log
+-- Версия PHP: 5.6.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `bb`
+-- База данных: `animadqu_bb`
 --
 
 -- --------------------------------------------------------
@@ -27,7 +27,11 @@ SET time_zone = "+00:00";
 --
 -- Структура таблицы `about`
 --
+-- Создание: Апр 03 2019 г., 21:26
+-- Последнее обновление: Апр 03 2019 г., 21:32
+--
 
+DROP TABLE IF EXISTS `about`;
 CREATE TABLE `about` (
   `id` int(11) NOT NULL,
   `sort` int(3) DEFAULT NULL,
@@ -60,7 +64,11 @@ INSERT INTO `about` (`id`, `sort`, `name`, `active`, `id_type`) VALUES
 --
 -- Структура таблицы `about_type`
 --
+-- Создание: Апр 03 2019 г., 21:26
+-- Последнее обновление: Апр 03 2019 г., 21:26
+--
 
+DROP TABLE IF EXISTS `about_type`;
 CREATE TABLE `about_type` (
   `id` int(11) NOT NULL,
   `type` varchar(50) DEFAULT NULL
@@ -81,7 +89,11 @@ INSERT INTO `about_type` (`id`, `type`) VALUES
 --
 -- Структура таблицы `clients`
 --
+-- Создание: Апр 03 2019 г., 21:26
+-- Последнее обновление: Апр 03 2019 г., 21:26
+--
 
+DROP TABLE IF EXISTS `clients`;
 CREATE TABLE `clients` (
   `id` int(11) NOT NULL,
   `name` varchar(100) DEFAULT NULL,
@@ -101,7 +113,11 @@ INSERT INTO `clients` (`id`, `name`, `picture`) VALUES
 --
 -- Структура таблицы `contacts`
 --
+-- Создание: Апр 03 2019 г., 21:26
+-- Последнее обновление: Апр 03 2019 г., 21:26
+--
 
+DROP TABLE IF EXISTS `contacts`;
 CREATE TABLE `contacts` (
   `id` int(11) NOT NULL,
   `sort` int(3) DEFAULT NULL,
@@ -125,7 +141,11 @@ INSERT INTO `contacts` (`id`, `sort`, `telephone`, `email`, `description`, `id_T
 --
 -- Структура таблицы `positions`
 --
+-- Создание: Апр 03 2019 г., 21:26
+-- Последнее обновление: Апр 03 2019 г., 21:26
+--
 
+DROP TABLE IF EXISTS `positions`;
 CREATE TABLE `positions` (
   `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
@@ -146,7 +166,11 @@ INSERT INTO `positions` (`id`, `name`, `code`) VALUES
 --
 -- Структура таблицы `projects`
 --
+-- Создание: Апр 03 2019 г., 21:26
+-- Последнее обновление: Апр 03 2019 г., 21:48
+--
 
+DROP TABLE IF EXISTS `projects`;
 CREATE TABLE `projects` (
   `id` int(11) NOT NULL,
   `sort` int(3) DEFAULT NULL,
@@ -167,14 +191,33 @@ INSERT INTO `projects` (`id`, `sort`, `active`, `id_Service`, `name`, `goal`, `t
 (2, 20, 'Y', 1, 'Аудит финансово-экономических моделей активов для интеграции в единую систему их развития финансово-экономических моделей развития объекта', 'Получение заключения о достоверности и полноте данных в финансово-экономических моделях', '5 мес.', 2),
 (3, 30, 'Y', 2, '6Аудит финансово-экономических моделей активов для интеграции в единую систему их развития финансово-экономических моделей развития объекта', '6Получение заключения о достоверности и полноте данных в финансово-экономических моделях', '6 мес.', 2),
 (4, 40, 'Y', 3, '213Аудит финансово-экономических моделей активов для интеграции в единую систему их развития финансово-экономических моделей развития объекта', '6Пол3213учение заключения о достоверности и полноте данных в финансово-экономических моделях', '6 мес.2131', 2),
-(5, 50, 'Y', 5, '213qweqweqweАудит финансово-экономических моделей активов для интеграции в единую систему их развития финансово-экономических моделей развития объекта', '6eqwewПол3213учение заключения о досqтоверности и полноте данных в финансово-экономических моделях', '6 wqeмес.2131', 1);
+(5, 50, 'Y', 5, '213qweqweqweАудит финансово-экономических моделей активов для интеграции в единую систему их развития финансово-экономических моделей развития объекта', '6eqwewПол3213учение заключения о досqтоверности и полноте данных в финансово-экономических моделях', '6 wqeмес.2131', 1),
+(6, 10, 'Y', 2, 'Оцasdенка стоимости золотодобывающего актива и разработка сценарных финансово-экономических моделей развития объекта', 'Получение оценки стоимости и перспектив развития Актива', '5 мес.', 1),
+(7, 20, 'Y', 1, 'Аdsудит финансово-экономических моделей активов для интеграции в единую систему их развития финансово-экономических моделей развития объекта', 'Получение заключения о достоверности и полноте данных в финансово-экономических моделях', '5 мес.', 2),
+(8, 30, 'Y', 1, '6Аfgdfудит финансово-экономических моделей активов для интеграции в единую систему их развития финансово-экономических моделей развития объекта', '6Получение заключения о достоверности и полноте данных в финансово-экономических моделях', '6 мес.', 2),
+(9, 40, 'Y', 3, '213Аasdудит финансово-экономических моделей активов для интеграции в единую систему их развития финансово-экономических моделей развития объекта', '6Пол3213учение заключения о достоверности и полноте данных в финансово-экономических моделях', '6 мес.2131', 2),
+(10, 50, 'Y', 5, '21fgf3qweqweqweАудит финансово-экономических моделей активов для интеграции в единую систему их развития финансово-экономических моделей развития объекта', '6eqwewПол3213учение заключения о досqтоверности и полноте данных в финансово-экономических моделях', '6 wqeмес.2131', 1),
+(11, 10, 'Y', 4, 'Оцasdенка стоимости золотодобывающего актива и разработка сценарных финансово-экономических моделей развития объекта', 'Получение оценки стоимости и перспектив развития Актива', '5 мес.', 1),
+(12, 20, 'Y', 6, 'Аdsудит финансово-экономических моделей активов для интеграции в единую систему их развития финансово-экономических моделей развития объекта', 'Получение заключения о достоверности и полноте данных в финансово-экономических моделях', '5 мес.', 2),
+(13, 30, 'Y', 1, '6Аfgdfудит финансово-экономических моделей активов для интеграции в единую систему их развития финансово-экономических моделей развития объекта', '6Получение заключения 4 достоверности и полноте данных в финансово-экономических моделях', '6 мес.', 2),
+(14, 40, 'Y', 4, '213Аasdудит финансово-экономических моделей активов для интеграции в единую систему их развития финансово-экономических моделей развития объекта', '6Пол3213учение заключения о достоверности и полноте данных в финансово-экономических моделях', '6 мес.2131', 2),
+(15, 50, 'Y', 6, '21fgf3qweqweqweАудит финансово-экономических моделей активов для интеграции в единую систему их развития финансово-экономических моделей развития объекта', '6eqwewПол3213учение заключения о досqтоверности и полноте данных в финансово-экономических моделях', '6 wqeмес.2131', 1),
+(16, 10, 'Y', 3, 'Оцasdенка стоимости золотодобывающего актива и разработка сценарных финансово-экономических моделей развития объекта', 'Получение оценки стоимости и перспектив развития Актива', '5 мес.', 1),
+(17, 20, 'Y', 6, 'Аdsудит финансово-экономических моделей активов для интеграции в единую систему их развития финансово-экономических моделей развития объекта', 'Получение заключения о достоверности и полноте данных в финансово-экономических моделях', '5 мес.', 2),
+(18, 30, 'Y', 3, '6Аfgdfудит финансово-экономических моделей активов для интеграции в единую систему их развития финансово-экономических моделей развития объекта', '6Получение заключения 4 достоверности и полноте данных в финансово-экономических моделях', '6 мес.', 2),
+(19, 40, 'Y', 4, '213Аasdудит финансово-экономических моделей активов для интеграции в единую систему их развития финансово-экономических моделей развития объекта', '6Пол3213учение заключения о достоверности и полноте данных в финансово-экономических моделях', '6 мес.2131', 2),
+(20, 50, 'Y', 2, '21fgf3qweqweqweАудит финансово-экономических моделей активов для интеграции в единую систему их развития финансово-экономических моделей развития объекта', '6eqwewПол3213учение заключения о досqтоверности и полноте данных в финансово-экономических моделях', '6 wqeмес.2131', 1);
 
 -- --------------------------------------------------------
 
 --
 -- Структура таблицы `project_items`
 --
+-- Создание: Апр 03 2019 г., 21:26
+-- Последнее обновление: Апр 03 2019 г., 21:52
+--
 
+DROP TABLE IF EXISTS `project_items`;
 CREATE TABLE `project_items` (
   `id` int(11) NOT NULL,
   `sort` int(3) DEFAULT NULL,
@@ -211,14 +254,18 @@ INSERT INTO `project_items` (`id`, `sort`, `name`, `id_Projects`, `id_Project_it
 (21, 50, 'По123дготовка заключения о корректности и достоверности Финансово-экономических моделей шахт и фабрик', 2, 1),
 (22, 10, '123Сформированы консолидированные отчетные формы по сводным показателям для Банков', 3, 2),
 (23, 20, '123Проведен аудит финансово-экономических моделей', 3, 2),
-(24, 30, 'Сф123ормирован отчет об аудите и выданы рекомендации по оптимизации финансово-экономических моделей', 3, 2);
+(24, 30, 'Сф123ормирован отчет об аудите и выданы рекомендации по оптимизации финансово-экономических моделей', 4, 2);
 
 -- --------------------------------------------------------
 
 --
 -- Структура таблицы `project_items_type`
 --
+-- Создание: Апр 03 2019 г., 21:26
+-- Последнее обновление: Апр 03 2019 г., 21:26
+--
 
+DROP TABLE IF EXISTS `project_items_type`;
 CREATE TABLE `project_items_type` (
   `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
@@ -238,27 +285,36 @@ INSERT INTO `project_items_type` (`id`, `name`, `code`) VALUES
 --
 -- Структура таблицы `role`
 --
+-- Создание: Апр 03 2019 г., 21:26
+-- Последнее обновление: Апр 03 2019 г., 21:26
+--
 
+DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role` (
   `id` int(11) NOT NULL,
-  `user_role_name` varchar(50) DEFAULT NULL
+  `user_role_name` varchar(50) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `role`
 --
 
-INSERT INTO `role` (`id`, `user_role_name`) VALUES
-(1, 'admin'),
-(2, 'manager'),
-(3, 'user');
+INSERT INTO `role` (`id`, `user_role_name`, `name`) VALUES
+(1, 'admin', 'Администратор'),
+(2, 'manager', 'Менеджер'),
+(3, 'user', 'Пользователь');
 
 -- --------------------------------------------------------
 
 --
 -- Структура таблицы `service`
 --
+-- Создание: Апр 03 2019 г., 21:26
+-- Последнее обновление: Апр 09 2019 г., 10:52
+--
 
+DROP TABLE IF EXISTS `service`;
 CREATE TABLE `service` (
   `id` int(11) NOT NULL,
   `sort` int(3) DEFAULT NULL,
@@ -278,7 +334,7 @@ INSERT INTO `service` (`id`, `sort`, `active`, `name`, `picture`, `title`, `subt
 (2, 20, 'Y', 'Сопровождение инвестпроектом и сделов M&A', 'service2.jpg', 'ti12tle', 'subewrwertitle'),
 (3, 30, 'Y', 'Получение субсидий и государственных льгот', 'service3.jpg', 'titqwele', 'sub45t34r23title'),
 (4, 40, 'Y', 'Оценка запасов и экспертиза проектов недропользователей', 'service4.jpg', 'title', 'subtitle'),
-(5, 50, 'Y', 'Обучение и тренинги', 'service5.jpg', 'title', 'subtitle'),
+(5, 50, 'Y', 'Обучение и тренинги', 'W2knGz55bu8HCQ15kVny.', 'title', 'subtitle'),
 (6, 60, 'Y', 'Управленческий учет, бюджетирование', 'service6.jpg', 'title', 'subtitle');
 
 -- --------------------------------------------------------
@@ -286,7 +342,11 @@ INSERT INTO `service` (`id`, `sort`, `active`, `name`, `picture`, `title`, `subt
 --
 -- Структура таблицы `service_items`
 --
+-- Создание: Апр 03 2019 г., 21:26
+-- Последнее обновление: Апр 09 2019 г., 10:52
+--
 
+DROP TABLE IF EXISTS `service_items`;
 CREATE TABLE `service_items` (
   `id` int(11) NOT NULL,
   `sort` int(3) DEFAULT NULL,
@@ -330,7 +390,11 @@ INSERT INTO `service_items` (`id`, `sort`, `active`, `name`, `id_Service`) VALUE
 --
 -- Структура таблицы `team`
 --
+-- Создание: Апр 03 2019 г., 21:26
+-- Последнее обновление: Апр 03 2019 г., 21:26
+--
 
+DROP TABLE IF EXISTS `team`;
 CREATE TABLE `team` (
   `id` int(11) NOT NULL,
   `sort` int(3) DEFAULT NULL,
@@ -361,29 +425,40 @@ INSERT INTO `team` (`id`, `sort`, `first_name`, `second_name`, `speciality`, `in
 --
 -- Структура таблицы `users`
 --
+-- Создание: Апр 03 2019 г., 21:26
+-- Последнее обновление: Апр 15 2019 г., 20:30
+--
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(50) DEFAULT NULL,
   `password` varchar(20) DEFAULT NULL,
-  `session_id` varchar(50) DEFAULT NULL
+  `session_id` varchar(50) DEFAULT NULL,
+  `first_name` varchar(50) DEFAULT NULL,
+  `last_name` varchar(50) DEFAULT NULL,
+  `photo` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `session_id`) VALUES
-(1, 'admin', 'admin', ''),
-(2, 'manager', 'manager', ''),
-(3, 'user', 'user', '');
+INSERT INTO `users` (`id`, `username`, `password`, `session_id`, `first_name`, `last_name`, `photo`) VALUES
+(1, 'admin', 'admin', '7ed42b6b65e6438e1c14e44bf90136f3', 'Билый', 'Алесандр', 'Biliy.jpg'),
+(2, 'manager', 'manager', '', NULL, NULL, NULL),
+(3, 'user', 'user', '', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
 -- Структура таблицы `user_role`
 --
+-- Создание: Апр 03 2019 г., 21:26
+-- Последнее обновление: Апр 03 2019 г., 21:26
+--
 
+DROP TABLE IF EXISTS `user_role`;
 CREATE TABLE `user_role` (
   `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
@@ -535,7 +610,7 @@ ALTER TABLE `positions`
 -- AUTO_INCREMENT для таблицы `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT для таблицы `project_items`
@@ -593,39 +668,39 @@ ALTER TABLE `user_role`
 -- Ограничения внешнего ключа таблицы `about`
 --
 ALTER TABLE `about`
-  ADD CONSTRAINT `about_ibfk_1` FOREIGN KEY (`id_type`) REFERENCES `about_type` (`id`);
+  ADD CONSTRAINT `about_ibfk_1` FOREIGN KEY (`id_type`) REFERENCES `about_type` (`id`) ON DELETE SET NULL ;
 
 --
 -- Ограничения внешнего ключа таблицы `contacts`
 --
 ALTER TABLE `contacts`
-  ADD CONSTRAINT `contacts_ibfk_1` FOREIGN KEY (`id_Team`) REFERENCES `team` (`id`);
+  ADD CONSTRAINT `contacts_ibfk_1` FOREIGN KEY (`id_Team`) REFERENCES `team` (`id`) ON DELETE CASCADE ;
 
 --
 -- Ограничения внешнего ключа таблицы `projects`
 --
 ALTER TABLE `projects`
-  ADD CONSTRAINT `projects_ibfk_1` FOREIGN KEY (`id_Service`) REFERENCES `service` (`id`),
-  ADD CONSTRAINT `projects_ibfk_2` FOREIGN KEY (`id_Clients`) REFERENCES `clients` (`id`);
+  ADD CONSTRAINT `projects_ibfk_1` FOREIGN KEY (`id_Service`) REFERENCES `service` (`id`) ON DELETE SET NULL,
+  ADD CONSTRAINT `projects_ibfk_2` FOREIGN KEY (`id_Clients`) REFERENCES `clients` (`id`) ON DELETE SET NULL;
 
 --
 -- Ограничения внешнего ключа таблицы `project_items`
 --
 ALTER TABLE `project_items`
-  ADD CONSTRAINT `project_items_ibfk_1` FOREIGN KEY (`id_Projects`) REFERENCES `projects` (`id`),
-  ADD CONSTRAINT `project_items_ibfk_2` FOREIGN KEY (`id_Project_items_type`) REFERENCES `project_items_type` (`id`);
+  ADD CONSTRAINT `project_items_ibfk_1` FOREIGN KEY (`id_Projects`) REFERENCES `projects` (`id`) ON DELETE CASCADE ,
+  ADD CONSTRAINT `project_items_ibfk_2` FOREIGN KEY (`id_Project_items_type`) REFERENCES `project_items_type` (`id`) ON DELETE CASCADE ;
 
 --
 -- Ограничения внешнего ключа таблицы `service_items`
 --
 ALTER TABLE `service_items`
-  ADD CONSTRAINT `service_items_ibfk_1` FOREIGN KEY (`id_Service`) REFERENCES `service` (`id`);
+  ADD CONSTRAINT `service_items_ibfk_1` FOREIGN KEY (`id_Service`) REFERENCES `service` (`id`) ON DELETE CASCADE ;
 
 --
 -- Ограничения внешнего ключа таблицы `team`
 --
 ALTER TABLE `team`
-  ADD CONSTRAINT `team_ibfk_1` FOREIGN KEY (`id_Positions`) REFERENCES `positions` (`id`);
+  ADD CONSTRAINT `team_ibfk_1` FOREIGN KEY (`id_Positions`) REFERENCES `positions` (`id`) ON DELETE SET NULL ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

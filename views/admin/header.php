@@ -133,7 +133,7 @@
                                 <span class="glyphicon glyphicon-modal-window"></span> Проекты </a>
                         </li>
                         <li>
-                            <a href="admin_plugins-dock.html">
+                            <a href="/admin/clients">
                                 <span class="glyphicon glyphicon-calendar"></span> Заказчики </a>
                         </li>
                         <li>

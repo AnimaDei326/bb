@@ -61,25 +61,28 @@
         });
     }
 
-    function deleteItem(id){
+    function deleteItem(id) {
 
-        $.ajax({
-            url: "/service/deleteItem",
-            method: 'POST',
-            data: {
-                id: id,
-            },
-            success: function(response){
+        if (confirm('Вы уверены, что хотите удалить пункт?')) {
 
-                if(response !== 'true'){
+            $.ajax({
+                url: "/service/deleteItem",
+                method: 'POST',
+                data: {
+                    id: id,
+                },
+                success: function (response) {
 
-                    alert('Произошла ошибка: ' + response);
+                    if (response !== 'true') {
 
-                }else{
-                    $('[data-id='+id+']').remove();
-                }
-            },
-        });
+                        alert('Произошла ошибка: ' + response);
+
+                    } else {
+                        $('[data-id=' + id + ']').remove();
+                    }
+                },
+            });
+        }
     }
 </script>
 <!-- Start: Topbar -->
