@@ -43,6 +43,10 @@ ol, ul, li { list-style: none; }
 a 		{ color: #686868; text-decoration: none; }
 a:hover { color: #fff; text-decoration: underline;}
 
+.table { display: table; }
+.table>* { display: table-row; }
+.table>*>* { display: table-cell; }
+
 
 .clearfix:before,
 .clearfix:after {

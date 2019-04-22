@@ -28,9 +28,7 @@ $clients = $this->params['clients'];
 <header id="topbar" class="alt">
     <div class="topbar-left">
         <ol class="breadcrumb">
-            <li class="crumb-active">
-                <a href="/admin/clients">Список заказчиков</a>
-            </li>
+
             <li class="crumb-icon">
                 <a href="/admin">
                     <span class="glyphicon glyphicon-home"></span>

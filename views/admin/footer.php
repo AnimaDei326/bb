@@ -65,6 +65,19 @@
 <script src="/vendor/plugins/datatables/media/js/dataTables.bootstrap.js"></script>
 
 
+<!-- Cropper Image Plugin -->
+<script src="/vendor/plugins/cropper/cropper.min.js"></script>
+
+<!-- jQuery Zoom Plugin -->
+<script src="/vendor/plugins/imagezoom/jquery.elevatezoom.min.js"></script>
+
+<!-- FileUpload Plugin -->
+<script src="/vendor/plugins/fileupload/fileupload.js"></script>
+<script src="/vendor/plugins/holder/holder.min.js"></script>
+
+
+<script src="/assets/js/demo/demo.js"></script>
+
 
 <!-- Widget Javascript -->
 <script type="text/javascript">
@@ -80,6 +93,28 @@
 
 
         $('#datatable2').dataTable({
+            "aoColumnDefs": [{
+                'bSortable': false,
+                'aTargets': [-1]
+            }],
+            "oLanguage": {
+                "oPaginate": {
+                    "sPrevious": "",
+                    "sNext": ""
+                }
+            },
+            "iDisplayLength": 10,
+            "aLengthMenu": [
+                [5, 10, 25, 50, -1],
+                [5, 10, 25, 50, "All"]
+            ],
+            "sDom": '<"dt-panelmenu clearfix"lfr>t<"dt-panelfooter clearfix"ip>',
+            "oTableTools": {
+                "sSwfPath": "vendor/plugins/datatables/extensions/TableTools/swf/copy_csv_xls_pdf.swf"
+            }
+        });
+
+        $('#datatable3').dataTable({
             "aoColumnDefs": [{
                 'bSortable': false,
                 'aTargets': [-1]

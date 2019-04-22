@@ -21981,6 +21981,10 @@ a.bg-white:hover {
 }
 /* BUTTON CONTEXTUALS
  */
+
+.btn-primary .btn-white{
+    margin-bottom: 50px;
+}
 .btn-default {
   color: #666666;
   background-color: #f0f0f0;

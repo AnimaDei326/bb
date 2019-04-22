@@ -6,6 +6,8 @@ use components\Controller;
 use models\Admin;
 use models\Client;
 use models\Service;
+use models\Project;
+
 
 class AdminController extends Controller
 {
@@ -130,6 +132,78 @@ class AdminController extends Controller
         }
     }
 
+    public function actionProjects()
+    {
+        if( Admin::helloUser() ){
+
+            self::$title = 'Проекты';
+
+            $userData = Admin::getUserDataBySessionId(session_id());
+
+            $role = Admin::getRole();
+            $userData['role'] = $role['name'];
+
+            $projects = Project::getProjectList();
+
+            echo $this->render('/admin/header', [
+                'title' => self::$title,
+                'userData' => $userData,
+            ]);
+
+            echo $this->render('/admin/projects_list', [
+                'projects' => $projects,
+            ]);
+
+            echo $this->render('/admin/footer', [
+            ]);
+
+        }else{
+            header("Location: /user/check");
+        }
+    }
+
+    public function actionProject($id)
+    {
+        if( Admin::helloUser() ){
+
+            self::$title = 'Редактирование проекта';
+
+            $userData = Admin::getUserDataBySessionId(session_id());
+
+            $role = Admin::getRole();
+            $userData['role'] = $role['name'];
+
+            $project = new Project($id);
+
+            $projectData = $project->getProject();
+
+            $doneItemsData = $project->getProjectItems($project::$doneCode);
+            $resultItemsData = $project->getProjectItems($project::$resultCode);
+
+            $clients = Client::getList();
+            $services = Service::getServicesList();
+
+            echo $this->render('/admin/header', [
+                'title' => self::$title,
+                'userData' => $userData,
+            ]);
+
+            echo $this->render('/admin/project_edit', [
+                'project' => $projectData,
+                'done' => $doneItemsData,
+                'result' => $resultItemsData,
+                'clients' => $clients,
+                'services' => $services,
+            ]);
+
+            echo $this->render('/admin/footer', [
+            ]);
+
+        }else{
+            header("Location: /user/check");
+        }
+    }
+
     public function actionClients()
     {
         if( Admin::helloUser() ){
@@ -192,6 +266,7 @@ class AdminController extends Controller
             header("Location: /user/check");
         }
     }
+
     public function actionClient_add()
     {
         if( Admin::helloUser() ){

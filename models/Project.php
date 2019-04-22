@@ -17,6 +17,8 @@ class Project
     public static $serviceTableName = 'project_items_type';
     public static $itemsTableName = 'project_items';
     public static $pdo = null;
+    public static $doneCode = 'done';
+    public static $resultCode = 'result';
 
     public $projectId;
 
@@ -29,7 +31,6 @@ class Project
     public function arrFilter($var){
         return ($var['id_Projects'] == $this->projectId);
     }
-
 
     public static function getProjectList($active = '%')
     {
@@ -85,4 +86,88 @@ class Project
             die ('ERROR: ' . $e->getMessage());
         }
     }
+
+    public function getProject(){
+
+        try {
+
+            $stmt = self::$pdo->prepare("SELECT id, sort, active, name, goal, time, id_Service, id_Clients FROM " .
+                self::$tableName ." WHERE id = ? LIMIT 1");
+
+            $stmt->bindParam(1, $this->projectId);
+
+            $stmt->execute();
+            $data = $stmt->fetchAll();
+
+            return $data;
+
+        } catch (Exception $e) {
+            die ('ERROR: ' . $e->getMessage());
+        }
+    }
+
+    public function getProjectItems($code){
+
+        try {
+
+            $stmt = self::$pdo->prepare("SELECT 
+              " . self::$itemsTableName . ".id, sort, id_Projects, id_Project_items_type,
+              " . self::$itemsTableName . ".name,
+              " . self::$serviceTableName . ".name as project_items_type_name FROM 
+              " . self::$itemsTableName . " JOIN 
+              " . self::$serviceTableName ." ON 
+              " . self::$itemsTableName .".id_Project_items_type = 
+              " . self::$serviceTableName. ".id WHERE 
+              " . self::$serviceTableName. ".code = ? and 
+              " . self::$itemsTableName. ".id_Projects = ? ORDER BY sort");
+
+            $stmt->bindParam(1, $code);
+            $stmt->bindParam(2, $this->projectId);
+
+            $stmt->execute();
+            $data = $stmt->fetchAll();
+
+            return $data;
+
+        } catch (Exception $e) {
+            die ('ERROR: ' . $e->getMessage());
+        }
+    }
+
+    public function deleteProject(){
+
+        self::$pdo = App::$app->db->getConnect();
+        try {
+
+            $stmt = self::$pdo->prepare("DELETE FROM " . self::$tableName . " WHERE id = ? LIMIT 1");
+
+            $stmt->bindParam(1,$this->projectId);
+            $result = $stmt->execute();
+
+            return $result;
+
+        } catch (Exception $e) {
+            die ('ERROR: ' . $e->getMessage());
+        }
+    }
+
+    public function changeActive($status){
+
+
+        try {
+
+            $stmt = self::$pdo->prepare("UPDATE " . self::$tableName . " SET active = ? WHERE id = ? LIMIT 1");
+
+            $stmt->bindParam(1, $status);
+            $stmt->bindParam(2, $this->projectId);
+            $result = $stmt->execute();
+
+            return $result;
+
+        } catch (Exception $e) {
+            die ('ERROR: ' . $e->getMessage());
+        }
+    }
+
+
 }

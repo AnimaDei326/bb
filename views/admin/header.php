@@ -129,7 +129,7 @@
                                 <span class="glyphicon glyphicon-book"></span> Услуги </a>
                         </li>
                         <li>
-                            <a href="admin_plugins-modals.html">
+                            <a href="/admin/projects">
                                 <span class="glyphicon glyphicon-modal-window"></span> Проекты </a>
                         </li>
                         <li>

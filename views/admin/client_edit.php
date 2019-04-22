@@ -6,7 +6,7 @@
     <div class="topbar-left">
         <ol class="breadcrumb">
             <li class="crumb-active">
-                <a href="/admin/clients">Список заказчиков</a>
+                <a href="/admin/client/<?=$client['id']?>/"><?=$client['name']?></a>
             </li>
             <li class="crumb-icon">
                 <a href="/admin">
@@ -14,7 +14,9 @@
                 </a>
             </li>
             <li class="crumb-trail">Контент</li>
-            <li class="crumb-trail">Заказчики</li>
+            <li class="crumb-trail">
+                <a href="/admin/clients">Заказчики</a>
+            </li>
             <li class="crumb-trail">Редактирование заказчика</li>
         </ol>
     </div>
@@ -39,7 +41,7 @@
                                 <label for="inputStandard" class="col-lg-3 control-label">ID</label>
                                 <div class="col-lg-8">
                                     <div class="bs-component">
-                                        <input name="id" value="<?=$client['id']?>" readonly >
+                                        <input name="id" value="<?=$client['id']?>" readonly class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -73,7 +75,7 @@
                                     <div class="panel-body">
                                         <div class="fileupload fileupload-new" data-provides="fileupload">
                                             <div class="fileupload-preview thumbnail mb20">
-                                                <img data-src="/images/<?=$client['picture']?>" alt="<?=$client['picture']?>">
+                                                <img src="/images/<?=$client['picture']?>" alt="<?=$client['picture']?>">
                                             </div>
                                             <div class="row">
                                                 <div class="col-xs-12">
@@ -105,113 +107,3 @@
 </section>
 <!-- End: Content -->
 
-
-<style>
-    /* demo page styles */
-    body { min-height: 2300px; }
-
-    .content-header b,
-    .admin-form .panel.heading-border:before,
-    .admin-form .panel .heading-border:before {
-        transition: all 0.7s ease;
-    }
-    /* responsive demo styles */
-    @media (max-width: 800px) {
-        .admin-form .panel-body { padding: 18px 12px; }
-        .option-group .option { display: block; }
-        .option-group .option + .option { margin-top: 8px; }
-    }
-</style>
-
-<!-- BEGIN: PAGE SCRIPTS -->
-
-<!-- jQuery -->
-<script src="/vendor/jquery/jquery-1.11.1.min.js"></script>
-<script src="/vendor/jquery/jquery_ui/jquery-ui.min.js"></script>
-
-<!-- HighCharts Plugin -->
-<script src="/vendor/plugins/highcharts/highcharts.js"></script>
-
-
-<!-- Theme Javascript -->
-<script src="/assets/js/utility/utility.js"></script>
-<script src="/assets/js/main.js"></script>
-
-
-
-
-<!-- Datatables -->
-<script src="/vendor/plugins/datatables/media/js/jquery.dataTables.js"></script>
-
-<!-- Datatables Tabletools addon -->
-<script src="/vendor/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
-
-<!-- Datatables ColReorder addon -->
-<script src="/vendor/plugins/datatables/extensions/ColReorder/js/dataTables.colReorder.min.js"></script>
-
-<!-- Datatables Bootstrap Modifications  -->
-<script src="/vendor/plugins/datatables/media/js/dataTables.bootstrap.js"></script>
-
-
-
-
-
-
-<!-- Cropper Image Plugin -->
-<script src="/vendor/plugins/cropper/cropper.min.js"></script>
-
-<!-- jQuery Zoom Plugin -->
-<script src="/vendor/plugins/imagezoom/jquery.elevatezoom.min.js"></script>
-
-<!-- FileUpload Plugin -->
-<script src="/vendor/plugins/fileupload/fileupload.js"></script>
-<script src="/vendor/plugins/holder/holder.min.js"></script>
-
-
-<script src="/assets/js/demo/demo.js"></script>
-
-
-
-<!-- Widget Javascript -->
-<script type="text/javascript">
-
-
-    jQuery(document).ready(function() {
-
-        "use strict";
-
-        // Init Theme Core
-        Core.init();
-
-
-
-
-
-
-        $('#datatable2').dataTable({
-            "aoColumnDefs": [{
-                'bSortable': false,
-                'aTargets': [-1]
-            }],
-            "oLanguage": {
-                "oPaginate": {
-                    "sPrevious": "",
-                    "sNext": ""
-                }
-            },
-            "iDisplayLength": 10,
-            "aLengthMenu": [
-                [5, 10, 25, 50, -1],
-                [5, 10, 25, 50, "All"]
-            ],
-            "sDom": '<"dt-panelmenu clearfix"lfr>t<"dt-panelfooter clearfix"ip>',
-            "oTableTools": {
-                "sSwfPath": "/vendor/plugins/datatables/extensions/TableTools/swf/copy_csv_xls_pdf.swf"
-            }
-        });
-
-
-
-    });
-</script>
-<!-- END: PAGE SCRIPTS -->

@@ -10,9 +10,6 @@ use components\App;
 class ServiceController extends Controller
 {
 
-
-
-
     public function actionEdit()
     {
         if( Admin::helloUser() ){
@@ -32,6 +29,26 @@ class ServiceController extends Controller
 
             foreach ($items as $id => $itemArr){
                 Service::updateItem($id, $itemArr['sort'], 'Y', $itemArr['name']);
+            }
+
+            $newItems = [];
+            foreach ($params as $key=>$value){
+                if( $itemId = strstr($key, '_new_item_name', true)){
+                    $newItems[$itemId]['name'] = $value;
+                }
+                if( $itemId = strstr($key, '_new_item_sort', true)){
+                    $newItems[$itemId]['sort'] = $value;
+                    $newItems[$itemId]['active'] = 'N';
+                }
+                if( $itemId = strstr($key, '_new_item_active', true)){
+                    $newItems[$itemId]['active'] = 'Y';
+                }
+            }
+
+            foreach ($newItems as $id => $itemArr){
+                if($itemArr['name']){
+                    Service::addItem($params['id'], $itemArr['sort'], $itemArr['active'], $itemArr['name']);
+                }
             }
 
             $service = new Service($params['id']);
