@@ -84,15 +84,7 @@ class ServiceController extends Controller
             $app = App::$app;
             $params = $app->request->getAllParams();
 
-            $items = [];
-            foreach ($params as $key=>$value){
-                if( $itemId = strstr($key, '_item_name', true)){
-                    $items[$itemId]['name'] = $value;
-                }
-                if( $itemId = strstr($key, '_item_sort', true)){
-                    $items[$itemId]['sort'] = $value;
-                }
-            }
+
             $data = [];
 
             if( $params['active']){
@@ -109,9 +101,27 @@ class ServiceController extends Controller
             $serviceId = Service::addService($data);
 
             if($serviceId){
-                foreach ($items as $id => $itemArr){
-                    Service::AddItem($serviceId, $itemArr['sort'], 'Y', $itemArr['name']);
+
+                $newItems = [];
+                foreach ($params as $key=>$value){
+                    if( $itemId = strstr($key, '_item_new_name', true)){
+                        $newItems[$itemId]['name'] = $value;
+                    }
+                    if( $itemId = strstr($key, '_item_new_sort', true)){
+                        $newItems[$itemId]['sort'] = $value;
+                        $newItems[$itemId]['active'] = 'N';
+                    }
+                    if( $itemId = strstr($key, '_item_new_active', true)){
+                        $newItems[$itemId]['active'] = 'Y';
+                    }
                 }
+
+                foreach ($newItems as $id => $itemArr){
+                    if($itemArr['name']){
+                        Service::addItem($serviceId, $itemArr['sort'], $itemArr['active'], $itemArr['name']);
+                    }
+                }
+
                 header("Location: /admin/services");
             }
             else{

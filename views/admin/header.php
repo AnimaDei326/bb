@@ -137,7 +137,7 @@
                                 <span class="glyphicon glyphicon-calendar"></span> Заказчики </a>
                         </li>
                         <li>
-                            <a href="admin_plugins-dock.html">
+                            <a href="/admin/teams">
                                 <span class="glyphicon glyphicon-equalizer"></span> Команда </a>
                         </li>
                         <li>

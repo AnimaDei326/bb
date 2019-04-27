@@ -1,22 +1,66 @@
+<script>
+    countNewItems = 1;
+    function deleteNewItem(id) {
 
+        if (confirm('Вы уверены, что хотите удалить пункт?')) {
+            if(countNewItems === 1){
+                addItem();
+            }
+            $('[data-id=' + id + ']').remove();
+            countNewItems--;
+        }
+    }
+
+    function addItem(){
+        let numbers = $("#items tr").map(function(){
+            return parseFloat(this.getAttribute('data-id')) || -Infinity;
+        }).toArray();
+        let max = Math.max.apply(Math, numbers);
+        let newId = max + 1;
+        let itemName = newId + '_item_new_name';
+        let itemSort = newId + '_item_new_sort';
+        let itemActive = newId + '_item_new_active';
+
+        let tr = "<tr data-id=\""+newId+"\">" +
+            "<td class=\"col-md-5 col-sm-4 col-xs-3\"><input name=\""+itemName+"\" class='form-control'></td>" +
+            "<td class=\"col-md-5 col-sm-4 col-xs-3\"><input name=\""+itemSort+"\" class='form-control' value=\"100\" type=\"number\"></td>" +
+            "<td>" +
+            "<div class=\"admin-form\"><label class=\"switch block mt15\">" +
+            "<input type=\"checkbox\" name=\""+itemActive+"\" id=\""+newId+"\" checked>" +
+            "<label for=\""+newId+"\" data-on=\"Да\" data-off=\"Нет\"></label>" +
+            "</label></div>" +
+            "</td>" +
+            "<td class=\"text-right\">" +
+            "<div class=\"bs-component\">" +
+            "<div class=\"btn-group\">" +
+            "<span class=\"glyphicons glyphicons-pencil\"></span>" +
+            "<button onclick=\"deleteNewItem('"+newId+"')\" type=\"button\" class=\"btn btn-danger dark\">" +
+            "<i class=\"fa fa-delete\">✗</i>" +
+            "</button>" +
+            "</div>" +
+            "</div>" +
+            "</td>" +
+            "</tr>"
+        $('#items tr:last').after(tr);
+        countNewItems++;
+    }
+</script>
 
     <!-- Start: Topbar -->
     <header id="topbar" class="alt">
         <div class="topbar-left">
             <ol class="breadcrumb">
                 <li class="crumb-active">
-                    <a href="dashboard.html">Добавление услуги</a>
+                    <a href="/admin/service_add">Добавление услуги</a>
                 </li>
                 <li class="crumb-icon">
-                    <a href="dashboard.html">
+                    <a href="/admin">
                         <span class="glyphicon glyphicon-home"></span>
                     </a>
                 </li>
-                <li class="crumb-link">
-                    <a href="index.html">Контент</a>
-                </li>
+                <li class="crumb-link">Контент</li>
                 <li class="crumb-trail">
-                    <a href="index.html">Услуги</a>
+                    <a href="/admin/services">Услуги</a>
                 </li>
                 <li class="crumb-trail">
                     Добавление услуги
@@ -80,7 +124,7 @@
                                 <label for="inputStandard" class="col-lg-3 control-label">Название</label>
                                 <div class="col-lg-8">
                                     <div class="bs-component">
-                                        <input name="name" type="text" id="inputStandard" class="form-control" value="">
+                                        <input name="name" type="text" id="inputStandard" class="form-control" required>
                                     </div>
                                 </div>
                             </div>
@@ -130,62 +174,63 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+
+                            <div class="col-md-12">
+                                <div class="panel panel-visible" id="spy2">
+                                    <div class="panel-heading">
+                                        <div class="panel-title hidden-xs">
+                                            <span class="glyphicon glyphicon-tasks"></span>Пункты</div>
+                                    </div>
+                                    <div class="panel-body pn">
+                                        <table id="datatable2" class="table table-striped table-hover" cellspacing="0" width="100%">
+                                            <thead>
+                                            <tr>
+                                                <th>Название</th>
+                                                <th>Сортировка</th>
+                                                <th>Активность</th>
+                                                <th class="text-right">Удалить</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="items">
+                                            <tr data-id="1">
+                                                <td class="col-md-5 col-sm-4 col-xs-3"><input class="form-control" name="1_item_new_name"></td>
+                                                <td class="col-md-5 col-sm-4 col-xs-3"><input class="form-control" name="1_item_new_sort" value="100" type="number"></td>
+                                                <td>
+                                                    <div class="admin-form">
+                                                        <label class="switch block mt15">
+                                                            <input type="checkbox" name="1_item_new_active" id="1" checked>
+                                                            <label for="1" data-on="Да" data-off="Нет"></label>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-right">
+                                                    <div class="bs-component">
+                                                        <div class="btn-group">
+                                                            <span class="glyphicons glyphicons-pencil"></span>
+                                                            <button onclick="deleteNewItem('1')" type="button" class="btn btn-danger dark">
+                                                                <i class="fa fa-delete">✗</i>
+                                                                <!-- Удалить -->
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary" onclick="addItem()" type="button">Добавить пункт</button>
+                            </div>
+
+                            <div class="col-sm-12 col-sm-offset-5">
+                                <button class="btn btn-white" type="reset">Сбросить</button>
+                                <button class="btn btn-primary" type="submit">Сохранить</button>
+                            </div>
+                        </form>
+
                     </div>
                 </div>
-
-
-                <div class="col-md-12">
-
-                    <div class="panel panel-visible" id="spy2">
-                        <div class="panel-heading">
-                            <div class="panel-title hidden-xs">
-                                <span class="glyphicon glyphicon-tasks"></span>Пункты</div>
-                        </div>
-                        <div class="panel-body pn">
-<!--                            <table class="table table-striped table-hover" id="datatable2" cellspacing="0" width="100%">-->
-<!--                                <thead>-->
-<!--                                <tr>-->
-<!--                                    <th>Название</th>-->
-<!--                                    <th>Сортировка</th>-->
-<!--                                </tr>-->
-<!--                                </thead>-->
-<!--                                <tbody>-->
-
-                                    <tr>
-                                        <td class="col-md-5 col-sm-4 col-xs-3"><input name="1_item_name"></td>
-                                        <td class="col-md-5 col-sm-4 col-xs-3"><input name="1_item_sort" type="number"></td>
-
-                                    </tr>
-<!--                                </tbody>-->
-<!--                            </table>-->
-                        </div>
-                    </div>
-
-                        Нужно добавить кнопку "Добавить пункт", при нажатии на которую появляется еще один инпут
-
-                </div>
-
-                <div class="col-sm-12 col-sm-offset-5">
-                    <button class="btn btn-white" type="reset">Сбросить</button>
-                    <button class="btn btn-primary" type="submit">Сохранить</button>
-                </div>
-            </form>
+            </div>
         </div>
-        <!-- end: .tray-center -->
-        <style>
-            /* demo page styles */
-            body { min-height: 2300px; }
 
-            .content-header b,
-            .admin-form .panel.heading-border:before,
-            .admin-form .panel .heading-border:before {
-                transition: all 0.7s ease;
-            }
-            /* responsive demo styles */
-            @media (max-width: 800px) {
-                .admin-form .panel-body { padding: 18px 12px; }
-                .option-group .option { display: block; }
-                .option-group .option + .option { margin-top: 8px; }
-            }
-        </style>
+        <!-- end: .tray-center -->

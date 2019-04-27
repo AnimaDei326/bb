@@ -206,7 +206,7 @@
                                 <label for="inputStandard" class="col-lg-3 control-label">Название</label>
                                 <div class="col-lg-8">
                                     <div class="bs-component">
-                                        <input type="text" name="name" class="form-control" value="<?=$service['name']?>">
+                                        <input required type="text" name="name" class="form-control" value="<?=$service['name']?>">
                                     </div>
                                 </div>
                             </div>
@@ -260,86 +260,82 @@
 
 
                             <div class="col-md-12">
-
-
-                                    <div class="panel panel-visible" id="spy2">
-                                <div class="panel-heading">
-                                    <div class="panel-title hidden-xs">
-                                        <span class="glyphicon glyphicon-tasks"></span>Пункты</div>
-                                </div>
-                                <div class="panel-body pn">
-                                    <table id="datatable2" class="table table-striped table-hover" cellspacing="0" width="100%">
-                                        <thead>
-                                        <tr>
-                                            <th>Название</th>
-                                            <th>Сортировка</th>
-                                            <th>Активность</th>
-                                            <th class="text-right">Удалить</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody id="items">
-                                            <?if($items):?>
-                                                <? foreach ($items as $item):?>
-                                                    <tr data-id="<?=$item['id']?>">
-                                                        <td class="col-md-5 col-sm-4 col-xs-3"><input class="form-control" name="<?=$item['id']?>_item_name" value="<?=$item['name']?>" style="width: 100%"></td>
-                                                        <td class="col-md-5 col-sm-4 col-xs-3"><input class="form-control" name="<?=$item['id']?>_item_sort" value="<?=$item['sort']?>" type="number"></td>
-                                                        <td>
-                                                            <div class="admin-form">
-                                                                <label class="switch block mt15">
-                                                                    <input onChange="changeItemActive('<?=$item['id']?>', this.checked )" type="checkbox" name="tools" id="<?='item_'.$item['id']?>" <? echo ($item['active'] == 'Y') ? 'checked' : '' ;?>>
-                                                                    <label for="<?='item_'.$item['id']?>" data-on="Да" data-off="Нет"></label>
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                        <td class="text-right">
-                                                            <div class="bs-component">
-                                                                <div class="btn-group">
-                                                                    <span class="glyphicons glyphicons-pencil"></span>
-                                                                    <button onclick="deleteItem('<?=$item['id']?>')" type="button" class="btn btn-danger dark">
-                                                                        <i class="fa fa-delete">✗</i>
-                                                                        <!-- Удалить -->
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                <?endforeach;?>
-                                            <?endif;?>
-                                            <tr data-id="1">
-                                                <td class="col-md-5 col-sm-4 col-xs-3"><input class="form-control" name="1_item_new_name"></td>
-                                                <td class="col-md-5 col-sm-4 col-xs-3"><input class="form-control" name="1_item_new_sort" value="100" type="number"></td>
-                                                <td>
-                                                    <div class="admin-form">
-                                                        <label class="switch block mt15">
-                                                            <input type="checkbox" name="1_item_new_active" id="1" checked>
-                                                            <label for="1" data-on="Да" data-off="Нет"></label>
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                                <td class="text-right">
-                                                    <div class="bs-component">
-                                                        <div class="btn-group">
-                                                            <span class="glyphicons glyphicons-pencil"></span>
-                                                            <button onclick="deleteNewItem('1')" type="button" class="btn btn-danger dark">
-                                                                <i class="fa fa-delete">✗</i>
-                                                                <!-- Удалить -->
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </td>
+                                <div class="panel panel-visible" id="spy2">
+                                    <div class="panel-heading">
+                                        <div class="panel-title hidden-xs">
+                                            <span class="glyphicon glyphicon-tasks"></span>Пункты</div>
+                                    </div>
+                                    <div class="panel-body pn">
+                                        <table id="datatable2" class="table table-striped table-hover" cellspacing="0" width="100%">
+                                            <thead>
+                                            <tr>
+                                                <th>Название</th>
+                                                <th>Сортировка</th>
+                                                <th>Активность</th>
+                                                <th class="text-right">Удалить</th>
                                             </tr>
-                                        </tbody>
-                                    </table>
-
+                                            </thead>
+                                            <tbody id="items">
+                                                <?if($items):?>
+                                                    <? foreach ($items as $item):?>
+                                                        <tr data-id="<?=$item['id']?>">
+                                                            <td class="col-md-5 col-sm-4 col-xs-3"><input class="form-control" name="<?=$item['id']?>_item_name" value="<?=$item['name']?>" style="width: 100%"></td>
+                                                            <td class="col-md-5 col-sm-4 col-xs-3"><input class="form-control" name="<?=$item['id']?>_item_sort" value="<?=$item['sort']?>" type="number"></td>
+                                                            <td>
+                                                                <div class="admin-form">
+                                                                    <label class="switch block mt15">
+                                                                        <input onChange="changeItemActive('<?=$item['id']?>', this.checked )" type="checkbox" name="tools" id="<?='item_'.$item['id']?>" <? echo ($item['active'] == 'Y') ? 'checked' : '' ;?>>
+                                                                        <label for="<?='item_'.$item['id']?>" data-on="Да" data-off="Нет"></label>
+                                                                    </label>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-right">
+                                                                <div class="bs-component">
+                                                                    <div class="btn-group">
+                                                                        <span class="glyphicons glyphicons-pencil"></span>
+                                                                        <button onclick="deleteItem('<?=$item['id']?>')" type="button" class="btn btn-danger dark">
+                                                                            <i class="fa fa-delete">✗</i>
+                                                                            <!-- Удалить -->
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    <?endforeach;?>
+                                                <?endif;?>
+                                                <tr data-id="1">
+                                                    <td class="col-md-5 col-sm-4 col-xs-3"><input class="form-control" name="1_item_new_name"></td>
+                                                    <td class="col-md-5 col-sm-4 col-xs-3"><input class="form-control" name="1_item_new_sort" value="100" type="number"></td>
+                                                    <td>
+                                                        <div class="admin-form">
+                                                            <label class="switch block mt15">
+                                                                <input type="checkbox" name="1_item_new_active" id="1" checked>
+                                                                <label for="1" data-on="Да" data-off="Нет"></label>
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <div class="bs-component">
+                                                            <div class="btn-group">
+                                                                <span class="glyphicons glyphicons-pencil"></span>
+                                                                <button onclick="deleteNewItem('1')" type="button" class="btn btn-danger dark">
+                                                                    <i class="fa fa-delete">✗</i>
+                                                                    <!-- Удалить -->
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
-                            </div>
-                                <button class="btn btn-primary" onclick="addItem()" type="button">Добавить пункт</button>
+                                    <button class="btn btn-primary" onclick="addItem()" type="button">Добавить пункт</button>
                              </div>
-
                             <div class="col-sm-12 col-sm-offset-5">
-                    <button class="btn btn-white" type="reset">Сбросить</button>
-                    <button class="btn btn-primary" type="submit">Сохранить</button>
-                </div>
+                                <button class="btn btn-white" type="reset">Сбросить</button>
+                                <button class="btn btn-primary" type="submit">Сохранить</button>
+                            </div>
                         </form>
                     </div>
                 </div>

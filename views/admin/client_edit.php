@@ -54,7 +54,7 @@
                                 <label for="inputStandard" class="col-lg-3 control-label">Название</label>
                                 <div class="col-lg-8">
                                     <div class="bs-component">
-                                        <input type="text" name="name" class="form-control" value="<?=$client['name']?>">
+                                        <input required type="text" name="name" class="form-control" value="<?=$client['name']?>">
                                     </div>
                                 </div>
                             </div>

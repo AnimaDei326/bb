@@ -204,6 +204,38 @@ class AdminController extends Controller
         }
     }
 
+    public function actionProject_add()
+    {
+        if( Admin::helloUser() ){
+
+            self::$title = 'Новый проект';
+
+            $userData = Admin::getUserDataBySessionId(session_id());
+
+            $role = Admin::getRole();
+            $userData['role'] = $role['name'];
+
+            $clients = Client::getList();
+            $services = Service::getServicesList();
+
+            echo $this->render('/admin/header', [
+                'title' => self::$title,
+                'userData' => $userData,
+            ]);
+
+            echo $this->render('/admin/project_add', [
+                'clients' => $clients,
+                'services' => $services,
+            ]);
+
+            echo $this->render('/admin/footer', [
+            ]);
+
+        }else{
+            header("Location: /user/check");
+        }
+    }
+
     public function actionClients()
     {
         if( Admin::helloUser() ){

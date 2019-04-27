@@ -54,7 +54,7 @@
                             <label for="inputStandard" class="col-lg-3 control-label">Название</label>
                             <div class="col-lg-8">
                                 <div class="bs-component">
-                                    <input name="name" type="text" id="inputStandard" class="form-control" value="">
+                                    <input name="name" type="text" id="inputStandard" class="form-control" required>
                                 </div>
                             </div>
                         </div>

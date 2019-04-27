@@ -43,7 +43,7 @@
         if (confirm('Вы уверены, что хотите удалить пункт?')) {
 
             $.ajax({
-                url: "/service/deleteItem",
+                url: "/project/deleteItem",
                 method: 'POST',
                 data: {
                     id: id,
@@ -223,7 +223,7 @@
                                     <label for="inputStandard" class="col-lg-3 control-label">Название</label>
                                     <div class="col-lg-8">
                                         <div class="bs-component">
-                                            <input type="text" name="name" class="form-control" value="<?=$project['name']?>">
+                                            <input type="text" name="name" required class="form-control" value="<?=$project['name']?>">
                                         </div>
                                     </div>
                                 </div>

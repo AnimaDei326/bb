@@ -67,6 +67,37 @@ class Project
         }
     }
 
+    public static function addProject($data){
+
+        try {
+
+            self::$pdo = App::$app->db->getConnect();
+
+            $stmt = self::$pdo->prepare("INSERT INTO " . self::$tableName ." 
+             (sort, active, name, goal, time, id_Service, id_Clients) VALUES 
+            (?, ?, ?, ?, ?, ?, ?)");
+
+            $stmt->bindParam(1, $data['sort']);
+            $stmt->bindParam(2, $data['active']);
+            $stmt->bindParam(3, $data['name']);
+            $stmt->bindParam(4, $data['goal']);
+            $stmt->bindParam(5, $data['time']);
+            $stmt->bindParam(6, $data['service']);
+            $stmt->bindParam(7, $data['client']);
+
+            $result = $stmt->execute();
+            $projectId = false;
+
+            if($result){
+                $projectId = self::$pdo->lastInsertId();
+            }
+            return $projectId;
+
+        } catch (Exception $e) {
+            die ('ERROR: ' . $e->getMessage());
+        }
+    }
+
     public static function getProjectList($active = '%')
     {
         self::$pdo = App::$app->db->getConnect();
@@ -236,6 +267,22 @@ class Project
             $stmt->bindParam(1, $sort);
             $stmt->bindParam(2, $name);
             $stmt->bindParam(3, $id);
+            $result = $stmt->execute();
+
+            return $result;
+
+        } catch (Exception $e) {
+            die ('ERROR: ' . $e->getMessage());
+        }
+    }
+    public static function deleteItem($id){
+
+        self::$pdo = App::$app->db->getConnect();
+        try {
+
+            $stmt = self::$pdo->prepare("DELETE FROM " . self::$itemsTableName . " WHERE id = ? LIMIT 1");
+
+            $stmt->bindParam(1, $id);
             $result = $stmt->execute();
 
             return $result;

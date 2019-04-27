@@ -55,6 +55,74 @@ class ProjectController extends Controller
         }
     }
 
+    public function actionAdd()
+    {
+        if( Admin::helloUser() ){
+
+            $app = App::$app;
+            $params = $app->request->getAllParams();
+
+
+            $data['name'] = $params['name'];
+            $data['sort'] = $params['sort'];
+            $data['active'] = $params['active'];
+            $data['service'] = $params['service'];
+            $data['client'] = $params['client'];
+            if($data['active']){
+                $data['active'] = 'Y';
+            }else{
+                $data['active'] = 'N';
+            }
+
+            $data['goal'] = $params['goal'];
+            $data['time'] = $params['time'];
+
+            $projectId = Project::addProject($data);
+
+            if($projectId){
+
+                $newItemsDone = [];
+                $newItemsResult = [];
+                foreach ($params as $key=>$value){
+                    if( $itemId = strstr($key, '_item_new_done_name', true)){
+                        $newItemsDone[$itemId]['name'] = $value;
+                    }
+                    elseif( $itemId = strstr($key, '_item_new_done_sort', true)){
+                        $newItemsDone[$itemId]['sort'] = $value;
+                    }
+                    elseif( $itemId = strstr($key, '_item_new_result_name', true)){
+                        $newItemsResult[$itemId]['name'] = $value;
+                    }
+                    elseif( $itemId = strstr($key, '_item_new_result_sort', true)){
+                        $newItemsResult[$itemId]['sort'] = $value;
+                    }
+                }
+
+                foreach ($newItemsDone as $id => $itemArr){
+                    if($itemArr['name']) {
+                        Project::addItem($projectId, 1, $itemArr['sort'], $itemArr['name']);
+                    }
+                }
+
+                foreach ($newItemsResult as $id => $itemArr){
+                    if($itemArr['name']) {
+                        Project::addItem($projectId, 2, $itemArr['sort'], $itemArr['name']);
+                    }
+                }
+
+                header("Location: /admin/projects");
+            }
+            else{
+                var_dump($projectId);
+            }
+
+
+
+        }else{
+            header("Location: /user/check");
+        }
+    }
+
     public function actionEdit()
     {
         if( Admin::helloUser() ){
@@ -134,6 +202,24 @@ class ProjectController extends Controller
                 header("Location: /admin/projects");
             }else{
                 header("Location: /admin/project/".$project->projectId."/");
+            }
+
+        }else{
+            header("Location: /user/check");
+        }
+    }
+
+    public function actionDeleteItem()
+    {
+        if( Admin::helloUser() ){
+
+            $app = App::$app;
+            $id = $app->request->getParam('id');
+            $result = Project::deleteItem($id);
+            if($result){
+                echo 'true';
+            }else{
+                echo $result;
             }
 
         }else{
