@@ -103,9 +103,9 @@
         }).toArray();
         let max = Math.max.apply(Math, numbers);
         let newId = max + 1;
-        let itemName = newId + '_new_item_name';
-        let itemSort = newId + '_new_item_sort';
-        let itemActive = newId + '_new_item_active';
+        let itemName = newId + '_item_new_name';
+        let itemSort = newId + '_item_new_sort';
+        let itemActive = newId + '_item_new_active';
 
         let tr = "<tr data-id=\""+newId+"\">" +
             "<td class=\"col-md-5 col-sm-4 col-xs-3\"><input name=\""+itemName+"\" class='form-control'></td>" +
@@ -306,12 +306,12 @@
                                                 <?endforeach;?>
                                             <?endif;?>
                                             <tr data-id="1">
-                                                <td class="col-md-5 col-sm-4 col-xs-3"><input class="form-control" name="1_item_name"></td>
-                                                <td class="col-md-5 col-sm-4 col-xs-3"><input class="form-control" name="1_item_sort" value="100" type="number"></td>
+                                                <td class="col-md-5 col-sm-4 col-xs-3"><input class="form-control" name="1_item_new_name"></td>
+                                                <td class="col-md-5 col-sm-4 col-xs-3"><input class="form-control" name="1_item_new_sort" value="100" type="number"></td>
                                                 <td>
                                                     <div class="admin-form">
                                                         <label class="switch block mt15">
-                                                            <input type="checkbox" name="tools" id="1" checked>
+                                                            <input type="checkbox" name="1_item_new_active" id="1" checked>
                                                             <label for="1" data-on="Да" data-off="Нет"></label>
                                                         </label>
                                                     </div>

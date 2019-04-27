@@ -33,14 +33,14 @@ class ServiceController extends Controller
 
             $newItems = [];
             foreach ($params as $key=>$value){
-                if( $itemId = strstr($key, '_new_item_name', true)){
+                if( $itemId = strstr($key, '_item_new_name', true)){
                     $newItems[$itemId]['name'] = $value;
                 }
-                if( $itemId = strstr($key, '_new_item_sort', true)){
+                if( $itemId = strstr($key, '_item_new_sort', true)){
                     $newItems[$itemId]['sort'] = $value;
                     $newItems[$itemId]['active'] = 'N';
                 }
-                if( $itemId = strstr($key, '_new_item_active', true)){
+                if( $itemId = strstr($key, '_item_new_active', true)){
                     $newItems[$itemId]['active'] = 'Y';
                 }
             }

@@ -62,58 +62,78 @@ class ProjectController extends Controller
             $app = App::$app;
             $params = $app->request->getAllParams();
 
-//            $items = [];
-//            foreach ($params as $key=>$value){
-//                if( $itemId = strstr($key, '_item_name', true)){
-//                    $items[$itemId]['name'] = $value;
-//                }
-//                if( $itemId = strstr($key, '_item_sort', true)){
-//                    $items[$itemId]['sort'] = $value;
-//                }
-//            }
-//
-//            foreach ($items as $id => $itemArr){
-//                Project::updateItem($id, $itemArr['sort'], 'Y', $itemArr['name']);
-//            }
-//
-//            $newItems = [];
-//            foreach ($params as $key=>$value){
-//                if( $itemId = strstr($key, '_new_item_name', true)){
-//                    $newItems[$itemId]['name'] = $value;
-//                }
-//                if( $itemId = strstr($key, '_new_item_sort', true)){
-//                    $newItems[$itemId]['sort'] = $value;
-//                    $newItems[$itemId]['active'] = 'N';
-//                }
-//                if( $itemId = strstr($key, '_new_item_active', true)){
-//                    $newItems[$itemId]['active'] = 'Y';
-//                }
-//            }
-//
-//            foreach ($newItems as $id => $itemArr){
-//                if($itemArr['name']){
-//                    Service::addItem($params['id'], $itemArr['sort'], $itemArr['active'], $itemArr['name']);
-//                }
-//            }
+            $itemsDone = [];
+            $itemsResult = [];
+            $newItemsDone = [];
+            $newItemsResult = [];
+
+            foreach ($params as $key=>$value){
+                if( $itemId = strstr($key, '_item_done_name', true)){
+                    $itemsDone[$itemId]['name'] = $value;
+                }
+                elseif( $itemId = strstr($key, '_item_done_sort', true)){
+                    $itemsDone[$itemId]['sort'] = $value;
+                }
+                elseif( $itemId = strstr($key, '_item_result_name', true)){
+                    $itemsResult[$itemId]['name'] = $value;
+                }
+                elseif( $itemId = strstr($key, '_item_result_sort', true)){
+                    $itemsResult[$itemId]['sort'] = $value;
+                }
+                elseif( $itemId = strstr($key, '_item_new_done_name', true)){
+                    $newItemsDone[$itemId]['name'] = $value;
+                }
+                elseif( $itemId = strstr($key, '_item_new_done_sort', true)){
+                    $newItemsDone[$itemId]['sort'] = $value;
+                }
+                elseif( $itemId = strstr($key, '_item_new_result_name', true)){
+                    $newItemsResult[$itemId]['name'] = $value;
+                }
+                elseif( $itemId = strstr($key, '_item_new_result_sort', true)){
+                    $newItemsResult[$itemId]['sort'] = $value;
+                }
+            }
+
+            foreach ($itemsDone as $id => $itemArr){
+                Project::updateItem($id, $itemArr['sort'],  $itemArr['name']);
+            }
+
+            foreach ($itemsResult as $id => $itemArr){
+                Project::updateItem($id, $itemArr['sort'],  $itemArr['name']);
+            }
+
+            foreach ($newItemsDone as $id => $itemArr){
+                if($itemArr['name']) {
+                    Project::addItem($params['id'], 1, $itemArr['sort'], $itemArr['name']);
+                }
+            }
+
+            foreach ($newItemsResult as $id => $itemArr){
+                if($itemArr['name']) {
+                    Project::addItem($params['id'], 2, $itemArr['sort'], $itemArr['name']);
+                }
+            }
 
             $project = new Project($params['id']);
             $project->name = $params['name'];
             $project->sort = $params['sort'];
             $project->active = $params['active'];
+            $project->serviceId = $params['service'];
+            $project->clientId = $params['client'];
             if($project->active){
                 $project->active = 'Y';
             }else{
                 $project->active = 'N';
             }
 
-            $service->title = $params['title'];
-            $service->subtitle = $params['subtitle'];
-            $res = $service->updateService();
+            $project->goal = $params['goal'];
+            $project->time = $params['time'];
+            $res = $project->updateProject();
 
             if($res){
-                header("Location: /admin/services");
+                header("Location: /admin/projects");
             }else{
-                header("Location: /admin/service/".$service->serviceId."/");
+                header("Location: /admin/project/".$project->projectId."/");
             }
 
         }else{

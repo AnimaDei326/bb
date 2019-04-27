@@ -20,6 +20,15 @@ class Project
     public static $doneCode = 'done';
     public static $resultCode = 'result';
 
+    public $active;
+    public $sort;
+    public $name;
+    public $goal;
+    public $time;
+    public $serviceId;
+    public $clientId;
+
+
     public $projectId;
 
     public function __construct($projectId)
@@ -30,6 +39,32 @@ class Project
 
     public function arrFilter($var){
         return ($var['id_Projects'] == $this->projectId);
+    }
+
+    public function updateProject(){
+
+        try {
+
+            $stmt = self::$pdo->prepare("UPDATE " . self::$tableName ." SET 
+            sort = ? , active = ?, name = ?, goal = ?, time = ?, id_Service = ?, id_Clients = ? 
+             WHERE id = ? LIMIT 1");
+
+            $stmt->bindParam(1, $this->sort);
+            $stmt->bindParam(2, $this->active);
+            $stmt->bindParam(3, $this->name);
+            $stmt->bindParam(4, $this->goal);
+            $stmt->bindParam(5, $this->time);
+            $stmt->bindParam(6, $this->serviceId);
+            $stmt->bindParam(7, $this->clientId);
+            $stmt->bindParam(8, $this->projectId);
+
+            $result = $stmt->execute();
+
+            return $result;
+
+        } catch (Exception $e) {
+            die ('ERROR: ' . $e->getMessage());
+        }
     }
 
     public static function getProjectList($active = '%')
@@ -169,5 +204,45 @@ class Project
         }
     }
 
+    public static function addItem($projectId, $idProjectItemsType, $sort, $name){
+
+        self::$pdo = App::$app->db->getConnect();
+        try {
+
+            $stmt = self::$pdo->prepare("INSERT INTO " . self::$itemsTableName .
+                " (sort, name, id_Project_items_type, id_Projects) VALUES (?, ?, ?, ?)");
+
+            $stmt->bindParam(1, $sort);
+            $stmt->bindParam(2, $name);
+            $stmt->bindParam(3, $idProjectItemsType);
+            $stmt->bindParam(4, $projectId);
+            $result = $stmt->execute();
+
+            return $result;
+
+        } catch (Exception $e) {
+            die ('ERROR: ' . $e->getMessage());
+        }
+    }
+
+    public static function updateItem($id, $sort, $name){
+
+        self::$pdo = App::$app->db->getConnect();
+        try {
+
+            $stmt = self::$pdo->prepare("UPDATE " . self::$itemsTableName . " SET sort = ?, name = ? WHERE id = ? LIMIT 1");
+
+
+            $stmt->bindParam(1, $sort);
+            $stmt->bindParam(2, $name);
+            $stmt->bindParam(3, $id);
+            $result = $stmt->execute();
+
+            return $result;
+
+        } catch (Exception $e) {
+            die ('ERROR: ' . $e->getMessage());
+        }
+    }
 
 }
