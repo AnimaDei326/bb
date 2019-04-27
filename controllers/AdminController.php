@@ -7,6 +7,7 @@ use models\Admin;
 use models\Client;
 use models\Service;
 use models\Project;
+use models\Worker;
 
 
 class AdminController extends Controller
@@ -316,6 +317,100 @@ class AdminController extends Controller
             ]);
 
             echo $this->render('/admin/client_add', [
+            ]);
+
+            echo $this->render('/admin/footer', [
+            ]);
+
+        }else{
+            header("Location: /user/check");
+        }
+    }
+
+    public function actionWorkers()
+    {
+        if( Admin::helloUser() ){
+
+            self::$title = 'Работники';
+
+            $userData = Admin::getUserDataBySessionId(session_id());
+
+            $role = Admin::getRole();
+            $userData['role'] = $role['name'];
+
+            $workers = Worker::getTeamList('%');
+
+            echo $this->render('/admin/header', [
+                'title' => self::$title,
+                'userData' => $userData,
+            ]);
+
+            echo $this->render('/admin/workers_list', [
+                'workers' => $workers,
+            ]);
+
+            echo $this->render('/admin/footer', [
+            ]);
+
+        }else{
+            header("Location: /user/check");
+        }
+    }
+
+    public function actionWorker($id)
+    {
+        if( Admin::helloUser() ){
+
+            self::$title = 'Редактирование работника';
+
+            $userData = Admin::getUserDataBySessionId(session_id());
+
+            $role = Admin::getRole();
+            $userData['role'] = $role['name'];
+
+            $worker = new Worker($id);
+            $workerData = $worker->getWorker();
+            $positions = Worker::getPositions();
+
+            echo $this->render('/admin/header', [
+                'title' => self::$title,
+                'userData' => $userData,
+            ]);
+
+            echo $this->render('/admin/worker_edit', [
+                'worker' => $workerData,
+                'positions' => $positions,
+            ]);
+
+            echo $this->render('/admin/footer', [
+            ]);
+
+        }else{
+            header("Location: /user/check");
+        }
+    }
+
+    public function actionWorker_add()
+    {
+        if( Admin::helloUser() ){
+
+            self::$title = 'Новый работник';
+
+            $userData = Admin::getUserDataBySessionId(session_id());
+
+            $role = Admin::getRole();
+            $userData['role'] = $role['name'];
+
+
+            $positions = Worker::getPositions();
+
+            echo $this->render('/admin/header', [
+                'title' => self::$title,
+                'userData' => $userData,
+            ]);
+
+            echo $this->render('/admin/worker_add', [
+                'positions' => $positions,
             ]);
 
             echo $this->render('/admin/footer', [
