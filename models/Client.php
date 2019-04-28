@@ -113,11 +113,21 @@ class Client
             $result = $stmt->execute();
 
             if($result){
+
                 if($this->picture){
                     try{
                         $result = $this->updatePicture();
                     } catch (Exception $e) {
                         die ('ERROR: ' . $e->getMessage());
+                    }
+                }else{
+                    $client = self::getClient();
+                    if($client[0]['picture']){
+                        try{
+                            $result = $this->updatePicture();
+                        } catch (Exception $e) {
+                            die ('ERROR: ' . $e->getMessage());
+                        }
                     }
                 }
             }

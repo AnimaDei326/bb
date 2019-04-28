@@ -234,6 +234,15 @@
         }, 800);
 
     });
+
+    function clearPicture() {
+        $('#picture').attr('data-src', 'holder.js/100%x195');
+        $('#picture').attr('alt', 'holder.js/100%x195');
+        $('#picture').attr('src', 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNzU4IiBoZWlnaHQ9IjE5NSIgdmlld0JveD0iMCAwIDc1OCAxOTUiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iNzU4IiBoZWlnaHQ9IjE5NSIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjI4NS41NzAzMTI1IiB5PSI5Ny41IiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjM2cHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NzU4eDE5NTwvdGV4dD48L2c+PC9zdmc+');
+        $('#picture').attr('data-holder-rendered', 'true');
+        $('#picture').attr('style', 'height: 195px; width: 100%; display: block;');
+        $('#picture-input').attr('value', '');
+    }
 </script>
 <!-- END: PAGE SCRIPTS -->
 

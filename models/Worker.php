@@ -181,11 +181,21 @@ class Worker
             $result = $stmt->execute();
 
             if($result){
+
                 if($this->picture){
                     try{
                         $result = $this->updatePicture();
                     } catch (Exception $e) {
                         die ('ERROR: ' . $e->getMessage());
+                    }
+                }else{
+                    $worker = self::getWorker();
+                    if($worker[0]['picture']){
+                        try{
+                            $result = $this->updatePicture();
+                        } catch (Exception $e) {
+                            die ('ERROR: ' . $e->getMessage());
+                        }
                     }
                 }
             }
