@@ -70,4 +70,82 @@ class About
             die ('ERROR: ' . $e->getMessage());
         }
     }
+
+    public static function add($idType, $sort, $active, $name){
+
+        self::$pdo = App::$app->db->getConnect();
+        try {
+
+            $stmt = self::$pdo->prepare("INSERT INTO " . self::$tableName . " (sort, active, name, id_Type) VALUES (?, ?, ?, ?)");
+
+            $stmt->bindParam(1, $sort);
+            $stmt->bindParam(2, $active);
+            $stmt->bindParam(3, $name);
+            $stmt->bindParam(4, $idType);
+            $result = $stmt->execute();
+
+            return $result;
+
+        } catch (Exception $e) {
+            die ('ERROR: ' . $e->getMessage());
+        }
+    }
+
+    public static function update($id, $sort, $active, $name){
+
+        self::$pdo = App::$app->db->getConnect();
+        try {
+
+            $stmt = self::$pdo->prepare("UPDATE " . self::$tableName . " SET active = ?, sort = ?, name = ? WHERE id = ? LIMIT 1");
+
+            $stmt->bindParam(1, $active);
+            $stmt->bindParam(2, $sort);
+            $stmt->bindParam(3, $name);
+            $stmt->bindParam(4, $id);
+            $result = $stmt->execute();
+
+            return $result;
+
+        } catch (Exception $e) {
+            die ('ERROR: ' . $e->getMessage());
+        }
+    }
+
+    public static function changeActive($id, $status){
+
+        self::$pdo = App::$app->db->getConnect();
+
+        try {
+
+            $stmt = self::$pdo->prepare("UPDATE " . self::$tableName . " SET active = ? WHERE id = ? LIMIT 1");
+
+            $stmt->bindParam(1, $status);
+            $stmt->bindParam(2, $id);
+            $result = $stmt->execute();
+
+            return $result;
+
+        } catch (Exception $e) {
+            die ('ERROR: ' . $e->getMessage());
+        }
+    }
+
+    public static function delete($id){
+
+        self::$pdo = App::$app->db->getConnect();
+        try {
+
+            $stmt = self::$pdo->prepare("DELETE FROM " . self::$tableName . " WHERE id = ? LIMIT 1");
+
+            $stmt->bindParam(1, $id);
+            $result = $stmt->execute();
+
+            return $result;
+
+        } catch (Exception $e) {
+            die ('ERROR: ' . $e->getMessage());
+        }
+    }
+
+
 }

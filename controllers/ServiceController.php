@@ -24,11 +24,15 @@ class ServiceController extends Controller
                 }
                 if( $itemId = strstr($key, '_item_sort', true)){
                     $items[$itemId]['sort'] = $value;
+                    $items[$itemId]['active'] = 'N';
+                }
+                if( $itemId = strstr($key, '_item_active', true)){
+                    $items[$itemId]['active'] = 'Y';
                 }
             }
 
             foreach ($items as $id => $itemArr){
-                Service::updateItem($id, $itemArr['sort'], 'Y', $itemArr['name']);
+                Service::updateItem($id, $itemArr['sort'], $itemArr['active'], $itemArr['name']);
             }
 
             $newItems = [];

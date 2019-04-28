@@ -304,7 +304,7 @@
                                                             <td>
                                                                 <div class="admin-form">
                                                                     <label class="switch block mt15">
-                                                                        <input onChange="changeItemActive('<?=$item['id']?>', this.checked )" type="checkbox" name="tools" id="<?='item_'.$item['id']?>" <? echo ($item['active'] == 'Y') ? 'checked' : '' ;?>>
+                                                                        <input onChange="changeItemActive('<?=$item['id']?>', this.checked )" type="checkbox"  name="<?=$item['id']?>_item_active" id="<?='item_'.$item['id']?>" <? echo ($item['active'] == 'Y') ? 'checked' : '' ;?>>
                                                                         <label for="<?='item_'.$item['id']?>" data-on="Да" data-off="Нет"></label>
                                                                     </label>
                                                                 </div>

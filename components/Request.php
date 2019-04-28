@@ -34,15 +34,15 @@ class Request
             }
         }
 
-//        if(count($path) == 4){
-//            $this->controller = $path[1];
-//            if(!empty($path[3])){
-//                $this->action = $path[3];
-//            }
-//            if($newPath = strpbrk($path[count($path)-1], '?')){
-//                $this->action = str_replace($newPath, '', $path[count($path)-1]);
-//            }
-//        }
+        if(count($path) == 4){
+            $this->controller = $path[1];
+            if(!empty($path[3])){
+                $this->action = $path[3];
+            }
+            if($newPath = strpbrk($path[count($path)-1], '?')){
+                $this->action = str_replace($newPath, '', $path[count($path)-1]);
+            }
+        }
 
         if(count($path) == 5){
             if(!empty($path[2])){

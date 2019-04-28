@@ -140,9 +140,30 @@
                             <a href="/admin/workers">
                                 <span class="glyphicon glyphicon-equalizer"></span> Команда </a>
                         </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="accordion-toggle" href="#">
+                        <span class="glyphicon glyphicon-fire"></span>
+                        <span class="sidebar-title">О компании</span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="nav sub-nav">
                         <li>
-                            <a href="admin_plugins-dock.html">
-                                <span class="fa fa-clipboard"></span> О компании </a>
+                            <a href="/admin/about/directions">
+                                <span class="glyphicon glyphicon-book"></span> Направления </a>
+                        </li>
+                        <li>
+                            <a href="/admin/projects">
+                                <span class="glyphicon glyphicon-modal-window"></span> Текст об опыте </a>
+                        </li>
+                        <li>
+                            <a href="/admin/clients">
+                                <span class="glyphicon glyphicon-calendar"></span> Галерея </a>
+                        </li>
+                        <li>
+                            <a href="/admin/workers">
+                                <span class="glyphicon glyphicon-equalizer"></span> Партнеры </a>
                         </li>
                     </ul>
                 </li>

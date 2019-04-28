@@ -3,6 +3,7 @@
 namespace controllers;
 
 use components\Controller;
+use models\About;
 use models\Admin;
 use models\Client;
 use models\Service;
@@ -411,6 +412,37 @@ class AdminController extends Controller
 
             echo $this->render('/admin/worker_add', [
                 'positions' => $positions,
+            ]);
+
+            echo $this->render('/admin/footer', [
+            ]);
+
+        }else{
+            header("Location: /user/check");
+        }
+    }
+    public function actionDirections()
+    {
+        if( Admin::helloUser() ){
+
+            self::$title = 'Направления компании';
+
+
+            $userData = Admin::getUserDataBySessionId(session_id());
+
+            $role = Admin::getRole();
+            $userData['role'] = $role['name'];
+
+            $text = About::getList('text', '');
+
+
+            echo $this->render('/admin/header', [
+                'title' => self::$title,
+                'userData' => $userData,
+            ]);
+
+            echo $this->render('/admin/about_text_list', [
+                'text' => $text,
             ]);
 
             echo $this->render('/admin/footer', [
