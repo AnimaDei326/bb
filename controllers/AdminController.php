@@ -421,7 +421,8 @@ class AdminController extends Controller
             header("Location: /user/check");
         }
     }
-    public function actionDirections()
+
+    public function actionText()
     {
         if( Admin::helloUser() ){
 
@@ -441,8 +442,40 @@ class AdminController extends Controller
                 'userData' => $userData,
             ]);
 
-            echo $this->render('/admin/about_text_list', [
+            echo $this->render('/admin/about_text', [
                 'text' => $text,
+            ]);
+
+            echo $this->render('/admin/footer', [
+            ]);
+
+        }else{
+            header("Location: /user/check");
+        }
+    }
+
+    public function actionDesc()
+    {
+        if( Admin::helloUser() ){
+
+            self::$title = 'Описание';
+
+
+            $userData = Admin::getUserDataBySessionId(session_id());
+
+            $role = Admin::getRole();
+            $userData['role'] = $role['name'];
+
+            $desc = About::getList('desc', '');
+
+
+            echo $this->render('/admin/header', [
+                'title' => self::$title,
+                'userData' => $userData,
+            ]);
+
+            echo $this->render('/admin/about_desc', [
+                'desc' => $desc,
             ]);
 
             echo $this->render('/admin/footer', [

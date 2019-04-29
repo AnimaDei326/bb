@@ -72,12 +72,16 @@ class AboutController extends Controller
                     }
                 }
 
+            }elseif($params['type'] == 'desc'){
+                $res = About::update($params['id'], $params['sort'], 'Y', $params['name']);
             }
 
             if($res){
-                header("Location: /admin/about/");
+                header("Location: /admin/about/".$params['type']);
             }else{
-                header("Location: /admin/about/directions");
+                echo $this->render('/admin/error', [
+                    'error' => $res,
+                ]);
             }
 
         }else{
@@ -123,5 +127,6 @@ class AboutController extends Controller
             header("Location: /user/check");
         }
     }
+
 
 }

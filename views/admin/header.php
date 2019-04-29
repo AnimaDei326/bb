@@ -118,7 +118,7 @@
 
                 <!-- <li class="sidebar-label pt15">Контент</li> -->
                 <li>
-                    <a class="accordion-toggle" href="#">
+                    <a class="accordion-toggle" href="/admin">
                         <span class="glyphicon glyphicon-fire"></span>
                         <span class="sidebar-title">Контент</span>
                         <span class="caret"></span>
@@ -143,18 +143,18 @@
                     </ul>
                 </li>
                 <li>
-                    <a class="accordion-toggle" href="#">
+                    <a class="accordion-toggle" href="/admin">
                         <span class="glyphicon glyphicon-fire"></span>
                         <span class="sidebar-title">О компании</span>
                         <span class="caret"></span>
                     </a>
                     <ul class="nav sub-nav">
                         <li>
-                            <a href="/admin/about/directions">
+                            <a href="/admin/about/text">
                                 <span class="glyphicon glyphicon-book"></span> Направления </a>
                         </li>
                         <li>
-                            <a href="/admin/projects">
+                            <a href="/admin/about/desc">
                                 <span class="glyphicon glyphicon-modal-window"></span> Текст об опыте </a>
                         </li>
                         <li>
