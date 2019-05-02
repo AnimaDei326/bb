@@ -76,31 +76,31 @@
                                         <div class="fileupload fileupload-new" data-provides="fileupload">
                                             <div class="fileupload-preview thumbnail mb20">
                                                 <?if ($client['picture']):?>
-                                                    <img id="picture" src="/images/<?=$client['picture']?>" alt="<?=$client['picture']?>">
+                                                    <img id="picture_<?=$client['id']?>" src="/images/<?=$client['picture']?>" alt="<?=$client['picture']?>">
                                             </div>
                                                     <div class="row">
                                                         <div class="col-xs-6">
                                                             <span class="btn btn-system btn-file btn-block">
                                                                 <span class="fileupload-new">Выбрать фотографию</span>
                                                                 <span class="fileupload-exists">Заменить</span>
-                                                                <input id="picture-input" name="picture" type="file">
+                                                                <input id="picture-input_<?=$client['id']?>" name="picture" type="file">
                                                             </span>
                                                         </div>
-                                                        <div class="col-xs-6">
+                                                        <div class="col-xs-6" onclick="clearPicture(<?=$client['id']?>)">
                                                           <span class="btn btn-system btn-file btn-block">
-                                                            <span class="fileupload-delete" onclick="clearPicture()">Очистить</span>
+                                                            <span class="fileupload-delete">Очистить</span>
                                                           </span>
                                                         </div>
                                                     </div>
                                                 <?else:?>
-                                                    <img id="picture" data-src="holder.js/100%x195" alt="holder">
+                                                    <img id="picture_<?=$client['id']?>" data-src="holder.js/100%x195" alt="holder">
                                             </div>
                                                     <div class="row">
                                                         <div class="col-xs-12">
                                                           <span class="btn btn-system btn-file btn-block">
                                                               <span class="fileupload-new">Выбрать фотографию</span>
                                                               <span class="fileupload-exists">Заменить</span>
-                                                              <input id="picture-input" name="picture" type="file">
+                                                              <input id="picture-input_<?=$client['id']?>" name="picture" type="file">
                                                           </span>
                                                         </div>
                                                     </div>

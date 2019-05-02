@@ -74,6 +74,55 @@ class AboutController extends Controller
 
             }elseif($params['type'] == 'desc'){
                 $res = About::update($params['id'], $params['sort'], 'Y', $params['name']);
+
+            }elseif($params['type'] == 'photo' || $params['type'] == 'partner'){
+                $items = [];
+                foreach ($params as $key=>$value){
+
+                    if( $itemId = strstr($key, '_item_sort', true)){
+                        $items[$itemId]['sort'] = $value;
+                        if( $picture = $app->request->uploadFile('picture_'.$itemId) ){
+                            $items[$itemId]['name'] = $picture;
+                        }else{
+                            $items[$itemId]['name'] = '';
+                        }
+
+                    }
+                    if( $itemId = strstr($key, '_item_active', true)){
+                        $items[$itemId]['active'] = 'Y';
+                    }
+                }
+                foreach ($items as $id => $itemArr){
+                    if($itemArr['active'] != 'Y'){
+                        $itemArr['active'] = 'N';
+                    }
+                    $res = About::update($id, $itemArr['sort'], $itemArr['active'], $itemArr['name']);
+                    if(!$res) break;
+                }
+
+                $newItems = [];
+                foreach ($params as $key=>$value){
+
+                    if( $itemId = strstr($key, '_item_new_sort', true)){
+                        $newItems[$itemId]['sort'] = $value;
+                        if( $picture = $app->request->uploadFile('picture_'.$itemId) ){
+                            $newItems[$itemId]['name'] = $picture;
+                        }else{
+                            $newItems[$itemId]['name'] = '';
+                        }
+
+                    }
+                    if( $itemId = strstr($key, '_item_new_active', true)){
+                        $newItems[$itemId]['active'] = 'Y';
+                    }
+                }
+                foreach ($newItems as $id => $itemArr){
+                    if($itemArr['active'] != 'Y'){
+                        $itemArr['active'] = 'N';
+                    }
+                    $res = About::add(self::$type['photo'], $itemArr['sort'], $itemArr['active'], $itemArr['name']);
+                    if(!$res) break;
+                }
             }
 
             if($res){

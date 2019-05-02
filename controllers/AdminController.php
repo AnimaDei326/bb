@@ -486,5 +486,69 @@ class AdminController extends Controller
         }
     }
 
+    public function actionPhoto()
+    {
+        if( Admin::helloUser() ){
+
+            self::$title = 'Галерея';
+
+
+            $userData = Admin::getUserDataBySessionId(session_id());
+
+            $role = Admin::getRole();
+            $userData['role'] = $role['name'];
+
+            $photo = About::getList('photo', '');
+
+
+            echo $this->render('/admin/header', [
+                'title' => self::$title,
+                'userData' => $userData,
+            ]);
+
+            echo $this->render('/admin/about_photo', [
+                'photo' => $photo,
+            ]);
+
+            echo $this->render('/admin/footer', [
+            ]);
+
+        }else{
+            header("Location: /user/check");
+        }
+    }
+
+    public function actionPartner()
+    {
+        if( Admin::helloUser() ){
+
+            self::$title = 'Партнеры';
+
+
+            $userData = Admin::getUserDataBySessionId(session_id());
+
+            $role = Admin::getRole();
+            $userData['role'] = $role['name'];
+
+            $photo = About::getList('partner', '');
+
+
+            echo $this->render('/admin/header', [
+                'title' => self::$title,
+                'userData' => $userData,
+            ]);
+
+            echo $this->render('/admin/about_partner', [
+                'photo' => $photo,
+            ]);
+
+            echo $this->render('/admin/footer', [
+            ]);
+
+        }else{
+            header("Location: /user/check");
+        }
+    }
+
 
 }

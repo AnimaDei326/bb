@@ -244,19 +244,19 @@
                                         <div class="fileupload fileupload-new" data-provides="fileupload">
                                             <div class="fileupload-preview thumbnail mb20">
                                                 <?if ($service['picture']):?>
-                                                <img id="picture" src="/images/<?=$service['picture']?>" alt="<?=$service['picture']?>">
+                                                <img id="picture_<?=$service['id']?>" src="/images/<?=$service['picture']?>" alt="<?=$service['picture']?>">
                                             </div>
                                             <div class="row">
                                                 <div class="col-xs-6">
                                                             <span class="btn btn-system btn-file btn-block">
                                                                 <span class="fileupload-new">Выбрать фотографию</span>
                                                                 <span class="fileupload-exists">Заменить</span>
-                                                                <input id="picture-input" name="picture" type="file">
+                                                                <input id="picture-input_<?=$service['id']?>" name="picture" type="file">
                                                             </span>
                                                 </div>
-                                                <div class="col-xs-6">
+                                                <div class="col-xs-6" onclick="clearPicture(<?=$service['id']?>)">
                                                           <span class="btn btn-system btn-file btn-block">
-                                                            <span class="fileupload-delete" onclick="clearPicture()">Очистить</span>
+                                                            <span class="fileupload-delete">Очистить</span>
                                                           </span>
                                                 </div>
                                             </div>
@@ -265,11 +265,11 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-xs-12">
-                                                          <span class="btn btn-system btn-file btn-block">
-                                                              <span class="fileupload-new">Выбрать фотографию</span>
-                                                              <span class="fileupload-exists">Заменить</span>
-                                                              <input id="picture-input" name="picture" type="file">
-                                                          </span>
+                                                <span class="btn btn-system btn-file btn-block">
+                                                    <span class="fileupload-new">Выбрать фотографию</span>
+                                                    <span class="fileupload-exists">Заменить</span>
+                                                    <input id="picture-input_<?=$service['id']?>" name="picture" type="file">
+                                                </span>
                                             </div>
                                         </div>
                                         <?endif;?>

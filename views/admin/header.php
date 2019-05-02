@@ -158,11 +158,11 @@
                                 <span class="glyphicon glyphicon-modal-window"></span> Текст об опыте </a>
                         </li>
                         <li>
-                            <a href="/admin/clients">
+                            <a href="/admin/about/photo">
                                 <span class="glyphicon glyphicon-calendar"></span> Галерея </a>
                         </li>
                         <li>
-                            <a href="/admin/workers">
+                            <a href="/admin/partner">
                                 <span class="glyphicon glyphicon-equalizer"></span> Партнеры </a>
                         </li>
                     </ul>
