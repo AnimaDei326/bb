@@ -120,7 +120,7 @@ class AboutController extends Controller
                     if($itemArr['active'] != 'Y'){
                         $itemArr['active'] = 'N';
                     }
-                    $res = About::add(self::$type['photo'], $itemArr['sort'], $itemArr['active'], $itemArr['name']);
+                    $res = About::add(self::$type[$params['type']], $itemArr['sort'], $itemArr['active'], $itemArr['name']);
                     if(!$res) break;
                 }
             }
