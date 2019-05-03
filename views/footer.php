@@ -34,55 +34,41 @@
 <div class="widget__wrap" id="js-widget__contact-info" style="display: none;">
     <div class="widget__contact-info">
 
-        <!-- левая часть виджета -->
-        <div class="widget__left">
-            <div class="widget__header">
-                <div class="widget__staff-img" style="background-image: url('/images/<?=$this->params['contact_left']['picture']?>')"></div>
-                <h4 class="widget__staff-name"><?=$this->params['contact_left']['first_name']?> <?=$this->params['contact_left']['second_name']?> </h4>
-                <p class="widget__staff-text"><?=$this->params['contact_left']['description']?></p>
-            </div>
+       <div class="widget__body">
+            <form>
+                <div class="widget__header">
+                    <h1 class="widget__staff-name">Укажите Ваши контактные данные</h1>
+                    <div class="widget-c__block">
+                        <input name="name" type="hidden">
+                        <input name="email" type="hidden">
+                        <input name="phone" type="hidden">
+                        <input name="message" type="hidden">
 
-            <div class="widget__footer">
-                <ul class="widget__footer-list">
-                    <li class="footer-list__element widget__staff-tell">
-                        <i class="widget-ico ico-number">&nbsp;</i>
-                        <?=$this->params['contact_left']['telephone']?>
-                    </li>
+                        <input id="supername" name="supername" class="widget__input" type="text" placeholder="Имя">
+                        <input id="superemail" name="superemail" class="widget__input"  type="email" placeholder="E-mail">
+                        <span style="display: block; margin-bottom:37px ;">или</span>
+                        <input id="superphone" name="superphone"  class="widget__input"  type="text" placeholder="Телефон">
 
-                    <li class="footer-list__element widget__staff-email">
-                        <i class="widget-ico ico-email">&nbsp;</i>
-                        <?=$this->params['contact_left']['email']?>
-                    </li>
-                </ul>
-            </div>
+                        <div class="checkbox">
+                            <input id="agreement" type="checkbox" name="agreement" checked>
+                            <label class="widget__label" for="agreement">Согласен с обработкой данных <b><u>Политика конфединциальности</u></b></label>
+                        </div>
+
+                    </div>
+                </div>
+
+               <div class="widget__footer">
+                    <button onclick="sendForm()" type="button" class="widget__btn">Отправить</button>
+                </div>
+            </form>
+
         </div>
-
-        <!-- права часть виджета -->
-        <div class="widget__right">
-            <div class="widget__header">
-                <div class="widget__staff-img" style="background-image: url('/images/<?=$this->params['contact_right']['picture']?>')"></div>
-                <h4 class="widget__staff-name"><?=$this->params['contact_right']['first_name']?> <?=$this->params['contact_right']['second_name']?> </h4>
-                <p class="widget__staff-text"><?=$this->params['contact_right']['description']?></p>
-            </div>
-
-            <div class="widget__footer">
-                <ul class="widget__footer-list">
-                    <li class="footer-list__element widget__staff-tell">
-                        <i class="widget-ico ico-number">&nbsp;</i>
-                        <?=$this->params['contact_right']['telephone']?>
-                    </li>
-
-                    <li class="footer-list__element widget__staff-email">
-                        <i class="widget-ico ico-email">&nbsp;</i>
-                        <?=$this->params['contact_right']['email']?>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
         <span class="widget__close-btn js-widget__close"></span>
     </div>
 </div>
+
+
+
 
 
 
@@ -93,6 +79,64 @@
 <script src="js/jquery.swipebox.js"></script>
 
 <script type="text/javascript">
+    let name, email, phone;
+
+    function sendForm(){
+        if (checkFields()){
+            $.ajax({
+                url: "/ajax/contact_form",
+                method: 'POST',
+                data: {
+                    name: name,
+                    email: email,
+                    phone: phone,
+                },
+                success: function(response){
+
+                    if(response !== 'true'){
+                        alert('Произошла ошибка: ' + response);
+                    }else{
+                        alert('Спасибо');
+                    }
+                },
+            });
+        }
+    }
+
+    function checkFields(){
+        if($('#supername')[0].value === ''){
+            $('#supername').attr('style', 'border: 1px solid red');
+            return false;
+        }else{
+            $('#supername').attr('style', 'border: 1px solid gray');
+            name =  $('#supername')[0].value;
+        }
+
+        if($('#superemail')[0].value === '' && $('#superphone')[0].value === ''){
+            $('#superphone').attr('style', 'border: 1px solid red');
+            return false;
+        }else{
+            $('#superemail').attr('style', 'border: 1px solid gray');
+            $('#superphone').attr('style', 'border: 1px solid gray');
+            email =  $('#superemail')[0].value;
+            phone =  $('#superphone')[0].value;
+        }
+        if($('#agreement')[0].checked === false){
+            $('.widget__label').removeClass('widget__label').addClass('widget__label_error');
+            return false;
+        }else{
+            $('.widget__label_error').removeClass('widget__label_error').addClass('widget__label');
+        }
+
+        if( $('input[name=name]')[0].value !== '' ||
+            $('input[name=phone]')[0].value !== '' ||
+            $('input[name=email]')[0].value !== '' ||
+            $('input[name=message]')[0].value !== ''
+        ){
+            return false;
+        }
+        return true;
+    }
 ( function( $ ) {
 
     $( '.swipebox' ).swipebox();
