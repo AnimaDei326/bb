@@ -90,10 +90,11 @@
                             <img src="/images/<?=$this->params['userData']['photo']?>" class="img-responsive">
                         </a>
                         <div class="media-body">
-                            <div class="media-links">
-                                <div class="media-author">[<?=$this->params['userData']['role']?>] <div class="media-author"><?=$this->params['userData']['last_name']?> <?=$this->params['userData']['first_name']?></div></div> <a href="/user/logout">Выйти</a>
-                            </div>
 
+                            <div class="media-links">
+                                <a href="/user/logout">Выйти</a>
+                                <div class="media-author">[<?=$this->params['userData']['role']?>] <div class="media-author"><?=$this->params['userData']['last_name']?> <?=$this->params['userData']['first_name']?></div></div>
+                            </div>
                         </div>
                     </div>
                 </div>

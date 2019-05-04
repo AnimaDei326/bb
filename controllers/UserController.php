@@ -95,9 +95,9 @@ class UserController extends Controller
                 self::$title = 'Авторизация';
                 $text = 'Неверный логин и/или пароль';
 
-                echo $this->render('notification', [
+                echo $this->render('authorization', [
                     'title' => self::$title,
-                    'text' => $text,
+                    'error' => $text
                 ]);
 
             }
