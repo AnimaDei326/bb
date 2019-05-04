@@ -82,9 +82,9 @@ $(document).ready(function() {
 				document.getElementById('js-widget__contact-info').style.display = "flex";
 				document.body.className = "lock-position";
 			} else {
-				var id  = "#" + $(this).attr('href'),
-					mg  = $('.fixed__header').outerHeight(),
-					top = $(id).offset().top - mg;
+				let id  = "#" + $(this).attr('href');
+				let	mg  = $('.header__top-wrap').outerHeight();
+				let	top = $(id).offset().top - mg;
 
 				$('body,html').animate({scrollTop: top}, 1500);
 			}
