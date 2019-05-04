@@ -9,9 +9,10 @@
 namespace controllers;
 
 
+use components\Controller;
 use models\FormContact;
 
-class AjaxController
+class AjaxController extends Controller
 {
     public function actionContact_form(){
 

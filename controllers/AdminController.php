@@ -6,6 +6,7 @@ use components\Controller;
 use models\About;
 use models\Admin;
 use models\Client;
+use models\FormContact;
 use models\Service;
 use models\Project;
 use models\Worker;
@@ -550,5 +551,64 @@ class AdminController extends Controller
         }
     }
 
+    public function actionForm_contacts()
+    {
+        if( Admin::helloUser() ){
+
+            self::$title = 'Результаты формы "Связаться';
+
+            $userData = Admin::getUserDataBySessionId(session_id());
+
+            $role = Admin::getRole();
+            $userData['role'] = $role['name'];
+
+            $contact_list = FormContact::getList();
+
+            echo $this->render('/admin/header', [
+                'title' => self::$title,
+                'userData' => $userData,
+            ]);
+
+            echo $this->render('/admin/form_contact_list', [
+                'contact_list' => $contact_list,
+            ]);
+
+            echo $this->render('/admin/footer', [
+            ]);
+
+        }else{
+            header("Location: /user/check");
+        }
+    }
+
+    public function actionForm_contact($id)
+    {
+        if( Admin::helloUser() ){
+
+            self::$title = 'Результаты формы "Связаться';
+
+            $userData = Admin::getUserDataBySessionId(session_id());
+
+            $role = Admin::getRole();
+            $userData['role'] = $role['name'];
+
+            $contact_data = FormContact::getById($id);
+
+            echo $this->render('/admin/header', [
+                'title' => self::$title,
+                'userData' => $userData,
+            ]);
+
+            echo $this->render('/admin/form_contact_edit', [
+                'contact_data' => $contact_data,
+            ]);
+
+            echo $this->render('/admin/footer', [
+            ]);
+
+        }else{
+            header("Location: /user/check");
+        }
+    }
 
 }

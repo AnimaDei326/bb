@@ -115,6 +115,12 @@
                         <span class="sidebar-title">Перейти на сайт</span>
                     </a>
                 </li>
+                <li>
+                    <a href="/admin/form_contacts">
+                        <span class="glyphicon glyphicon-fire"></span>
+                        <span class="sidebar-title">Заявки</span>
+                    </a>
+                </li>
 
                 <!-- <li class="sidebar-label pt15">Контент</li> -->
                 <li>

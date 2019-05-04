@@ -42,6 +42,29 @@ class FormContact
             $stmt = self::$pdo->prepare("SELECT id, view, phone, email, name, date, comment FROM "
                 . self::$tableName." WHERE view LIKE ? ORDER BY id DESC");
 
+            $stmt->bindParam(1, $view);
+
+            $stmt->execute();
+            $data = $stmt->fetchAll();
+
+            return $data;
+
+        } catch (Exception $e) {
+            die ('ERROR: ' . $e->getMessage());
+        }
+    }
+
+    public static function getById($id)
+    {
+        self::$pdo = App::$app->db->getConnect();
+
+        try {
+
+            $stmt = self::$pdo->prepare("SELECT id, view, phone, email, name, date, comment FROM "
+                . self::$tableName." WHERE id = ? LIMIT 1");
+
+            $stmt->bindParam(1, $id);
+
             $stmt->execute();
             $data = $stmt->fetchAll();
 
@@ -84,7 +107,7 @@ class FormContact
             $stmt->bindParam(3, $this->email);
             $stmt->bindParam(4, $this->name);
             $stmt->bindParam(5, $this->comment);
-            $stmt->bindParam(6, $id);
+            $stmt->bindParam(6, $this->id);
 
             $result = $stmt->execute();
 
