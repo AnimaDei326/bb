@@ -95,9 +95,9 @@ class FormContact
             $link = 'http://' . $_SERVER['HTTP_HOST'] . '/admin/form_contact/' . $id . '/';
 
             if($result){
-                mail('alexander.biliy@mail.ru',
+                mail(' info@bbconsulting.ru',
                     'Новая заявка на сайте bb-consulting.ru!',
-                    '<a href="'  . $link .'"">Открыть</a>'
+                    $link
                     );
             }
 
