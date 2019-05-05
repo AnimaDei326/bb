@@ -89,6 +89,18 @@ class FormContact
             $stmt->bindParam(5, $this->comment);
             $result = $stmt->execute();
 
+            $id =  self::$pdo->lastInsertId();
+
+
+            $link = 'http://' . $_SERVER['HTTP_HOST'] . '/admin/form_contact/' . $id . '/';
+
+            if($result){
+                mail('alexander.biliy@mail.ru',
+                    'Новая заявка на сайте bb-consulting.ru!',
+                    '<a href="'  . $link .'"">Открыть</a>'
+                    );
+            }
+
             return $result;
 
         } catch (Exception $e) {
