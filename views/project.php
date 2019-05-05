@@ -15,7 +15,7 @@
         <!-- widget__company-single -->
 
         <!-- пример для виджета с одним блоком:   <div class="widget__company-info widget__company-single"> -->
-        <div class="widget__company-info">
+        <div class="widget__company-info <? if(count($projects) == 1) { echo 'widget__company-single';}; ?>">
             <div class="widget-c__header">
                 <h3 class="widget__main-title"><?=$projects[$firstKey]['title']?></h3>
                 <br />
