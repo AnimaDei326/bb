@@ -23,8 +23,10 @@
         </div>
 
         <div class="footer__bottom">
-            <p class="footer__text">ИНН 000000000 ОГРН 0000000000000</p>
-            <p class="footer__text">© Biliy&Borisov consulting. <br /> Все права защищены. 2016</p>
+
+            <p class="footer__text">ИП БОРИСОВ НИКИТА СЕРГЕЕВИЧ</p>
+            <p class="footer__text">ИНН 771774855749 ОГРНИП 319502700012451</p>
+            <p class="footer__text">© Biliy&Borisov consulting. <br /> Все права защищены. 2019</p>
         </div>
     </div>
 </footer>
