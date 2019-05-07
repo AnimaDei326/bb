@@ -7,15 +7,15 @@
  */
 
 namespace components;
-
+use PDOException;
 use PDO;
 
 class Db
 {
     public $host = 'localhost';
-    public $db = 'animadqu_bb';
-    public $user = 'animadqu_bb';
-    public $password = 'oz6mN1oz';
+    public $db = 'u332330136_anima';
+    public $user = 'u332330136_anima';
+    public $password = 'AnimaDei1!';
     public $port = '3306';
     public $charset = 'utf8';
 
@@ -49,7 +49,7 @@ class Db
 
         }
 
-        $dsn = 'mysql:host=' . $this->host . ':' . $this->port .
+        $dsn = 'mysql:host=' . $this->host . ';port=' . $this->port .
             ';dbname=' . $this->db .
             ';charset=' . $this->charset;
         $options = [
@@ -57,7 +57,13 @@ class Db
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, //данные в виде асс. масива
         ];
 
-        $this->pdo = new PDO($dsn, $this->user, $this->password, $options);
+	    try{
+    	    $this->pdo = new PDO($dsn, $this->user, $this->password, $options);
+    	}catch (PDOException $e){
+    	    var_dump($e->getMessage());
+    	    die();
+    	}
+
         return true;
     }
 
