@@ -25,6 +25,7 @@ class Worker
     public $sort;
     public $active;
     public $idPositions;
+    public $clear_picture;
 
 
     public function __construct($idWorker)
@@ -190,7 +191,7 @@ class Worker
                     }
                 }else{
                     $worker = self::getWorker();
-                    if($worker[0]['picture']){
+                    if($worker[0]['picture'] and $this->clear_picture == 'Y'){
                         try{
                             $result = $this->updatePicture();
                         } catch (Exception $e) {

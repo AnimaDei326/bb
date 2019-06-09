@@ -31,6 +31,52 @@
 
 <!-- по id 'widget__contact-info' будем скрывать/показывать -->
 <!-- display: flex; - необходимое свойство -->
+<div class="widget__wrap" id="js-widget__partner-info" style="display: none;">
+    <div class="widget__partner-info">
+        <!-- левая часть виджета -->
+        <div class="widget__left">
+            <div class="widget__header">
+                <div class="widget__staff-img" style="background-image: url('/images/Biliy.jpg')"></div>
+                <h4 class="widget__staff-name">Александр Билый</h4>
+                <p class="widget__staff-text">Обсудить новый проект</p>
+            </div>
+            <div class="widget__footer">
+                <ul class="widget__footer-list">
+                    <li class="footer-list__element widget__staff-tell">
+                        <i class="widget-ico ico-number">&nbsp;</i>
+                        +7 (916) 804 - 27 - 97
+                    </li>
+                    <li class="footer-list__element widget__staff-email">
+                        <i class="widget-ico ico-email">&nbsp;</i>
+                        info@bbcounsulting.ru
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- права часть виджета -->
+        <div class="widget__right">
+            <div class="widget__header">
+                <div class="widget__staff-img" style="background-image: url('/images/Borisov.jpg')"></div>
+                <h4 class="widget__staff-name">Никита Борисов</h4>
+                <p class="widget__staff-text">Получить методологическую консультацию</p>
+            </div>
+            <div class="widget__footer">
+                <ul class="widget__footer-list">
+                    <li class="footer-list__element widget__staff-tell">
+                        <i class="widget-ico ico-number">&nbsp;</i>
+                        +7 (916) 804-27-97
+                    </li>
+                    <li class="footer-list__element widget__staff-email">
+                        <i class="widget-ico ico-email">&nbsp;</i>
+                        info@bbcounsulting.ru
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <span class="widget__close-btn js-widget__close"></span>
+    </div>
+</div>
+
 <div class="widget__wrap" id="js-widget__contact-info" style="display: none;">
     <div class="widget__contact-info">
 
@@ -197,6 +243,22 @@
 
 } )( jQuery );
 </script>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+    ym(21548251, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+    });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/21548251" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 
 </body>
 </html>

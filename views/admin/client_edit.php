@@ -95,7 +95,7 @@
                                                 <?else:?>
                                                     <img id="picture_<?=$client['id']?>" data-src="holder.js/100%x195" alt="holder">
                                             </div>
-                                                    <div class="row">
+                                            <div class="row" onclick="setPicture()">
                                                         <div class="col-xs-12">
                                                           <span class="btn btn-system btn-file btn-block">
                                                               <span class="fileupload-new">Выбрать фотографию</span>
@@ -105,6 +105,7 @@
                                                         </div>
                                                     </div>
                                                 <?endif;?>
+                                            <input id="clear_picture" type="hidden" name="clear_picture" value="N">
                                         </div>
                                     </div>
                                 </div>

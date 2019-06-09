@@ -49,32 +49,37 @@
                             </ul>
                         </div>
                     </div>
+                    <? if (!empty($project['itemsDone'])):?>
 
-                    <div class="widget-c__block">
-                        <h4 class="widget__title"><?=$this->params['doneTitle']?>:</h4>
-                        <ul class="widget__list">
-                            <? $count = count($project['itemsDone']); $i = 0; ?>
-                            <? foreach ($project['itemsDone'] as $item):?>
-                                <? $i++; ?>
-                                <li class="widget-list__element">
-                                    <?=$item['name']?><?if($i != $count):?>;<?else:?>.<?endif;?>
-                                </li>
-                            <?endforeach;?>
-                        </ul>
-                    </div>
+                        <div class="widget-c__block">
+                            <h4 class="widget__title"><?=$this->params['doneTitle']?>:</h4>
+                            <ul class="widget__list">
+                                <? $count = count($project['itemsDone']); $i = 0; ?>
+                                <? foreach ($project['itemsDone'] as $item):?>
+                                    <? $i++; ?>
+                                    <li class="widget-list__element">
+                                        <?=$item['name']?><?if($i != $count):?>;<?else:?>.<?endif;?>
+                                    </li>
+                                <?endforeach;?>
+                            </ul>
+                        </div>
+                    <?endif;?>
 
-                    <div class="widget-c__block">
-                        <h4 class="widget__title"><?=$this->params['resultTitle']?>:</h4>
-                        <ul class="widget__list">
-                            <? $count = count($project['itemsResult']); $i = 0; ?>
-                            <? foreach ($project['itemsResult'] as $item):?>
-                                <? $i++; ?>
-                                <li class="widget-list__element">
-                                    <?=$item['name']?><?if($i != $count):?>;<?else:?>.<?endif;?>
-                                </li>
-                            <?endforeach;?>
-                        </ul>
-                    </div>
+                    <? if (!empty($project['itemsResult'])):?>
+
+                        <div class="widget-c__block">
+                            <h4 class="widget__title"><?=$this->params['resultTitle']?>:</h4>
+                            <ul class="widget__list">
+                                <? $count = count($project['itemsResult']); $i = 0; ?>
+                                <? foreach ($project['itemsResult'] as $item):?>
+                                    <? $i++; ?>
+                                    <li class="widget-list__element">
+                                        <?=$item['name']?><?if($i != $count):?>;<?else:?>.<?endif;?>
+                                    </li>
+                                <?endforeach;?>
+                            </ul>
+                        </div>
+                    <?endif;?>
                 </div>
             <?endforeach;?>
             <span class="widget__close-btn js-widget__close"></span>

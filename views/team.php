@@ -9,7 +9,7 @@
                     <? foreach ($this->params['team'] as $team): ?>
                         <?if($team['code'] == 'boss'):?>
                             <!-- блок с работницком -->
-                            <div class="staff__block">
+                            <div class="staff__block partner_icon">
                                 <div class="staff-img" style="background-image: url('/images/<?=$team['picture']?>')"></div>
 
                                 <h5 class="staff__name"><?=$team['first_name']?> <?=$team['second_name']?></h5>

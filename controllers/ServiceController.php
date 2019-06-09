@@ -65,7 +65,10 @@ class ServiceController extends Controller
                 $service->active = 'N';
             }
 
+            $service->clear_picture = $params['clear_picture'];
             $service->picture = $app->request->uploadFile('picture');
+
+
             $service->title = $params['title'];
             $service->subtitle = $params['subtitle'];
             $res = $service->updateService();

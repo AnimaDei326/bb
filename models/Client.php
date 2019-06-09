@@ -17,6 +17,7 @@ class Client
     public $picture;
     public static $tableName = 'clients';
     public static $pdo = null;
+    public $clear_picture;
 
 
     public function __construct($id)
@@ -122,7 +123,7 @@ class Client
                     }
                 }else{
                     $client = self::getClient();
-                    if($client[0]['picture']){
+                    if($client[0]['picture'] and $this->clear_picture == 'Y'){
                         try{
                             $result = $this->updatePicture();
                         } catch (Exception $e) {

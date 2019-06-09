@@ -59,6 +59,7 @@ class WorkerController extends Controller
             }
 
             $worker->picture = $app->request->uploadFile('picture');
+            $worker->clear_picture = $params['clear_picture'];
 
             $res = $worker->updateWorker();
 

@@ -235,15 +235,21 @@
 
     });
 
+    function setPicture() {
+        let flag = '#clear_picture';
+        $(flag).attr('value', 'N');
+    }
     function clearPicture(id) {
         let img = '#picture_' + id;
         let img_input = '#picture-input_' + id;
+        let flag = '#clear_picture';
         $(img).attr('data-src', 'holder.js/100%x195');
         $(img).attr('alt', 'holder.js/100%x195');
         $(img).attr('src', 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNzU4IiBoZWlnaHQ9IjE5NSIgdmlld0JveD0iMCAwIDc1OCAxOTUiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iNzU4IiBoZWlnaHQ9IjE5NSIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjI4NS41NzAzMTI1IiB5PSI5Ny41IiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjM2cHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NzU4eDE5NTwvdGV4dD48L2c+PC9zdmc+');
         $(img).attr('data-holder-rendered', 'true');
         $(img).attr('style', 'height: 195px; width: 100%; display: block;');
         $(img_input).attr('value', '');
+        $(flag).attr('value', 'Y');
     }
 </script>
 <!-- END: PAGE SCRIPTS -->

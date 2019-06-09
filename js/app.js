@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+	let header_height = 0;
+
 	function serviceWidgetOpening () {
 		$('.services__text-wrap').on('click', function (e) {
 
@@ -78,20 +80,35 @@ $(document).ready(function() {
 			event.preventDefault();
 
 			if ($(this).text() == "Связаться") {
-				//открытие виджета
-				document.getElementById('js-widget__contact-info').style.display = "flex";
-				document.body.className = "lock-position";
+                //открытие виджета
+                document.getElementById('js-widget__contact-info').style.display = "flex";
+                document.body.className = "lock-position";
 			} else {
-				let id  = "#" + $(this).attr('href');
-				let	mg  = $('.header__top-wrap').outerHeight();
-				let	top = $(id).offset().top - mg;
 
-				$('body,html').animate({scrollTop: top}, 1500);
+				let id  = "#" + $(this).attr('href');
+				//let mg  = $('.header__top-wrap').outerHeight();
+				let	top = $(id).offset().top - header_height;
+
+                $('body,html').animate({scrollTop: top}, 1500);
 			}
 		});
 	}
 	changingWindowOffset();
-	// scrolling page to the neccessary position 
+	// scrolling page to the neccessary position
+
+    function changingWindowOffsetPartner () {
+        $(".partner_icon").on("click", function (event) {
+            event.preventDefault();
+
+			//открытие виджета
+			document.getElementById('js-widget__partner-info').style.display = "flex";
+			document.body.className = "lock-position";
+
+
+
+        });
+    }
+    changingWindowOffsetPartner();
 
 
 
@@ -116,9 +133,15 @@ $(document).ready(function() {
 	  	element.removeClass('fixed__header');
 	  	isHeaderFixed = !isHeaderFixed;
 	  }
+
+        header_height = $('.header__top').outerHeight();
+
+	  if($('.fixed__header').outerHeight()) {
+          header_height = $('.fixed__header').outerHeight();
+	  }
 	});
 	// showing fixed top menu
-	
+
 
 	// виджеты
 	$(".js-widget__close").on("click", function (e) {
@@ -152,12 +175,14 @@ $(document).ready(function() {
 		// widget of the contact info
 		var widget__contact = document.getElementsByClassName('widget__contact-info')[0];
 
+        // widget of the contact info
+        var widget__partner = document.getElementsByClassName('widget__partner-info')[0];
 
 		//fixing bugs..
-		if ((widget__company != undefined) && widget__company.contains(e.target))
+		if ((widget__company != undefined || widget__partner != undefined) && widget__company.contains(e.target))
 			return;
 		
-		if ((widget__contact != undefined) && widget__contact.contains(e.target))
+		if ((widget__contact != undefined || widget__partner != undefined) && widget__contact.contains(e.target))
 			return;
 
 		if ((widget__company != undefined) && !(widget__company == e.target) && !widget__company.contains(e.target) && !$('.js-widget__close').is(e.target)) {			
@@ -176,6 +201,11 @@ $(document).ready(function() {
 			document.body.className = "";
 		}
 		// widget of the contact info
+
+        if ((widget__partner != undefined) && !(widget__partner == e.target) && !widget__partner.contains(e.target) && !$('.js-widget__close').is(e.target)) {
+            document.getElementById('js-widget__partner-info').style.display = "none";
+            document.body.className = "";
+        }
 	})
 	// closing widget when clicking outside
 

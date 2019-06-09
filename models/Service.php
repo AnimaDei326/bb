@@ -24,6 +24,7 @@ class Service
     public $picture;
     public $title;
     public $subtitle;
+    public $clear_picture;
 
     public function __construct($serviceId)
     {
@@ -77,7 +78,7 @@ class Service
                     }
                 }else{
                     $service = self::getService();
-                    if($service[0]['picture']){
+                    if($service[0]['picture'] and $this->clear_picture == 'Y'){
                         try{
                             $result = $this->updatePicture();
                         } catch (Exception $e) {

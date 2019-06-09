@@ -45,6 +45,7 @@ class ClientController extends Controller
 
             $client = new Client($params['id']);
             $client->name = $params['name'];
+            $client->clear_picture = $params['clear_picture'];
             $client->picture = $app->request->uploadFile('picture');
 
             $res = $client->updateClient();
