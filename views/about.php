@@ -16,7 +16,7 @@
             </div>
 
             <div class="section-right__block">
-                <h4 class="expierence-block__title">Текст об опыте</h4>
+                <h4 class="expierence-block__title">О компании</h4>
                 <? foreach ($this->params['desc'] as $item):?>
                     <p class="expierence__text"><?=$item['name']?></p>
                 <? endforeach;?>
