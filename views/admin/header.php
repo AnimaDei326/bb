@@ -106,27 +106,27 @@
                 <li class="sidebar-label pt20">Публичная часть</li>
                 <li>
                     <a href="/admin">
-                        <span class="fa fa-calendar"></span>
+                        <span class="glyphicon glyphicon-home"></span>
                         <span class="sidebar-title">Рабочий стол</span>
                     </a>
                 </li>
                 <li>
                     <a href="/">
-                        <span class="fa fa-calendar"></span>
+                        <span class="glyphicon glyphicon-globe"></span>
                         <span class="sidebar-title">Перейти на сайт</span>
                     </a>
                 </li>
                 <li>
                     <a href="/admin/form_contacts">
-                        <span class="glyphicon glyphicon-fire"></span>
+                        <span class="glyphicon glyphicon-send"></span>
                         <span class="sidebar-title">Заявки</span>
                     </a>
                 </li>
 
                 <!-- <li class="sidebar-label pt15">Контент</li> -->
                 <li>
-                    <a class="accordion-toggle" href="/admin">
-                        <span class="glyphicon glyphicon-fire"></span>
+                    <a class="accordion-toggle" href="/">
+                        <span class="glyphicon glyphicon-th-large"></span>
                         <span class="sidebar-title">Контент</span>
                         <span class="caret"></span>
                     </a>
@@ -150,8 +150,8 @@
                     </ul>
                 </li>
                 <li>
-                    <a class="accordion-toggle" href="/admin">
-                        <span class="glyphicon glyphicon-fire"></span>
+                    <a class="accordion-toggle" href="/">
+                        <span class="glyphicon glyphicon-info-sign"></span>
                         <span class="sidebar-title">О компании</span>
                         <span class="caret"></span>
                     </a>
@@ -171,6 +171,19 @@
                         <li>
                             <a href="/admin/partner">
                                 <span class="glyphicon glyphicon-equalizer"></span> Партнеры </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="accordion-toggle" href="/">
+                        <span class="glyphicon glyphicon-wrench"></span>
+                        <span class="sidebar-title">Служебное</span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="nav sub-nav">
+                        <li>
+                            <a href="/admin/include">
+                                <span class="glyphicon glyphicon-header"></span> Html-область </a>
                         </li>
                     </ul>
                 </li>

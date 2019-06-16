@@ -91,9 +91,12 @@ class IndexController extends Controller
 
         $arrContact = Worker::getContactList();
 
+        $include_data = file_get_contents($_SERVER['DOCUMENT_ROOT'] . IncludeController::$filename);
+
 
         echo $this->render('footer', [
             'title' => self::$title,
+            'include_data'=> $include_data,
             'contact_left' => $arrContact[0],
             'contact_right' => $arrContact[1],
         ]);

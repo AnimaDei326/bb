@@ -12,6 +12,7 @@
                             <li class="expierence-list__element"><?=$item['name']?></li>
                         <? endforeach;?>
                     </ul>
+                    <a class="download_link" href="/upload/presentation.pdf" download="Презентация о B&B Consulting">Скачать презентацию</a>
                 </div>
             </div>
 

@@ -16,7 +16,7 @@ $(document).ready(function() {
 
 				var el = document.getElementsByClassName('widget__company-info')[0];
 
-				if (parseInt(window.getComputedStyle(el, null).height) >= window.innerHeight) {
+				if (parseInt(window.getComputedStyle(service_widget, null).height) >= window.innerHeight) {
 					service_widget.style.alignItems = "flex-start";
 					service_widget.style.paddingTop = "30px";
 					service_widget.style.paddingBottom = "30px";
