@@ -611,4 +611,36 @@ class AdminController extends Controller
         }
     }
 
+    public function actionInclude()
+    {
+        if( Admin::helloUser() ){
+
+            self::$title = 'Включаемая html-область';
+
+            $userData = Admin::getUserDataBySessionId(session_id());
+
+            $role = Admin::getRole();
+            $userData['role'] = $role['name'];
+
+            $data = file_get_contents($_SERVER['DOCUMENT_ROOT']. IncludeController::$filename);
+
+            echo $this->render('/admin/header', [
+                'title' => self::$title,
+                'userData' => $userData,
+            ]);
+
+            echo $this->render('/admin/include_edit', [
+                'data' => $data,
+            ]);
+
+            echo $this->render('/admin/footer', [
+            ]);
+
+        }else{
+            header("Location: /user/check");
+        }
+    }
+
+
+
 }
