@@ -204,8 +204,9 @@ header {
     margin-right: 0;
 }
 
-.list-menu_link {
-    color: #cce2ed;
+.list-menu__link {
+    color: #ffffff;
+    font-weight: bold;
     padding: 8px 15px;
     display: block;
     font-family: 'Montserrat light';
