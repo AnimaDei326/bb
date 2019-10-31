@@ -2,3 +2,4 @@
 *.log
 cgi-bin/
 .env.dev.json
+error_log

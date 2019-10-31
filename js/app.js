@@ -68,7 +68,7 @@ $(document).ready(function() {
 	$(document).mouseup(function (e){
 		var div = document.getElementsByClassName('header__top-mobile block-active')[0];
 		
-		if ((div != undefined) && !(div == e.target) && !div.contains(e.target) && !$('.switch-mobile__btn').is(e.target)) {
+		if ((div != undefined) && !$('.switch-mobile__btn').is(e.target)) {
 			div.className = 'header__top-mobile';
 		}
 	})
