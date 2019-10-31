@@ -2,4 +2,3 @@
 *.log
 cgi-bin/
 .env.dev.json
-./images/*

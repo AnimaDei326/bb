@@ -1188,12 +1188,14 @@ footer .list-menu__element {
 }
 
 .switch-mobile__btn {
+    padding: 20px;
+    border-radius: 5px;
     display: none;
     width: 30px;
     height: 30px;
     top: 20px;
     right: 20px;
-    background: url(../images/burger.png) no-repeat center center;
+    background: url(../images/burger.png) no-repeat center center rgba(0, 0, 0, .2);
     z-index: 9999;
     position: absolute;
     cursor: pointer;
