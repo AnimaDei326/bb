@@ -314,18 +314,6 @@ header {
     padding-left: 0;
 }
 
-.prom {
-    background: url('../images/industry.png') no-repeat center center;
-}
-
-.pump-jack {
-    background: url('../images/pump-jack.png') no-repeat center center;
-}
-
-.university {
-    background: url('../images/university.png') no-repeat center center;
-}
-
 .header-ico {
     display: block;
     margin: 0 auto 10px;
@@ -685,10 +673,6 @@ footer .footer__text {
 }
 
 footer .footer__text a {
-    color: #fff;
-}
-
-.tell-number a {
     color: #fff;
 }
 

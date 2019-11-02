@@ -5,11 +5,11 @@
         <div class="footer__top">
             <address>
                 <h3 class="footer__title">Контакты</h3>
-                Email:
-                <span class="email"><?=$this->params['contact_left']['email']?></span>
-                <br>
-                Тел.:
-                <span class="tell-number"><?=$this->params['contact_left']['telephone']?></span>
+                <?foreach ($this->params['contact_footer'] as $contact):?>
+                    <?=$contact['title']?>:
+                    <span class="email"><?=$contact['value']?></span>
+                    <br>
+                <?endforeach;?>
             </address>
             <nav>
                 <h3 class="footer__title">Навигация</h3>
@@ -23,10 +23,11 @@
         </div>
 
         <div class="footer__bottom">
+            <?foreach ($this->params['requisite_footer'] as $requisite):?>
+                <p class="footer__text"><?=$requisite['title']?> <?=$requisite['value']?></p>
+            <?endforeach;?>
 
-            <p class="footer__text">ИП БОРИСОВ НИКИТА СЕРГЕЕВИЧ</p>
-            <p class="footer__text">ИНН 771774855749 ОГРНИП 319502700012451</p>
-            <p class="footer__text">© Biliy&Borisov consulting. <br /> Все права защищены. 2019</p>
+            <p class="footer__text">© Biliy&Borisov consulting. <br /> Все права защищены. <?=date("Y")?></p>
         </div>
     </div>
 </footer>
@@ -40,17 +41,17 @@
             <div class="widget__header">
                 <div class="widget__staff-img" style="background-image: url('/images/Biliy.jpg')"></div>
                 <h4 class="widget__staff-name">Александр Билый</h4>
-                <p class="widget__staff-text">Обсудить новый проект</p>
+                <p class="widget__staff-text"><?=$this->params['contact_left']['description']?></p>
             </div>
             <div class="widget__footer">
                 <ul class="widget__footer-list">
                     <li class="footer-list__element widget__staff-tell">
                         <i class="widget-ico ico-number">&nbsp;</i>
-                        +7 (916) 804 - 27 - 97
+                        <?=$this->params['contact_left']['telephone']?>
                     </li>
                     <li class="footer-list__element widget__staff-email">
                         <i class="widget-ico ico-email">&nbsp;</i>
-                        info@bbcounsulting.ru
+                        <?=$this->params['contact_left']['email']?>
                     </li>
                 </ul>
             </div>
@@ -60,17 +61,17 @@
             <div class="widget__header">
                 <div class="widget__staff-img" style="background-image: url('/images/Borisov.jpg')"></div>
                 <h4 class="widget__staff-name">Никита Борисов</h4>
-                <p class="widget__staff-text">Получить методологическую консультацию</p>
+                <p class="widget__staff-text"><?=$this->params['contact_right']['description']?></p>
             </div>
             <div class="widget__footer">
                 <ul class="widget__footer-list">
                     <li class="footer-list__element widget__staff-tell">
                         <i class="widget-ico ico-number">&nbsp;</i>
-                        +7 (916) 804-27-97
+                        <?=$this->params['contact_right']['telephone']?>
                     </li>
                     <li class="footer-list__element widget__staff-email">
                         <i class="widget-ico ico-email">&nbsp;</i>
-                        info@bbcounsulting.ru
+                        <?=$this->params['contact_right']['email']?>
                     </li>
                 </ul>
             </div>
@@ -99,7 +100,7 @@
 
                         <div class="checkbox">
                             <input id="agreement" type="checkbox" name="agreement" checked>
-                            <label class="widget__label" for="agreement">Согласен с обработкой данных <b><u>Политика конфединциальности</u></b></label>
+                            <label class="widget__label" for="agreement" style="height: auto">Согласен с обработкой данных <b><u>Политика конфединциальности</u></b></label>
                         </div>
 
                     </div>

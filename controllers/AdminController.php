@@ -7,6 +7,7 @@ use models\About;
 use models\Admin;
 use models\Client;
 use models\FormContact;
+use models\HeaderFooter;
 use models\Service;
 use models\Project;
 use models\Worker;
@@ -541,6 +542,134 @@ class AdminController extends Controller
 
             echo $this->render('/admin/about_partner', [
                 'photo' => $photo,
+            ]);
+
+            echo $this->render('/admin/footer', [
+            ]);
+
+        }else{
+            header("Location: /user/check");
+        }
+    }
+
+    public function actionTitle()
+    {
+        if( Admin::helloUser() ){
+
+            self::$title = 'Заголовок';
+
+
+            $userData = Admin::getUserDataBySessionId(session_id());
+
+            $role = Admin::getRole();
+            $userData['role'] = $role['name'];
+
+            $title = HeaderFooter::getList('title', '');
+
+
+            echo $this->render('/admin/header', [
+                'title' => self::$title,
+                'userData' => $userData,
+            ]);
+
+            echo $this->render('/admin/header_footer_title', [
+                'title' => $title,
+            ]);
+
+            echo $this->render('/admin/footer', [
+            ]);
+
+        }else{
+            header("Location: /user/check");
+        }
+    }
+
+    public function actionSector()
+    {
+        if( Admin::helloUser() ){
+
+            self::$title = 'Сектора';
+
+
+            $userData = Admin::getUserDataBySessionId(session_id());
+
+            $role = Admin::getRole();
+            $userData['role'] = $role['name'];
+
+            $sectors = HeaderFooter::getList('sector', '');
+
+
+            echo $this->render('/admin/header', [
+                'title' => self::$title,
+                'userData' => $userData,
+            ]);
+
+            echo $this->render('/admin/header_footer_sector', [
+                'sectors' => $sectors,
+            ]);
+
+            echo $this->render('/admin/footer', [
+            ]);
+
+        }else{
+            header("Location: /user/check");
+        }
+    }
+
+    public function actionContact()
+    {
+        if( Admin::helloUser() ){
+
+            self::$title = 'Контакты';
+
+
+            $userData = Admin::getUserDataBySessionId(session_id());
+
+            $role = Admin::getRole();
+            $userData['role'] = $role['name'];
+
+            $contacts = HeaderFooter::getList('contact', '');
+
+
+            echo $this->render('/admin/header', [
+                'title' => self::$title,
+                'userData' => $userData,
+            ]);
+
+            echo $this->render('/admin/header_footer_contact', [
+                'contacts' => $contacts,
+            ]);
+
+            echo $this->render('/admin/footer', [
+            ]);
+
+        }else{
+            header("Location: /user/check");
+        }
+    }
+
+    public function actionRequisite()
+    {
+        if( Admin::helloUser() ){
+
+            self::$title = 'Реквизиты';
+
+
+            $userData = Admin::getUserDataBySessionId(session_id());
+
+            $role = Admin::getRole();
+            $userData['role'] = $role['name'];
+
+            $requisites = HeaderFooter::getList('requisite', '');
+
+
+            echo $this->render('/admin/header', [
+                'title' => self::$title,
+                'userData' => $userData,
+            ]);
+
+            echo $this->render('/admin/header_footer_requisite', [
+                'requisites' => $requisites,
             ]);
 
             echo $this->render('/admin/footer', [

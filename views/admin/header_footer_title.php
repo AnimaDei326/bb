@@ -1,4 +1,4 @@
-<? $desc =  $this->params['desc'][0];?>
+<? $item =  $this->params['title'][0];?>
 
 
 <!-- Start: Topbar -->
@@ -6,15 +6,15 @@
     <div class="topbar-left">
         <ol class="breadcrumb">
             <li class="crumb-active">
-                <a href="/admin/about/desc">Описание опыта</a>
+                <a href="/admin/header_footer/title">Заголовок</a>
             </li>
             <li class="crumb-icon">
                 <a href="/admin">
                     <span class="glyphicon glyphicon-home"></span>
                 </a>
             </li>
-            <li class="crumb-trail">О компании</li>
-            <li class="crumb-trail">Описание опыта</li>
+            <li class="crumb-trail">Хедер и футер</li>
+            <li class="crumb-trail">Заголовок</li>
             <li class="crumb-trail">Редактирование</li>
         </ol>
     </div>
@@ -29,18 +29,18 @@
             <!-- Input Fields -->
             <div class="panel">
                 <div class="panel-heading">
-                    <span class="panel-title">Редактирование текста</span>
+                    <span class="panel-title">Редактирование заголовка</span>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" action="/about/edit" method="POST" enctype="multipart/form-data">
+                    <form class="form-horizontal" role="form" action="/headerfooter/edit" method="POST" enctype="multipart/form-data">
 
                         <div class="col-md-12">
                             <div class="panel panel-visible" id="spy2">
 
                                 <div class="panel-body pn">
-                                    <textarea name="name" style="min-height: 300px;" class="form-control"><?=$desc['name'];?></textarea>
-                                    <input name="id" value="<?=$desc['id']?>" type="hidden">
-                                    <input name="sort" value="<?=$desc['sort']?>" type="hidden">
+                                    <textarea name="value" style="min-height: 100px;" class="form-control"><?=$item['value'];?></textarea>
+                                    <input name="id" value="<?=$item['id']?>" type="hidden">
+                                    <input name="sort" value="<?=$item['sort']?>" type="hidden">
                                 </div>
                             </div>
 
@@ -49,7 +49,7 @@
                             <button class="btn btn-white" type="reset">Сбросить</button>
                             <button class="btn btn-primary" type="submit">Сохранить</button>
                         </div>
-                        <input type="hidden" value="desc" name="type">
+                        <input type="hidden" value="title" name="type">
                     </form>
                 </div>
             </div>

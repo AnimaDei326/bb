@@ -55,15 +55,15 @@
             <span class="switch-mobile__btn"></span>
 
             <div class="header__info">
-                <h1 class="header__title">Консультируем в<br /> <span> области финансового моделирования и оперативного управления финансами</span></h1>
+                <h1 class="header__title"><?=$this->params['title_header']?></h1>
 
                 <p>В секторах:</p>
 
                 <nav>
                     <ul class="header-icons__blocks">
-                        <li class="icons-block__element"><i class="header-ico prom"></i>Промышленность</li>
-                        <li class="icons-block__element"><i class="header-ico university"></i>Добыча</li>
-                        <li class="icons-block__element"><i class="header-ico pump-jack"></i>Проектирование</li>
+                        <?foreach ($this->params['sector'] as $sector):?>
+                            <li class="icons-block__element"><i class="header-ico" style="background:  url('../images/<?=$sector['value']?>') no-repeat center center; background-size: cover"></i><?=$sector['title']?></li>
+                        <?endforeach;?>
                     </ul>
                 </nav>
             </div>

@@ -123,7 +123,6 @@
                     </a>
                 </li>
 
-                <!-- <li class="sidebar-label pt15">Контент</li> -->
                 <li>
                     <a class="accordion-toggle" href="/">
                         <span class="glyphicon glyphicon-th-large"></span>
@@ -171,6 +170,31 @@
                         <li>
                             <a href="/admin/partner">
                                 <span class="glyphicon glyphicon-equalizer"></span> Партнеры </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="accordion-toggle" href="/">
+                        <span class="glyphicon glyphicon-th-large"></span>
+                        <span class="sidebar-title">Хедер и футер</span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="nav sub-nav">
+                        <li>
+                            <a href="/admin/header_footer/title">
+                                <span class="glyphicon glyphicon-book"></span> Заголовок </a>
+                        </li>
+                        <li>
+                            <a href="/admin/header_footer/sector">
+                                <span class="glyphicon glyphicon-modal-window"></span> Сектора </a>
+                        </li>
+                        <li>
+                            <a href="/admin/header_footer/contact">
+                                <span class="glyphicon glyphicon-modal-window"></span> Контакты </a>
+                        </li>
+                        <li>
+                            <a href="/admin/header_footer/requisite">
+                                <span class="glyphicon glyphicon-modal-window"></span> Реквизиты </a>
                         </li>
                     </ul>
                 </li>

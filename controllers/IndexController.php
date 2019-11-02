@@ -9,6 +9,7 @@
 namespace controllers;
 use components\Controller;
 use models\About;
+use models\HeaderFooter;
 use models\Project;
 use models\Service;
 use models\Worker;
@@ -20,10 +21,18 @@ class IndexController extends Controller
     {
         self::$title = 'Главная страница';
 
+        $arr_header_footer = HeaderFooter::getList('', 'Y');
+
+        $header_footer['title'] = array_filter($arr_header_footer, [new HeaderFooter('','','', 'title'), 'models\HeaderFooter::arrFilter'],  ARRAY_FILTER_USE_BOTH );
+        $header_footer['sector'] = array_filter($arr_header_footer, [new HeaderFooter('','','','sector'), 'models\HeaderFooter::arrFilter'],  ARRAY_FILTER_USE_BOTH );
+        $header_footer['contact'] = array_filter($arr_header_footer, [new HeaderFooter('','','', 'contact'), 'models\HeaderFooter::arrFilter'],  ARRAY_FILTER_USE_BOTH );
+        $header_footer['requisite'] = array_filter($arr_header_footer, [new HeaderFooter('', '', '', 'requisite'), 'models\HeaderFooter::arrFilter'],  ARRAY_FILTER_USE_BOTH );
+
         echo $this->render('header', [
             'title' => self::$title,
+            'title_header' => $header_footer['title'][1]['value'],
+            'sector' => $header_footer['sector'],
         ]);
-
 
         $arrAbout = About::getList('', 'Y');
 
@@ -99,6 +108,8 @@ class IndexController extends Controller
             'include_data'=> $include_data,
             'contact_left' => $arrContact[0],
             'contact_right' => $arrContact[1],
+            'contact_footer' => $header_footer['contact'],
+            'requisite_footer' => $header_footer['requisite'],
         ]);
 
 

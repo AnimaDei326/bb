@@ -58,15 +58,18 @@ $(document).ready(function() {
 
 
 	// showing mobile menu
+
 	$('.switch-mobile__btn').click(function () {
-		$('.header__top-mobile').toggleClass('block-active');
+		if (!test){
+            $('.header__top-mobile').toggleClass('block-active');
+        }
 	})
 	// showing mobile menu
 	
 
 	// closing mobile menu when clicking outside
 	$(document).mouseup(function (e){
-		var div = document.getElementsByClassName('header__top-mobile block-active')[0];
+		let div = document.getElementsByClassName('header__top-mobile block-active')[0];
 		
 		if ((div != undefined) && !$('.switch-mobile__btn').is(e.target)) {
 			div.className = 'header__top-mobile';
@@ -88,6 +91,9 @@ $(document).ready(function() {
 				let id  = "#" + $(this).attr('href');
 				//let mg  = $('.header__top-wrap').outerHeight();
 				let	top = $(id).offset().top - header_height;
+                if(window.innerWidth < 680){
+                    top = top + header_height;
+				}
 
                 $('body,html').animate({scrollTop: top}, 1500);
 			}

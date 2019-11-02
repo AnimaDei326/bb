@@ -1,5 +1,5 @@
 /*! Swipebox v1.4.4 | Constantin Saguin csag.co | MIT License | github.com/brutaldesign/swipebox */
-
+let test = false;
 ;( function ( window, document, $, undefined ) {
 
 	$.swipebox = function( elem, options ) {
@@ -630,6 +630,7 @@
 			 * Open slide
 			 */
 			openSlide : function ( index ) {
+				test = true;
 				$( 'html' ).addClass( 'swipebox-html' );
 				if ( isTouch ) {
 					$( 'html' ).addClass( 'swipebox-touch' );
@@ -913,6 +914,10 @@
 				$( 'html' ).removeClass( 'swipebox-touch' );
 				$( window ).trigger( 'resize' );
 				this.destroy();
+
+                setTimeout( function() {
+                	test = false;
+                }, 0 );
 			},
 
 			/**
