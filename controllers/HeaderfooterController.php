@@ -14,7 +14,7 @@ use models\Admin;
 use components\App;
 use models\HeaderFooter;
 
-class HeaderFooterController extends Controller
+class HeaderfooterController extends Controller
 {
     public static $type = [
         'title' => 1,
